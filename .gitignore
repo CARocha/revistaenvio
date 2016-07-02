@@ -87,3 +87,11 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+*.db
+*.sql
+*.sqlite3
+media/
+static/
+.DS_Store
+.idea/
