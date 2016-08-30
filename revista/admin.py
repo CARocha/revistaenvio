@@ -3,13 +3,17 @@ from .models import *
 from import_export.admin import ImportExportModelAdmin
 
 
-class ArticulosAdmin(ImportExportModelAdmin):
-	list_display = ('id', 'titulo')
-
-class IdiomasAdmin(ImportExportModelAdmin):
-	pass
+class ArticulosInline(admin.StackedInline):
+	model = Articulos
+	extra = 1
 
 class RevistasAdmin(ImportExportModelAdmin):
+	inlines = [ArticulosInline]
+
+class ArticulosAdmin(ImportExportModelAdmin):
+	pass
+
+class IdiomasAdmin(ImportExportModelAdmin):
 	pass
 
 class ZonasAdmin(ImportExportModelAdmin):
