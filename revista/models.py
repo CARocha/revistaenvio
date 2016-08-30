@@ -11,17 +11,20 @@ class Idiomas(models.Model):
         return self.idioma
 
     class Meta:
-        verbose_name='idiomas'
-        verbose_name_plural='idiomas'
+        db_table = 'idiomas'
+        verbose_name='Idioma'
+        verbose_name_plural='Idiomas'
 
 class Zonas(models.Model):
     zona = models.CharField(max_length=50, blank=True, null=True)
     relevancia = models.IntegerField(blank=True, null=True)
     zona_en = models.CharField(max_length=50, blank=True, null=True)
-    zona_es = models.CharField(max_length=50, blank=True, null=True)
+    zona_es = models.CharField(max_length=50, blank=True, null=True) 
 
     class Meta:
         db_table = 'zonas'
+        verbose_name='Zona'
+        verbose_name_plural='Zonas'
 
 class Temas(models.Model):
     tema = models.CharField(max_length=150, blank=True, null=True)
@@ -29,8 +32,9 @@ class Temas(models.Model):
     tema_es = models.CharField(max_length=150, blank=True, null=True)
 
     class Meta:
-        #managed = False
         db_table = 'temas'
+        verbose_name='Tema'
+        verbose_name_plural='Temas'
 
 class Autores(models.Model):
     nombre = models.CharField(max_length=150, blank=True, null=True)
@@ -39,10 +43,12 @@ class Autores(models.Model):
     cargo = models.TextField(blank=True, null=True)
     nota = models.TextField(blank=True, null=True)
     nombre_en = models.CharField(max_length=150, blank=True, null=True)
-    nombre_es = models.CharField(max_length=150, blank=True, null=True)
+    nombre_es = models.CharField(max_length=150, blank=True, null=True)       
 
     class Meta:
         db_table = 'autores'
+        verbose_name='Autor'
+        verbose_name_plural='Autores'
 
 class Revistas(models.Model):
     volumen = models.IntegerField()
@@ -57,6 +63,7 @@ class Revistas(models.Model):
         return u'%s' % str(self.numero)
 
     class Meta:
+        db_table = 'revistas'
         verbose_name='Revista'
         verbose_name_plural='Revistas'
 
@@ -79,7 +86,8 @@ class Articulos(models.Model):
         return self.titulo
 
     class Meta:
-        verbose_name='Articulos'
+        db_table = 'articulos'
+        verbose_name='Articulo'
         verbose_name_plural='Articulos'
 
 
@@ -99,8 +107,9 @@ class Enlaces(models.Model):
     idarticulo = models.ForeignKey(Articulos, blank=True, null=True)
 
     class Meta:
-        #managed = False
         db_table = 'enlaces'
+        verbose_name='Enlace'
+        verbose_name_plural='Enlaces'
 
 class Tipo(models.Model):
     tipo = models.CharField(max_length=500, blank=True, null=True)
@@ -110,6 +119,8 @@ class Tipo(models.Model):
 
     class Meta:
         db_table = 'tipo'
+        verbose_name='Tipo'
+        verbose_name_plural='Tipos'
 
 
 class Envio(models.Model):
@@ -136,8 +147,9 @@ class Envio(models.Model):
     suscripcion = models.CharField(max_length=25, blank=True, null=True)
 
     class Meta:
-        #managed = False
         db_table = 'envio'
+        verbose_name='Registro de subcriptores'
+        verbose_name_plural='Registros de subcriptores'
 
 
 class Pais(models.Model):
@@ -145,3 +157,5 @@ class Pais(models.Model):
 
     class Meta:
         db_table = 'pais'
+        verbose_name='Pais'
+        verbose_name_plural='Paises'
