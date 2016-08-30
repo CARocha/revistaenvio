@@ -33,7 +33,6 @@ class Temas(models.Model):
         db_table = 'temas'
 
 class Autores(models.Model):
-    idautor = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=150, blank=True, null=True)
     email = models.CharField(max_length=50, blank=True, null=True)
     titulo = models.CharField(max_length=50, blank=True, null=True)
@@ -54,8 +53,8 @@ class Revistas(models.Model):
     nota = models.TextField(blank=True, null=True)
     color = models.IntegerField(blank=True, null=True)
 
-    def __unicode__(self):
-        return u'%s-%s-%s' % str(self.numero, self.ididioma,self.volumen)
+    def __str__(self):
+        return u'%s' % str(self.numero)
 
     class Meta:
         verbose_name='Revista'
@@ -66,7 +65,7 @@ class Articulos(models.Model):
     revista = models.ForeignKey(Revistas)
     idioma = models.ForeignKey(Idiomas, null=True, blank=True)
     idzona = models.ForeignKey('Zonas', blank=True, null=True)
-    idautor = models.ForeignKey('Autores', blank=True, null=True)
+    autor = models.ForeignKey('Autores', blank=True, null=True)
     autornota = models.TextField(blank=True, null=True)
     cambio = models.TextField(blank=True, null=True)
     texto = models.TextField(blank=True, null=True)

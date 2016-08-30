@@ -11,6 +11,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'revista',
+    'import_export',
 ]
 
 MIDDLEWARE_CLASSES = [
