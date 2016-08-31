@@ -5,6 +5,7 @@ from django.db import models
 
 
 class Idiomas(models.Model):
+    id = models.CharField(primary_key=True, max_length=2)
     idioma = models.CharField(max_length=50, blank=True, null=True)
 
     def __unicode__(self):
@@ -16,10 +17,14 @@ class Idiomas(models.Model):
         verbose_name_plural='Idiomas'
 
 class Zonas(models.Model):
+    id = models.CharField(primary_key=True, max_length=2)
     zona = models.CharField(max_length=50, blank=True, null=True)
     relevancia = models.IntegerField(blank=True, null=True)
     zona_en = models.CharField(max_length=50, blank=True, null=True)
     zona_es = models.CharField(max_length=50, blank=True, null=True)
+
+    def __unicode__(self):
+        return u'%s' % self.zona
 
     class Meta:
         db_table = 'zonas'
@@ -30,6 +35,9 @@ class Temas(models.Model):
     tema = models.CharField(max_length=150, blank=True, null=True)
     tema_en = models.CharField(max_length=150, blank=True, null=True)
     tema_es = models.CharField(max_length=150, blank=True, null=True)
+
+    def __unicode__(self):
+        return u'%s' % self.tema
 
     class Meta:
         db_table = 'temas'
@@ -62,7 +70,7 @@ class Revistas(models.Model):
     nota = models.TextField(blank=True, null=True)
     color = models.IntegerField(blank=True, null=True)
 
-    def __str__(self):
+    def __unicode__(self):
         return u'%s' % str(self.numero)
 
     class Meta:
@@ -109,12 +117,16 @@ class Enlaces(models.Model):
     texto = models.TextField(blank=True, null=True)
     idarticulo = models.ForeignKey(Articulos, blank=True, null=True)
 
+    def __unicode__(self):
+        return u'%s' % self.titulo
+
     class Meta:
         db_table = 'enlaces'
         verbose_name='Enlace'
         verbose_name_plural='Enlaces'
 
 class Tipo(models.Model):
+    id = models.CharField(primary_key=True, max_length=3)
     tipo = models.CharField(max_length=500, blank=True, null=True)
     precio = models.CharField(max_length=50, blank=True, null=True)
     tipo_es = models.CharField(max_length=500, blank=True, null=True)
@@ -151,6 +163,9 @@ class Envio(models.Model):
     nombre = models.CharField(max_length=500, blank=True, null=True)
     idtipo = models.ForeignKey('Tipo', models.DO_NOTHING, db_column='idtipo', blank=True, null=True)
     suscripcion = models.CharField(max_length=25, blank=True, null=True)
+
+    def __unicode__(self):
+        return u'%s' % self.institucion
 
     class Meta:
         db_table = 'envio'

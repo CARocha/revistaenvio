@@ -9,6 +9,8 @@ class ArticulosInline(admin.StackedInline):
 
 class RevistasAdmin(ImportExportModelAdmin):
     inlines = [ArticulosInline]
+    list_display = ['id','volumen','ano','mes','numero','ididioma']
+    list_display_links = ['id','volumen','numero']
 
 class ArticulosAdmin(ImportExportModelAdmin):
     pass
@@ -33,7 +35,9 @@ class TipoAdmin(ImportExportModelAdmin):
     pass
 
 class EnvioAdmin(ImportExportModelAdmin):
-    pass
+    list_display = ['id', 'institucion','tnombre', 'idtipo', 'idpais', 'nueva']
+    list_display_links = ['id', 'institucion', 'tnombre']
+
 
 class PaisAdmin(ImportExportModelAdmin):
     list_display = ['id', 'pais']
