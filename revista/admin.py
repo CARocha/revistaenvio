@@ -4,38 +4,39 @@ from import_export.admin import ImportExportModelAdmin
 
 
 class ArticulosInline(admin.StackedInline):
-	model = Articulos
-	extra = 1
+    model = Articulos
+    extra = 1
 
 class RevistasAdmin(ImportExportModelAdmin):
-	inlines = [ArticulosInline]
+    inlines = [ArticulosInline]
 
 class ArticulosAdmin(ImportExportModelAdmin):
-	pass
+    pass
 
 class IdiomasAdmin(ImportExportModelAdmin):
-	pass
+    pass
 
 class ZonasAdmin(ImportExportModelAdmin):
-	pass
+    pass
 
 class TemasAdmin(ImportExportModelAdmin):
-	pass
+    pass
 
 class AutoresAdmin(ImportExportModelAdmin):
-	pass
+    list_display = ['id', 'nombre','email']
+    search_fields = ['nombre']
 
 class EnlacesAdmin(ImportExportModelAdmin):
-	pass
+    pass
 
 class TipoAdmin(ImportExportModelAdmin):
-	pass
+    pass
 
 class EnvioAdmin(ImportExportModelAdmin):
-	pass
+    pass
 
 class PaisAdmin(ImportExportModelAdmin):
-	pass
+    list_display = ['id', 'pais']
 
 # Register your models here.
 admin.site.register(Articulos, ArticulosAdmin)

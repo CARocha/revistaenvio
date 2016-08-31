@@ -19,7 +19,7 @@ class Zonas(models.Model):
     zona = models.CharField(max_length=50, blank=True, null=True)
     relevancia = models.IntegerField(blank=True, null=True)
     zona_en = models.CharField(max_length=50, blank=True, null=True)
-    zona_es = models.CharField(max_length=50, blank=True, null=True) 
+    zona_es = models.CharField(max_length=50, blank=True, null=True)
 
     class Meta:
         db_table = 'zonas'
@@ -43,7 +43,10 @@ class Autores(models.Model):
     cargo = models.TextField(blank=True, null=True)
     nota = models.TextField(blank=True, null=True)
     nombre_en = models.CharField(max_length=150, blank=True, null=True)
-    nombre_es = models.CharField(max_length=150, blank=True, null=True)       
+    nombre_es = models.CharField(max_length=150, blank=True, null=True)
+
+    def __unicode__(self):
+        return u'%s' % self.nombre
 
     class Meta:
         db_table = 'autores'
@@ -117,6 +120,9 @@ class Tipo(models.Model):
     tipo_es = models.CharField(max_length=500, blank=True, null=True)
     tipo_en = models.CharField(max_length=500, blank=True, null=True)
 
+    def __unicode__(self):
+        return u'%s' % self.tipo
+
     class Meta:
         db_table = 'tipo'
         verbose_name='Tipo'
@@ -153,7 +159,11 @@ class Envio(models.Model):
 
 
 class Pais(models.Model):
+    id = models.CharField(primary_key=True, max_length=2)
     pais = models.CharField(max_length=500, blank=True, null=True)
+
+    def __unicode__(self):
+        return u'%s' % self.pais
 
     class Meta:
         db_table = 'pais'
