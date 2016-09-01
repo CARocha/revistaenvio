@@ -3,6 +3,7 @@ from .models import *
 from import_export.admin import ImportExportModelAdmin
 
 
+
 class ArticulosInline(admin.StackedInline):
     model = Articulos
     extra = 1

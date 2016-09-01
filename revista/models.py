@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from ckeditor.fields import RichTextField
 
 
 class Idiomas(models.Model):
@@ -84,11 +85,11 @@ class Articulos(models.Model):
     idioma = models.ForeignKey(Idiomas, null=True, blank=True)
     idzona = models.ForeignKey('Zonas', blank=True, null=True)
     autor = models.ForeignKey('Autores', blank=True, null=True)
-    autornota = models.TextField(blank=True, null=True)
-    cambio = models.TextField(blank=True, null=True)
-    texto = models.TextField(blank=True, null=True)
+    autornota = RichTextField(blank=True, null=True)
+    cambio = RichTextField(blank=True, null=True)
+    texto = RichTextField(blank=True, null=True)
     codigoml = models.IntegerField(blank=True, null=True)
-    nota = models.TextField(blank=True, null=True)
+    nota = RichTextField(blank=True, null=True)
     textoidx = models.TextField(blank=True, null=True)
     idxtexto = models.TextField(blank=True, null=True)
     temas = models.ManyToManyField(Temas, blank=True)
