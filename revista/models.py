@@ -80,8 +80,8 @@ class Revistas(models.Model):
         verbose_name_plural='Revistas'
 
 class Articulos(models.Model):
-    titulo = models.CharField(max_length=255, blank=True, null=True)
     revista = models.ForeignKey(Revistas)
+    titulo = models.CharField(max_length=255, blank=True, null=True)
     idioma = models.ForeignKey(Idiomas, null=True, blank=True)
     idzona = models.ForeignKey('Zonas', blank=True, null=True)
     autor = models.ForeignKey('Autores', blank=True, null=True)
@@ -90,9 +90,9 @@ class Articulos(models.Model):
     texto = RichTextField(blank=True, null=True)
     codigoml = models.IntegerField(blank=True, null=True)
     nota = RichTextField(blank=True, null=True)
-    textoidx = models.TextField(blank=True, null=True)
-    idxtexto = models.TextField(blank=True, null=True)
-    temas = models.ManyToManyField(Temas, blank=True)
+    #textoidx = models.TextField(blank=True, null=True)
+    #idxtexto = models.TextField(blank=True, null=True)
+    #temas = models.ManyToManyField(Temas, blank=True)
 
     def __unicode__(self):
         return self.titulo
