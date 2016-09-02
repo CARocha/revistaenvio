@@ -67,7 +67,7 @@ class Revistas(models.Model):
     ano = models.IntegerField('Año', blank=True, null=True)
     mes = models.IntegerField(blank=True, null=True)
     numero = models.IntegerField(blank=True, null=True)
-    ididioma = models.ForeignKey(Idiomas)
+    ididioma = models.ForeignKey(Idiomas, verbose_name='idioma')
     nota = models.TextField(blank=True, null=True)
     color = models.IntegerField(blank=True, null=True)
 

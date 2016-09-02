@@ -14,7 +14,8 @@ class RevistasAdmin(ImportExportModelAdmin):
     list_display_links = ['id','volumen','numero']
 
 class ArticulosAdmin(ImportExportModelAdmin):
-    pass
+    list_display = ['id', 'titulo','revista', 'idioma', 'idzona']
+    list_display_links = ['id','titulo','revista']
 
 class IdiomasAdmin(ImportExportModelAdmin):
     pass
