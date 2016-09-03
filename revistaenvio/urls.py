@@ -20,4 +20,5 @@ urlpatterns = [
     url(r'', include('revista.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
+    url(r'^pages/', include('django.contrib.flatpages.urls')),
 ]
