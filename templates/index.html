@@ -1,13 +1,23 @@
 {% extends "base.html" %}
 
 {% block contenido %}
-  Número: {{ultima_revista.numero}} | {{ ultima_revista.mes }} {{ultima_revista.ano}}
-
-
-algo que poner :
-
-{% for obj in ultima_revista.set_all %}
-        <p>{{obj}}</p>
+<div class="col-sm-8 blog-main">
+Número: {{ultima_revista.numero}} | {{ ultima_revista.mes }} {{ultima_revista.ano}}
+{% for obj in todos_articulos %}
+          <div class="blog-post">
+            <p class="blog-post-meta">{{obj.idzona}}</p>
+            <h2 class="blog-post-title">{{obj}}</h2>
+            <p>{{obj.texto|truncatewords:22|safe }}</p>
+           <p><a href="{% url 'articulo-detalle' obj.id %}">Continuar ...</a></p>
+          </div><!-- /.blog-post -->
 {% endfor %}
 
+<nav>
+<ul class="pager">
+  <li><a href="#">Anterior</a></li>
+  <li><a href="#">Siguiente</a></li>
+</ul>
+</nav>
+
+</div><!-- /.blog-main -->
 {% endblock contenido %}

@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from django.shortcuts import render
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, DetailView
 from django.utils import translation
 from .models import *
 
@@ -27,11 +27,15 @@ class IndexView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
         cur_language = translation.get_language()
-        print 'algo va aqui'
-        print cur_language
         if cur_language == 'en':
-            context['ultima_revista'] = Revistas.objects.filter(ididioma='en').latest('numero')
+            en_revista = Revistas.objects.filter(ididioma='en').latest('numero')
+            context['ultima_revista'] = en_revista
+            context['todos_articulos'] = Articulos.objects.filter(revista=en_revista).order_by('id')
         else:
-            context['ultima_revista'] = Revistas.objects.filter(ididioma='es').latest('numero')
+            es_revista = Revistas.objects.filter(ididioma='es').latest('numero')
+            context['ultima_revista'] = es_revista
+            context['todos_articulos'] = Articulos.objects.filter(revista=es_revista).order_by('id')
         return context
 
+class DetailArticuloView(DetailView):
+    model = Articulos
