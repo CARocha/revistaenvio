@@ -90,9 +90,7 @@ class Articulos(models.Model):
     texto = RichTextField(blank=True, null=True)
     codigoml = models.IntegerField(blank=True, null=True)
     nota = RichTextField(blank=True, null=True)
-    #textoidx = models.TextField(blank=True, null=True)
-    #idxtexto = models.TextField(blank=True, null=True)
-    #temas = models.ManyToManyField(Temas, blank=True)
+    temas = models.ManyToManyField(Temas, blank=True)
 
     def __unicode__(self):
         return self.titulo

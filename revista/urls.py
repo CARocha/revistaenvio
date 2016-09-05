@@ -1,7 +1,9 @@
 from django.conf.urls import url
-from .views import IndexView, DetailArticuloView
+from . import views
 
 urlpatterns = [
-    url(r'^$', IndexView.as_view(), name="index"),
-    url(r'^articulo/(?P<pk>[0-9]+)/$', DetailArticuloView.as_view(), name='articulo-detalle'),
+    url(r'^$', views.IndexView.as_view(), name="index"),
+    url(r'^articulo/(?P<pk>[0-9]+)/$', views.DetailArticuloView.as_view(), name='articulo-detalle'),
+    url(r'^busqueda/$', views.busqueda_avanzada, name="busqueda"),
+
 ]
