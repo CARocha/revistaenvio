@@ -17,6 +17,7 @@ INSTALLED_APPS = [
     'import_export',
     'ckeditor',
     'ckeditor_uploader',
+    'watson',
 ]
 
 MIDDLEWARE_CLASSES = [

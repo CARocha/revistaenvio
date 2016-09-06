@@ -41,7 +41,7 @@ class DetailArticuloView(DetailView):
     model = Articulos
 
 
-def busqueda_avanzada(request, template='revista/busqueda_avanzada.html'):
+def busqueda(request, template='revista/busqueda_avanzada.html'):
     
 
     return render(request, template, locals())
