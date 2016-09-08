@@ -16,7 +16,7 @@
                 {% for obj in todos_articulos %}
                     <div class="item">
                         <h6 class="pais">{{obj.idzona}} - <span>OPINIÓN</span></h6>
-                        <h5 class="articulo-titulo"><a href="">{{obj}}</a></h5>
+                        <h5 class="articulo-titulo"><a href="{% url 'articulo-detalle' obj.id %}">{{obj}}</a></h5>
                         <p>
                         	{{obj.texto|truncatewords:22|safe }}
                         	<span><a href="{% url 'articulo-detalle' obj.id %}">Continuar..</a></span>
