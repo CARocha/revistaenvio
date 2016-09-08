@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>jFontSize | jQuery plugin | Font Size | Font Resize | Change font-size | Javascript</title>
+<meta name="description" content="The jFontSize plugin was developed to facilitate the process of creating the famous buttons A + and A-, which alter the font size on sites with very large texts, such as blogs, journals, tutorials, etc"
+  
+<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+<link type="text/css" rel="stylesheet" href="css/style.css" />
+<link type="text/css" rel="stylesheet" href="css/jfontsize.css" />
+<link type="text/css" rel="stylesheet" href="css/shCoreDefault.css" />
+</head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.js"></script> 
+<script type="text/javascript" language="javascript" src="js/jquery.jfontsize-1.0.js"></script>
+
+<body>
+<div id="wraper">
+<div id="conteudo">
+<div id="principal">
+<h2>Demonstration</h2>
+<h3>Basic</h3>
+<div class="box"> <a class="jfontsize-button" id="jfontsize-m" href="#">A-</a> <a class="jfontsize-button" id="jfontsize-d" href="#">A</a> <a class="jfontsize-button" id="jfontsize-p" href="#">A+</a>
+<p class="some-class-name"><a href="http://www.jqueryscript.net/"><strong>Free jQuery Plugins and Tutorials</strong></a> - Providing tons of <em>Jquery Plugins</em>,<em> Javascript Libraries, Html5, CSS3 Scripts</em> for web developers to free download. &copy; Copyright 2012 jQueryScript.Net</p>
+<script type="text/javascript" language="javascript">
+                        $('.some-class-name').jfontsize({
+                            btnMinusClasseId: '#jfontsize-m',
+                            btnDefaultClasseId: '#jfontsize-d',
+                            btnPlusClasseId: '#jfontsize-p'
+                        });
+                    </script> 
+</div>
+<div class="box-codigo">
+<pre class="brush: js;">
+$('.some-class-name').jfontsize();</pre>
+</div>
+<h3>Defining the change size and the maximum clicks</h3>
+<div class="box"> <a class="jfontsize-button" id="jfontsize-m2" href="#">A-</a> <a class="jfontsize-button" id="jfontsize-d2" href="#">A</a> <a class="jfontsize-button" id="jfontsize-p2" href="#">A+</a>
+<p class="some-class-name2">This text will be resized</p>
+<script type="text/javascript" language="javascript">
+                        $('.some-class-name2').jfontsize({
+                            btnMinusClasseId: '#jfontsize-m2',
+                            btnDefaultClasseId: '#jfontsize-d2',
+                            btnPlusClasseId: '#jfontsize-p2',
+                            btnMinusMaxHits: 1,
+                            btnPlusMaxHits: 5,
+                            sizeChange: 5
+                        });
+                    </script> 
+</div>
+<div class="box-codigo">
+<pre class="brush: js;">
+$('.some-class-name').jfontsize({
+    btnMinusMaxHits: 1,
+    btnPlusMaxHits: 5,
+    sizeChange: 5
+});</pre>
+</div>
+</div>
+<div id="direita"> </div>
+</div>
+<div class="clear">&nbsp;</div>
+</div>
+</body>
+</html>

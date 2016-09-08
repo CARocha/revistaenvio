@@ -1,23 +1,130 @@
 {% extends "base.html" %}
 
 {% block contenido %}
-<div class="col-sm-8 blog-main">
-Número: {{ultima_revista.numero}} | {{ ultima_revista.mes }} {{ultima_revista.ano}}
-{% for obj in todos_articulos %}
-          <div class="blog-post">
-            <p class="blog-post-meta">{{obj.idzona}}</p>
-            <h2 class="blog-post-title">{{obj}}</h2>
-            <p>{{obj.texto|truncatewords:22|safe }}</p>
-           <p><a href="{% url 'articulo-detalle' obj.id %}">Continuar ...</a></p>
-          </div><!-- /.blog-post -->
-{% endfor %}
 
-<nav>
-<ul class="pager">
-  <li><a href="#">Anterior</a></li>
-  <li><a href="#">Siguiente</a></li>
-</ul>
-</nav>
 
-</div><!-- /.blog-main -->
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+            <div class="revista-actual">
+                <span class="fa fa-calendar"> {{ ultima_revista.mes }} {{ultima_revista.ano}}</span>
+                <span class="fa fa-file-o"> NÚMERO {{ultima_revista.numero}}</span>
+            </div>
+            <div class="articulos">
+                {% for obj in todos_articulos %}
+                    <div class="item">
+                        <h6 class="pais">{{obj.idzona}} - <span>OPINIÓN</span></h6>
+                        <h5 class="articulo-titulo"><a href="">{{obj}}</a></h5>
+                        <p>
+                        	{{obj.texto|truncatewords:22|safe }}
+                        	<span><a href="{% url 'articulo-detalle' obj.id %}">Continuar..</a></span>
+                        </p>
+                    </div>
+                    <hr>
+                {% endfor %}
+
+
+                <div class="paginado">
+                    <a class="left" href="">
+                        <span class="fa fa-arrow-left"></span> Nro. anterior
+                    </a>
+                    <a class="right" href="">
+                        Nro. siguiente <span class="fa fa-arrow-right"></span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+        <div class="hidden-xs col-sm-4 col-md-4 col-lg-4">
+            <div class="sidebar">
+                <div class="lema">
+                    <p>
+                        <span class="fa fa-quote-left "></span>
+                        Envío es información y análisis de Nicaragua desde Nicaragua de Centroamérica desde Centroamérica y de ese otro mundo posible por el que trabajamos.
+                        <span class="fa fa-quote-right "></span>
+
+                    </p>
+                    <div class="borde"></div>
+                </div>
+                <form class="search-container" action="{% url 'watson:search' %}">
+                    <h6>Buscar</h6>
+                    <div class="search-box">
+                        <div class="search-icon"><i class="fa fa-search"></i></div>
+                        <input id="search" type="text" class="search-input" name="q" value="{{request.GET.q}}"/>
+
+                        <a class="search-avanzada" href="">Búsqueda Avanzada</a>
+                    </div>
+                </form>
+                <div class="idioma-container">
+                    <h6>Idioma</h6>
+                    <div class="idiomas container-fluid">
+                        <div class="row">
+                            <a class="col-xs-6 col-sm-6 col-md-6 col-lg-6 es activo ">
+                                Español
+                            </a>
+                            <a class="col-xs-6 col-sm-6 col-md-6 col-lg-6 en">
+                                Ingles
+                            </a>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="suscripcion-container ">
+                    <h6>ARCHIVO</h6>
+                    <div class="suscripcion container-fluid">
+                        <div class="row">
+                            <select name="" id="input" class="form-control archivo-select" required="required">
+                                <option value="">2016</option>
+                            </select>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+
+                <div class="suscripcion-container ">
+                    <h6>Suscríbete</h6>
+                    <div class="suscripcion container-fluid">
+                        <div class="row">
+                            <a class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                Suscripción a la revista
+                            </a>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="suscripcion-container ">
+                    <h6>Donación</h6>
+                    <div class="suscripcion container-fluid">
+                        <div class="row">
+                            <a class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                Haz tu donación ahora
+                            </a>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="publicacion-container ">
+                    <h6>última publicación</h6>
+                    <div class="publicacion container-fluid">
+                        <div class="row">
+                            <a class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <span class="img-publicacion">
+                                    <img class="center-block" src="http://placehold.it/250x330" alt="">
+                                </span>
+                                
+                            </a>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock contenido %}

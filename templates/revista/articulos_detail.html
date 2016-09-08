@@ -1,13 +1,183 @@
 {% extends "base.html" %}
-
+{% block extra_js %}
+	<script src="/static/js/jquery.jfontsize-1.0.js"></script>
+	<script type="text/javascript" language="javascript">
+		$( ".detalle h1" ).addClass( "changeMe" );
+		$( ".detalle h2" ).addClass( "changeMe" );
+		$( ".detalle h3" ).addClass( "changeMe" );
+		$( ".detalle h4" ).addClass( "changeMe" );
+		$( ".detalle h5" ).addClass( "changeMe" );
+		$( ".detalle h6" ).addClass( "changeMe" );
+		$('.changeMe').jfontsize({
+            btnMinusClasseId: '#jfontsize-m2',
+            btnDefaultClasseId: '#jfontsize-d2',
+            btnPlusClasseId: '#jfontsize-p2',
+            btnMinusMaxHits: 1,
+            btnPlusMaxHits: 5,
+            sizeChange: 2
+        });
+	</script>
+{% endblock extra_js %}
 {% block contenido %}
-<div class="col-sm-8 blog-main">
 
-<div class="blog-post">
-    <p class="blog-post-meta">{{object.idzona}}</p>
-    <h2 class="blog-post-title">{{object.titulo}}</h2>
-    <p>{{object.texto|safe }}</p>
-</div><!-- /.blog-post -->
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+			<div class="revista-actual">
+				<div class="row">
+					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+						<div class="detalle-pais">
+							<div class="pais">
+								{{object.idzona}} - <span>OPINIÓN</span>
+							</div>
+						</div>
 
-</div><!-- /.blog-main -->
+					</div>
+					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+					<div class="fuente pull-right">
+						<a class="jfontsize-button" id="jfontsize-m2" href="#">
+						- A 
+						</a>
+					
+						<a class="jfontsize-button" id="jfontsize-d2" href="#">
+						A
+						</a>
+						
+						<a class="jfontsize-button" id="jfontsize-p2" href="#">
+						A +
+						</a>
+					</div>
+					
+						<!--<div class="fuente pull-right">
+							<select name="" id="input" class="form-control size" required="required">
+								<option value="16">16px</option>
+						        <option value="18">18px</option>
+						        <option value="20">20px</option>
+						        <option value="22">22px</option>
+							</select>
+						</div>-->
+					</div>
+				</div>
+					
+			</div>
+
+			<div class="articulo-detalle">
+				<h5 class="titulo-detalle">
+					{{object.titulo}}
+				</h5>
+				<div class="detalle changeMe">
+					{{object.texto|safe }}
+				</div>
+			</div>
+			<div class="social-share">
+				<div class="row">
+					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" >
+						<p>Compartir este articulo:</p>
+					</div>
+					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" >
+						<ul class="pull-right">
+							<li>
+								<a href="">
+									<span class="fa fa-facebook" ></span>
+								</a>
+							</li>
+							<li>
+								<a href="">
+									<span class="fa fa-twitter" ></span>
+								</a>
+							</li>
+							<li>
+								<a href="">
+									<span class="fa fa-google-plus" ></span>
+								</a>
+							</li>
+							
+							<li>
+								<a href="">
+									<span class="fa fa-envelope" ></span>
+								</a>
+							</li>
+							<li>
+								<a href="">
+									<span class="fa fa-print" ></span>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+		<div class="hidden-xs col-sm-4 col-md-4 col-lg-4">
+			<div class="sidebar">
+				<div class="lema">
+					<p>
+						<span class="fa fa-quote-left "></span>
+						Envío es información y análisis de Nicaragua desde Nicaragua de Centroamérica desde Centroamérica y de ese otro mundo posible por el que trabajamos.
+						<span class="fa fa-quote-right "></span>
+
+					</p>
+					<div class="borde"></div>
+				</div>
+				<div class="search-container">
+					<h6>Buscar</h6>
+					<form class="search-container" action="{% url 'watson:search' %}">
+                    <h6>Buscar</h6>
+                    <div class="search-box">
+                        <div class="search-icon"><i class="fa fa-search"></i></div>
+                        <input id="search" type="text" class="search-input"/>
+                        <a class="search-avanzada" href="">Búsqueda Avanzada</a>
+                    </div>
+                </form>
+				</div>
+				<div class="idioma-container">
+					<h6>Idioma</h6>
+					<div class="idiomas container-fluid">
+						<div class="row">
+							<a class="col-xs-6 col-sm-6 col-md-6 col-lg-6 es activo ">
+								Español
+							</a>
+							<a class="col-xs-6 col-sm-6 col-md-6 col-lg-6 en">
+								Ingles
+							</a>
+						</div>
+					</div>
+					
+				</div>
+				<div class="suscripcion-container ">
+					<h6>ARCHIVO</h6>
+					<div class="suscripcion container-fluid">
+						<div class="row">
+							<select name="" id="input" class="form-control archivo-select" required="required">
+								<option value="">2016</option>
+							</select>
+						</div>
+						
+					</div>
+					
+				</div>
+
+				<div class="suscripcion-container ">
+					<h6>En este mismo número:</h6>
+					{% for obj in todos_articulos %}
+						<div class="item-detalle">
+
+							<div class="detalle-pais">
+								<div class="pais">
+									{{obj.idzona}} - <span>OPINIÓN</span>
+								</div>
+							</div>
+							<a class="link-titulo" href="{% url 'articulo-detalle' obj.id %}">
+								{{obj.texto|truncatewords:22|safe }}
+							</a>
+						</div>
+					{% endfor %}
+
+					
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
 {% endblock contenido %}
