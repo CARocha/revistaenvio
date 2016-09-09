@@ -27,6 +27,8 @@ class RevistasAdmin(ImportExportModelAdmin):
     inlines = [ArticulosInline]
     list_display = ['id','volumen','ano','mes','numero','ididioma']
     list_display_links = ['id','volumen','numero']
+    search_fields = ['numero',]
+    list_filter = ['ano', 'mes', 'ididioma',]
 
 class ArticulosAdmin(ImportExportModelAdmin):
     list_display = ['id', 'titulo','revista', 'idioma', 'idzona']
