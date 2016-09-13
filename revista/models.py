@@ -62,14 +62,36 @@ class Autores(models.Model):
         verbose_name='Autor'
         verbose_name_plural='Autores'
 
+CHOICES_MES = (
+        (1, 'Enero'),
+        (2, 'Febrero'),
+        (3, 'Marzo'),
+        (4, 'Abril'),
+        (5, 'Mayo'),
+        (6, 'Junio'),
+        (7, 'Julio'),
+        (8, 'Agosto'),
+        (9, 'Septiembre'),
+        (10, 'Octubre'),
+        (11, 'Noviembre'),
+        (12, 'Diciembre')
+    )
+
+class ColoresRevista(models.Model):
+    color1 = models.CharField(max_length=50, null=True, blank=True)
+    color2 = models.CharField(max_length=50, null=True, blank=True)
+
+    def __unicode__(self):
+        return self.color1
+
 class Revistas(models.Model):
     volumen = models.IntegerField()
     ano = models.IntegerField('Año', blank=True, null=True)
-    mes = models.IntegerField(blank=True, null=True)
+    mes = models.IntegerField(choices=CHOICES_MES, blank=True, null=True)
     numero = models.IntegerField(blank=True, null=True)
     ididioma = models.ForeignKey(Idiomas, verbose_name='idioma')
     nota = models.TextField(blank=True, null=True)
-    color = models.IntegerField(blank=True, null=True)
+    color = models.ForeignKey(ColoresRevista, blank=True, null=True)
 
     def __unicode__(self):
         return u'%s' % str(self.numero)

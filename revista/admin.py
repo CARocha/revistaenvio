@@ -72,6 +72,7 @@ admin.site.register(Enlaces, EnlacesAdmin)
 admin.site.register(Tipo, TipoAdmin)
 admin.site.register(Envio, EnvioAdmin)
 admin.site.register(Pais, PaisAdmin)
+admin.site.register(ColoresRevista)
 #FlatPages
 admin.site.unregister(FlatPage)
 admin.site.register(FlatPage, FlatPageAdmin)
