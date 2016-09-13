@@ -119,17 +119,15 @@
 					</p>
 					<div class="borde"></div>
 				</div>
-				<div class="search-container">
-					<h6>Buscar</h6>
-					<form class="search-container" action="{% url 'watson:search' %}">
+				<form class="search-container" action="{% url 'watson:search' %}">
                     <h6>Buscar</h6>
                     <div class="search-box">
                         <div class="search-icon"><i class="fa fa-search"></i></div>
-                        <input id="search" type="text" class="search-input"/>
+                        <input id="search" type="text" class="search-input" name="q" value="{{request.GET.q}}"/>
+
                         <a class="search-avanzada" href="">Búsqueda Avanzada</a>
                     </div>
                 </form>
-				</div>
 				<div class="idioma-container">
 					<h6>Idioma</h6>
 					<div class="idiomas container-fluid">
