@@ -61,6 +61,8 @@ class EnvioAdmin(ImportExportModelAdmin):
 class PaisAdmin(ImportExportModelAdmin):
     list_display = ['id', 'pais']
 
+class colorAdmin(ImportExportModelAdmin):
+    list_display = ['id','color1', 'color2']
 # Register your models here.
 admin.site.register(Articulos, ArticulosAdmin)
 admin.site.register(Revistas, RevistasAdmin)
@@ -72,7 +74,7 @@ admin.site.register(Enlaces, EnlacesAdmin)
 admin.site.register(Tipo, TipoAdmin)
 admin.site.register(Envio, EnvioAdmin)
 admin.site.register(Pais, PaisAdmin)
-admin.site.register(ColoresRevista)
+admin.site.register(ColoresRevista, colorAdmin)
 #FlatPages
 admin.site.unregister(FlatPage)
 admin.site.register(FlatPage, FlatPageAdmin)

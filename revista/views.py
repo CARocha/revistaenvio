@@ -34,6 +34,7 @@ class IndexView(TemplateView):
         else:
             es_revista = Revistas.objects.filter(ididioma='es').latest('numero')
             context['ultima_revista'] = es_revista
+            #print es_revista.color.id
             context['todos_articulos'] = Articulos.objects.filter(revista=es_revista).order_by('id')
         return context
 
