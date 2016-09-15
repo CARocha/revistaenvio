@@ -1,10 +1,12 @@
+{% load googlesearch_inclusion_tags %}
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="es">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Revista Envios</title>
+        <title>Revista Envío</title>
         <link rel="shortcut icon" href="/static/img/enviopeque.jpg">
 
         <!-- Bootstrap CSS -->
@@ -31,8 +33,8 @@
         .paginado a, .navbar-toggle{
             border-color: {{ultima_revista.color.color1}};
         }
-        .navbar-envios .navbar-nav>li.active>a, .navbar-envios .navbar-nav>li>a:focus, 
-        .navbar-envios .navbar-nav>li>a:hover, .revista-actual span, .pais,.pais span, 
+        .navbar-envios .navbar-nav>li.active>a, .navbar-envios .navbar-nav>li>a:focus,
+        .navbar-envios .navbar-nav>li>a:hover, .revista-actual span, .pais,.pais span,
         .articulos p span a, .articulo-detalle h1, .articulo-detalle h2, .articulo-detalle h3,
         .articulo-detalle h4, .articulo-detalle h5, .articulo-detalle h6, a.link-titulo:hover,
         a.link-titulo:focus{
@@ -66,7 +68,7 @@
                         </div>
                     </div>
                 </div>
-                
+
             </div>
             <div class="main-manu">
                 <nav class="navbar navbar-envios">
@@ -85,53 +87,24 @@
                         <!-- Collect the nav links, forms, and other content for toggling -->
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav navbar-right">
-                                <li class="active"><a href="/">Inicio</a></li>
-                                <li><a href="/quienes-somos/">¿Quiénes Somos?</a></li>
-                                <li><a href="/equipo/">Equipo</a></li>
-                                <li><a href="/enlaces/">Enlaces</a></li>
-                                <li><a href="/subcribase/">Suscribete</a></li>
-                                <li><a href="/contactenos/">Contacto</a></li>
-                                
+                                <li class="active"><a href="/">{% trans "Inicio" %}</a></li>
+                                <li><a href="/quienes-somos/">{% trans "¿Quiénes Somos?" %}</a></li>
+                                <li><a href="/equipo/">{% trans "Equipo"%}</a></li>
+                                <li><a href="/enlaces/">{% trans "Enlaces"%}</a></li>
+                                <li><a href="/subcribase/">{% trans "Suscribete"%}</a></li>
+                                <li><a href="/contactenos/">{% trans "Contacto"%}</a></li>
+
                             </ul>
                         </div><!-- /.navbar-collapse -->
                     </div><!-- /.container-fluid -->
                 </nav>
             </div>
         </header>
-        <div class="sm-menu visible-xs">
-            <div class="row">
-                <div class="col-xs-6">
-                    <div class="search-container">
-                        <h6>Buscar</h6>
-                        <div class="search-box">
-                            <input id="search" type="text" class="search-input sm-imput"/ with="100%">
-                            <a class="search-avanzada" href="">Búsqueda Avanzada</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-6">
-                    <div class="idioma-container">
-                        <h6>Idioma</h6>
-                        <div class="idiomas container-fluid">
-                            <div class="row">
-                                <a class="col-xs-6 col-sm-6 col-md-6 col-lg-6 es activo ">
-                                    Español
-                                </a>
-                                <a class="col-xs-6 col-sm-6 col-md-6 col-lg-6 en">
-                                    Ingles
-                                </a>
-                            </div>
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
+
         <div class="contenido">
             {% block contenido %}
 
             {% endblock contenido %}
-            
         </div>
         <footer>
             <div class="logo-footer">
@@ -142,18 +115,15 @@
                     <div class="row">
                         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
                             <div class="texto-left">
-                                <p>Revista Envío 
+                                <p>Revista Envío
                                 <br> Edificio Nitlapán, 2do. piso
                                 <br>Universidad Centroamericana UCA
                                 </p>
                                 <p>
                                     Apartado A-194
-                                    <br>anagua, Nicaragua
+                                    <br>Managua, Nicaragua
                                 </p>
                             </div>
-                            
-
-
 
                         </div>
                         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
@@ -165,25 +135,26 @@
                                     <li><a class="fa fa-google-plus" href=""></a></li>
                                 </ul>
                                 <p>
-                                    © Copyright Revista Envios 
+                                    © Copyright Revista Envío
                                 <br>
-                                    Sistema Desarrollado por <a href="http://simas.org.ni">SIMAS</a>
+                                    {% trans "Desarrollado por " %}<a href="http://simas.org.ni">SIMAS</a>
                                 </p>
                             </div>
-                            
+
                         </div>
                         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
                             <div class="texto-right">
                                 <p>
-                                    Revista mensual de ánalisis <br>
+                                    {% blocktrans %}Revista mensual de ánalisis <br>
                                     de Nicaragua y Centro America
+                                    {% endblocktrans %}
                                 </p>
                                 <ul class="logos-footer">
                                     <li><a href=""><img src="/static/img/logouca.png" alt=""></a></li>
                                     <li><a href=""><img src="/static/img/logoihca.png" alt=""></a></li>
                                 </ul>
                             </div>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -199,123 +170,3 @@
         {% endblock extra_js %}
     </body>
 </html>
-
-
-
-
-
-
-
-
-
-<!--<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-     The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags 
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
-
-    <title>:: Revista Envío ::</title>
-
-     Bootstrap core CSS 
-    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
-
-     IE10 viewport hack for Surface/desktop Windows 8 bug 
-    <link href="/static/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-
-     Custom styles for this template 
-    <link href="/static/css/envio.css" rel="stylesheet">
-
-     Just for debugging purposes. Don't actually copy these 2 lines! 
-    [if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]
-    <script src="/static/js/ie-emulation-modes-warning.js"></script>
-
-     HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries 
-    [if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]
-  </head>
-
-  <body>
-
-    <div class="blog-masthead">
-      <div class="container">
-        <nav class="blog-nav">
-          <a class="blog-nav-item active" href="/">Inicio</a>
-          <a class="blog-nav-item" href="/quienes-somos/">¿Quiénes somos?</a>
-          <a class="blog-nav-item" href="/equipo/">Equipo</a>
-          <a class="blog-nav-item" href="/enlaces/">Enlaces</a>
-          <a class="blog-nav-item" href="/subcribase/">Subcribete</a>
-          <a class="blog-nav-item" href="/contactenos/">Contactenos</a>
-        </nav>
-      </div>
-    </div>
-
-    <div class="container">
-
-      <div class="row">
-
-
-
-        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
-          <div class="sidebar-module sidebar-module-inset">
-            <h4>About</h4>
-            <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
-          </div>
-          <div class="sidebar-module">
-            <form action="{% url 'watson:search' %}">
-                <input name="q" value="{{request.GET.q}}">
-                <input type="submit" value="Go">
-            </form>
-            
-          </div>
-          <div class="sidebar-module">
-            <h4>Archives</h4>
-            <ol class="list-unstyled">
-              <li><a href="#">March 2014</a></li>
-              <li><a href="#">February 2014</a></li>
-              <li><a href="#">January 2014</a></li>
-              <li><a href="#">December 2013</a></li>
-              <li><a href="#">November 2013</a></li>
-              <li><a href="#">October 2013</a></li>
-              <li><a href="#">September 2013</a></li>
-              <li><a href="#">August 2013</a></li>
-              <li><a href="#">July 2013</a></li>
-              <li><a href="#">June 2013</a></li>
-              <li><a href="#">May 2013</a></li>
-              <li><a href="#">April 2013</a></li>
-            </ol>
-          </div>
-          <div class="sidebar-module">
-            <h4>Elsewhere</h4>
-            <ol class="list-unstyled">
-              <li><a href="#">GitHub</a></li>
-              <li><a href="#">Twitter</a></li>
-              <li><a href="#">Facebook</a></li>
-            </ol>
-          </div>
-        </div> /.blog-sidebar 
-
-      </div> /.row 
-
-    </div> /.container 
-
-    <footer class="blog-footer">
-      <p>Construido por <a href="http://simas.org.ni">SIMAS</a> by <a href="https://twitter.com/simasnicaragua">@simasnicaragua</a>.</p>
-      <p>
-        <a href="#">Regresa arriba</a>
-      </p>
-    </footer>
-
-     Bootstrap core JavaScript 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="/static/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="/static/js/bootstrap.min.js"></script>
-     IE10 viewport hack for Surface/desktop Windows 8 bug 
-    <script src="/static/js/ie10-viewport-bug-workaround.js"></script>
-  </body>
-</html>-->

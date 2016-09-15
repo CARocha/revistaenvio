@@ -3,7 +3,8 @@ from __future__ import unicode_literals
 
 from django.db import models
 from ckeditor.fields import RichTextField
-
+from sorl.thumbnail import ImageField
+from .utils import get_file_path
 
 class Idiomas(models.Model):
     id = models.CharField(primary_key=True, max_length=2)
@@ -92,6 +93,9 @@ class Revistas(models.Model):
     ididioma = models.ForeignKey(Idiomas, verbose_name='idioma')
     nota = models.TextField(blank=True, null=True)
     color = models.ForeignKey(ColoresRevista, blank=True, null=True)
+    portada = ImageField(upload_to=get_file_path, null=True, blank=True)
+
+    fileDir = 'portadas/'
 
     def __unicode__(self):
         return u'%s' % str(self.numero)
@@ -121,6 +125,7 @@ class Articulos(models.Model):
         db_table = 'articulos'
         verbose_name='Articulo'
         verbose_name_plural='Articulos'
+        ordering = ['id']
 
 
 # class Articulotemas(models.Model):

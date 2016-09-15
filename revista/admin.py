@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django.contrib import admin
 from .models import *
 from import_export.admin import ImportExportModelAdmin
@@ -20,19 +21,27 @@ class FlatPageAdmin(FlatPageAdminOld):
     form = FlatpageForm
 
 class ArticulosInline(admin.StackedInline):
+    exclude = ('cambio','codigoml',)
     model = Articulos
     extra = 1
 
 class RevistasAdmin(ImportExportModelAdmin):
     inlines = [ArticulosInline]
-    list_display = ['id','volumen','ano','mes','numero','ididioma']
-    list_display_links = ['id','volumen','numero']
+    list_display = ['numero','ididioma','volumen','mes','articulos_conteo']
+    list_display_links = ['numero','ididioma']
     search_fields = ['numero',]
     list_filter = ['ano', 'mes', 'ididioma',]
 
+    def articulos_conteo(self, obj):
+        return '%s'%(obj.articulos_set.count())
+    articulos_conteo.short_description = '# articulos'
+
 class ArticulosAdmin(ImportExportModelAdmin):
-    list_display = ['id', 'titulo','revista', 'idioma', 'idzona']
+    exclude = ('cambio','codigoml',)
+    list_display = ['id', 'titulo','revista','idioma', 'idzona']
     list_display_links = ['id','titulo','revista']
+    list_filter = ['idzona','idioma']
+    ordering = ('-id',)
 
 class IdiomasAdmin(ImportExportModelAdmin):
     pass

@@ -1,4 +1,9 @@
 {% extends "base.html" %}
+
+{% load i18n %}
+{% load disqus_tags %}
+{% disqus_dev %}
+
 {% block extra_js %}
 	<script src="/static/js/jquery.jfontsize-1.0.js"></script>
 	<script type="text/javascript" language="javascript">
@@ -72,7 +77,7 @@
 			<div class="social-share">
 				<div class="row">
 					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" >
-						<p>Compartir este articulo:</p>
+						<p>{% trans "Compartir este articulo" %}:</p>
 					</div>
 					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" >
 						<ul class="pull-right">
@@ -106,6 +111,9 @@
 					</div>
 				</div>
 
+			</div> <!-- social share -->
+			<div class="row">
+				{% disqus_show_comments %}
 			</div>
 		</div>
 		<div class="hidden-xs col-sm-4 col-md-4 col-lg-4">
@@ -113,37 +121,37 @@
 				<div class="lema">
 					<p>
 						<span class="fa fa-quote-left "></span>
-						Envío es información y análisis de Nicaragua desde Nicaragua de Centroamérica desde Centroamérica y de ese otro mundo posible por el que trabajamos.
+						{% blocktrans %}Envío es información y análisis de Nicaragua desde Nicaragua de Centroamérica desde Centroamérica y de ese otro mundo posible por el que trabajamos.{% endblocktrans %}
 						<span class="fa fa-quote-right "></span>
 
 					</p>
 					<div class="borde"></div>
 				</div>
-				<form class="search-container" action="{% url 'watson:search' %}">
-                    <h6>Buscar</h6>
+				<form class="search-container" action=".">
+                    <h6>{% trans "Buscar" %}</h6>
                     <div class="search-box">
                         <div class="search-icon"><i class="fa fa-search"></i></div>
                         <input id="search" type="text" class="search-input" name="q" value="{{request.GET.q}}"/>
 
-                        <a class="search-avanzada" href="">Búsqueda Avanzada</a>
+                        <a class="search-avanzada" href="#">{% trans "Búsqueda Avanzada"%}</a>
                     </div>
                 </form>
 				<div class="idioma-container">
-					<h6>Idioma</h6>
+					<h6>{% trans "Idioma"%}</h6>
 					<div class="idiomas container-fluid">
 						<div class="row">
-							<a class="col-xs-6 col-sm-6 col-md-6 col-lg-6 es activo ">
-								Español
+							<a href="/lang/es/" class="col-xs-6 col-sm-6 col-md-6 col-lg-6 es  {% if LANGUAGE_CODE == 'es' %}activo{% endif %} ">
+								{% trans "Español"%}
 							</a>
-							<a class="col-xs-6 col-sm-6 col-md-6 col-lg-6 en">
-								Ingles
+							<a href="/lang/en/" class="col-xs-6 col-sm-6 col-md-6 col-lg-6 en  {% if LANGUAGE_CODE == 'en' %}activo{% endif %}">
+								{% trans "Ingles"%}
 							</a>
 						</div>
 					</div>
 
 				</div>
 				<div class="suscripcion-container ">
-					<h6>ARCHIVO</h6>
+					<h6>{% trans "ARCHIVO"%}</h6>
 					<div class="suscripcion container-fluid">
 						<div class="row">
 							<select name="" id="input" class="form-control archivo-select" required="required">
@@ -156,8 +164,8 @@
 				</div>
 
 				<div class="suscripcion-container ">
-					<h6>En este mismo número:</h6>
-					{% for obj in todos_articulos %}
+					<h6>{% trans "En este mismo número"%}:</h6>
+					{% for obj in  articulos %}
 						<div class="item-detalle">
 
 							<div class="detalle-pais">
@@ -166,10 +174,11 @@
 								</div>
 							</div>
 							<a class="link-titulo" href="{% url 'articulo-detalle' obj.id %}">
-								{{obj.texto|truncatewords:22|safe }}
+								{{obj.titulo|truncatewords:22|safe }}
 							</a>
 						</div>
 					{% endfor %}
+
 
 
 				</div>

@@ -2,7 +2,10 @@
 from __future__ import unicode_literals
 
 from django.shortcuts import render
-from django.views.generic import TemplateView, DetailView
+from django.http import HttpResponse, HttpResponseRedirect
+from django.conf import settings
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.views.generic import TemplateView, DetailView, ListView
 from django.utils import translation
 from .models import *
 
@@ -21,28 +24,35 @@ def set_lang(request, lang_code):
 
     return response
 
-class IndexView(TemplateView):
+class IndexView(ListView):
     template_name = "index.html"
+    model = Revistas
+    paginate_by = 1
 
-    def get_context_data(self, **kwargs):
-        context = super(IndexView, self).get_context_data(**kwargs)
+    def get_queryset(self):
         cur_language = translation.get_language()
         if cur_language == 'en':
-            en_revista = Revistas.objects.filter(ididioma='en').latest('numero')
-            context['ultima_revista'] = en_revista
-            context['todos_articulos'] = Articulos.objects.filter(revista=en_revista).order_by('id')
+            queryset = Revistas.objects.filter(ididioma='en').order_by('-numero')
         else:
-            es_revista = Revistas.objects.filter(ididioma='es').latest('numero')
-            context['ultima_revista'] = es_revista
-            #print es_revista.color.id
-            context['todos_articulos'] = Articulos.objects.filter(revista=es_revista).order_by('id')
-        return context
+            queryset = Revistas.objects.filter(ididioma='es').order_by('-numero')
+        return queryset
 
 class DetailArticuloView(DetailView):
     model = Articulos
 
+    def get_context_data(self, **kwargs):
+        context = super(DetailArticuloView, self).get_context_data(**kwargs)
+        revista = Revistas.objects.get(id=self.object.revista_id)
+        context['ultima_revista'] = revista
+        context['articulos'] = Articulos.objects.filter(revista_id=revista).exclude(id=self.object.id)
+        return context
+
 
 def busqueda(request, template='revista/busqueda_avanzada.html'):
-    
 
+
+    return render(request, template, locals())
+
+
+def busqueda_google(request, template='revista/google_search.html'):
     return render(request, template, locals())

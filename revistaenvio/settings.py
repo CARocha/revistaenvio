@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from django.utils.translation import ugettext_lazy as _
 from local_settings import *
 
 
@@ -17,12 +18,15 @@ INSTALLED_APPS = [
     'import_export',
     'ckeditor',
     'ckeditor_uploader',
-    'watson',
+    'googlesearch',
+    'disqus',
+    'sorl.thumbnail',
 ]
 
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -82,8 +86,8 @@ SITE_ID = 1
 LANGUAGE_CODE = 'es'
 
 LANGUAGES = (
-    ('es', 'Español'),
-    ('en', 'English'),
+    ('es', _('Español')),
+    ('en', _('English')),
 
 )
 
@@ -146,3 +150,7 @@ CKEDITOR_IMAGE_BACKEND = "pillow"
 CKEDITOR_JQUERY_URL = '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
+
+
+DISQUS_API_KEY = 'uR4XndjXbwpDidizpZPY9IWHP8m8VWG2uVSK9Dktibv4aUa4c0V1Ns79GirFmvXG'
+DISQUS_WEBSITE_SHORTNAME = 'envio'

@@ -1,36 +1,80 @@
 {% extends "base.html" %}
 
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
 {% block contenido %}
+ <style type="text/css">
+        .barra-superior, .main-manu, .navbar-brand, .idiomas a.activo, .suscripcion a,
+        footer,.navbar-toggle .icon-bar{
+
+            background-color: {% for obj in object_list %} {{obj.color.color1}} {%endfor%};
+        }
+        .idiomas a.activo{
+            color: white;
+            border-color: {% for obj in object_list %}{{obj.color.color1}}{%endfor%};
+        }
+        .paginado a, .navbar-toggle{
+            border-color: {% for obj in object_list %}{{obj.color.color1}}{%endfor%};
+        }
+        .navbar-envios .navbar-nav>li.active>a, .navbar-envios .navbar-nav>li>a:focus,
+        .navbar-envios .navbar-nav>li>a:hover, .revista-actual span, .pais,.pais span,
+        .articulos p span a, .articulo-detalle h1, .articulo-detalle h2, .articulo-detalle h3,
+        .articulo-detalle h4, .articulo-detalle h5, .articulo-detalle h6, a.link-titulo:hover,
+        a.link-titulo:focus{
+            color:{% for obj in object_list %} {{obj.color.color1}}{%endfor%};
+        }
+        hr{
+            border-color: {% for obj in object_list %}{{obj.color.color2}}{%endfor%};
+
+        }
+        .revista-actual, .navbar-envios{
+            border-bottom: 1px solid {% for obj in object_list %}{{obj.color.color2}}{%endfor%};
+        }
+        .sidebar, .sm-menu{
+            background-color: {% for obj in object_list %}{{obj.color.color2}}{%endfor%};
+        }
+
+    </style>
 
 <div class="container">
     <div class="row">
         <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
             <div class="revista-actual">
-                <span class="fa fa-calendar"> {{ ultima_revista.mes }} {{ultima_revista.ano}}</span>
-                <span class="fa fa-file-o"> NÚMERO {{ultima_revista.numero}}</span>
+                <span class="fa fa-calendar"> {% for obj in object_list %}{{ obj.get_mes_display }} {{obj.ano}} {% endfor %}</span>
+                <span class="fa fa-file-o"> {% trans "NÚMERO" %} {% for obj in object_list %} {{obj.numero}} {% endfor %}</span>
             </div>
             <div class="articulos">
-                {% for obj in todos_articulos %}
+                {% for revista in object_list %}
+                    {% for obj in revista.articulos_set.all %}
                     <div class="item">
                         <h6 class="pais">{{obj.idzona}} - <span>OPINIÓN</span></h6>
                         <h5 class="articulo-titulo"><a href="{% url 'articulo-detalle' obj.id %}">{{obj}}</a></h5>
                         <p>
                         	{{obj.texto|truncatewords:22|striptags|safe }}
-                        	<span><a href="{% url 'articulo-detalle' obj.id %}">Continuar..</a></span>
+                        	<span><a href="{% url 'articulo-detalle' obj.id %}">{% trans "Continuar.."%}</a></span>
                         </p>
                     </div>
                     <hr>
+                    {% endfor %}
                 {% endfor %}
 
 
-                <div class="paginado">
-                    <a class="left" href="">
-                        <span class="fa fa-arrow-left"></span> Nro. anterior
-                    </a>
-                    <a class="right" href="">
-                        Nro. siguiente <span class="fa fa-arrow-right"></span>
-                    </a>
-                </div>
+    {% if is_paginated %}
+        <div class="paginado">
+            {% if page_obj.has_next %}
+             <a class="right" href="/?page={{ page_obj.next_page_number }}">
+                {% trans "Nro. anterior"%} <span class="fa fa-arrow-right"></span>
+            </a>
+            {% endif %}
+
+            {% if page_obj.has_previous %}
+                <a class="left" href="/?page={{ page_obj.previous_page_number }}">
+                <span class="fa fa-arrow-left"></span>{% trans "Nro. siguiente"%}
+                </a>
+            {% endif %}
+        </div>
+    {% endif %}
 
             </div>
         </div>
@@ -39,37 +83,29 @@
                 <div class="lema">
                     <p>
                         <span class="fa fa-quote-left "></span>
-                        Envío es información y análisis de Nicaragua desde Nicaragua de Centroamérica desde Centroamérica y de ese otro mundo posible por el que trabajamos.
+                        {% blocktrans %}Envío es información y análisis de Nicaragua desde Nicaragua de Centroamérica desde Centroamérica y de ese otro mundo posible por el que trabajamos.{% endblocktrans %}
                         <span class="fa fa-quote-right "></span>
 
                     </p>
                     <div class="borde"></div>
                 </div>
-                <form class="search-container" action="{% url 'watson:search' %}">
-                    <h6>Buscar</h6>
-                    <div class="search-box">
-                        <div class="search-icon"><i class="fa fa-search"></i></div>
-                        <input id="search" type="text" class="search-input" name="q" value="{{request.GET.q}}"/>
-
-                        <a class="search-avanzada" href="">Búsqueda Avanzada</a>
-                    </div>
-                </form>
+                {% include "busqueda_go.html" %}
                 <div class="idioma-container">
-                    <h6>Idioma</h6>
+                    <h6>{% trans "Idioma" %}</h6>
                     <div class="idiomas container-fluid">
                         <div class="row">
-                            <a class="col-xs-6 col-sm-6 col-md-6 col-lg-6 es activo ">
-                                Español
+                            <a href="/lang/es/" class="col-xs-6 col-sm-6 col-md-6 col-lg-6 es {% if LANGUAGE_CODE == 'es' %}activo{% endif %} ">
+                                {% trans "Español"%}
                             </a>
-                            <a class="col-xs-6 col-sm-6 col-md-6 col-lg-6 en">
-                                Ingles
+                            <a href="/lang/en/" class="col-xs-6 col-sm-6 col-md-6 col-lg-6 en {% if LANGUAGE_CODE == 'en' %}activo{% endif %}">
+                                {% trans "Ingles"%}
                             </a>
                         </div>
                     </div>
 
                 </div>
                 <div class="suscripcion-container ">
-                    <h6>ARCHIVO</h6>
+                    <h6>{% trans "ARCHIVO"%}</h6>
                     <div class="suscripcion container-fluid">
                         <div class="row">
                             <select name="" id="input" class="form-control archivo-select" required="required">
@@ -82,11 +118,11 @@
                 </div>
 
                 <div class="suscripcion-container ">
-                    <h6>Suscríbete</h6>
+                    <h6>{% trans "Suscríbete"%}</h6>
                     <div class="suscripcion container-fluid">
                         <div class="row">
                             <a class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                Suscripción a la revista
+                                {% trans "Suscripción a la revista" %}
                             </a>
                         </div>
 
@@ -94,11 +130,11 @@
 
                 </div>
                 <div class="suscripcion-container ">
-                    <h6>Donación</h6>
+                    <h6>{% trans "Donación"%}</h6>
                     <div class="suscripcion container-fluid">
                         <div class="row">
                             <a class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                Haz tu donación ahora
+                                {% trans "Haz tu donación ahora" %}
                             </a>
                         </div>
 
@@ -106,14 +142,13 @@
 
                 </div>
                 <div class="publicacion-container ">
-                    <h6>última publicación</h6>
+                    <h6>{% trans "Última publicación"%}</h6>
                     <div class="publicacion container-fluid">
                         <div class="row">
                             <a class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                 <span class="img-publicacion">
                                     <img class="center-block" src="http://placehold.it/250x330" alt="">
                                 </span>
-
                             </a>
                         </div>
 

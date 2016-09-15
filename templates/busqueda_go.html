@@ -1,0 +1,13 @@
+ {% load i18n %}
+ <form id="cref" class="search-container" action="{% url 'googlesearch-results' %}">
+    <h6>{% trans "Buscar" %}</h6>
+    <div class="search-box">
+        <div class="search-icon"><i class="fa fa-search"></i></div>
+       <input type="hidden" name="cref" value="http://envio.org.ni/busqueda/cref-cse.xml/" />
+      <input type="hidden" name="cof" value="FORID:9" />
+      <input id="search-input" type="text" role="search" value="Buscar..." name="q" id="q" onblur="if (this.value == '') { this.value = 'Buscar...';}" onfocus="if (this.value == 'Buscar...'){this.value = '';}" placeholder="{% trans "Buscar" %}...">
+        <label for="search-input" class="ui-search"></label>
+
+        <a class="search-avanzada" href="">{% trans "Búsqueda Avanzada" %}</a>
+    </div>
+</form>
