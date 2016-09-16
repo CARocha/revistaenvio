@@ -8,12 +8,13 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views.generic import TemplateView, DetailView, ListView
 from django.utils import translation
 from .models import *
+import datetime
 
 def set_lang(request, lang_code):
     if not lang_code in ['en', 'es']:
         raise Http404
 
-    next = request.GET.get('next', None)
+    next = request.GET.get('next', '/')
     if not next:
         next = request.META.get('HTTP_REFERER', '/')
     response = HttpResponseRedirect(next)
@@ -55,4 +56,28 @@ def busqueda(request, template='revista/busqueda_avanzada.html'):
 
 
 def busqueda_google(request, template='revista/google_search.html'):
+    return render(request, template, locals())
+
+
+def archivos_revista(request, template='revista/archivos.html', yearr=None):
+    cur_language = translation.get_language()
+    if cur_language == 'en':
+        years = []
+        for en in Revistas.objects.filter(ididioma='en').order_by('-ano').values_list('ano', flat=True):
+            years.append((en,en))
+        all_year = list(sorted(set(years)))
+        idioma = 'en'
+    else:
+        years = []
+        for en in Revistas.objects.filter(ididioma='es').order_by('-ano').values_list('ano', flat=True):
+            years.append((en,en))
+        all_year = list(sorted(set(years)))
+        idioma = 'es'
+
+    if yearr is None:
+            now = datetime.datetime.now()
+            query = Revistas.objects.filter(ididioma=idioma,ano=now.year).order_by('-mes')
+    else:
+            query = Revistas.objects.filter(ano=yearr,ididioma=idioma).order_by('-numero')
+
     return render(request, template, locals())

@@ -7,5 +7,7 @@ urlpatterns = [
     url(r'^articulo/(?P<pk>[0-9]+)/$', views.DetailArticuloView.as_view(), name='articulo-detalle'),
     #url(r'^busqueda/$', views.busqueda, name="busqueda"),
     #url(r'^busqueda/$', views.busqueda_google, name="googlesearch-results"),
+    url(r'^archivos/$', views.archivos_revista, name="archivos"),
+    url(r'^archivos/(?P<yearr>[0-9]+)/$', views.archivos_revista, name="archivos"),
 
 ]

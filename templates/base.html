@@ -1,5 +1,6 @@
 {% load googlesearch_inclusion_tags %}
 {% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -86,6 +87,7 @@
 
                         <!-- Collect the nav links, forms, and other content for toggling -->
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        {% if LANGUAGE_CODE == 'es' %}
                             <ul class="nav navbar-nav navbar-right">
                                 <li class="active"><a href="/">{% trans "Inicio" %}</a></li>
                                 <li><a href="/quienes-somos/">{% trans "¿Quiénes Somos?" %}</a></li>
@@ -93,8 +95,17 @@
                                 <li><a href="/enlaces/">{% trans "Enlaces"%}</a></li>
                                 <li><a href="/subcribase/">{% trans "Suscribete"%}</a></li>
                                 <li><a href="/contactenos/">{% trans "Contacto"%}</a></li>
-
                             </ul>
+                        {% else %}
+                             <ul class="nav navbar-nav navbar-right">
+                                <li class="active"><a href="/">{% trans "Inicio" %}</a></li>
+                                <li><a href="/about-us/">{% trans "¿Quiénes Somos?" %}</a></li>
+                                <li><a href="/team/">{% trans "Equipo"%}</a></li>
+                                <li><a href="/links/">{% trans "Enlaces"%}</a></li>
+                                <li><a href="/subcribase/">{% trans "Suscribete"%}</a></li>
+                                <li><a href="/contact-us/">{% trans "Contacto"%}</a></li>
+                            </ul>
+                        {%endif%}
                         </div><!-- /.navbar-collapse -->
                     </div><!-- /.container-fluid -->
                 </nav>

@@ -13,7 +13,7 @@ from ckeditor.widgets import CKEditorWidget
 class FlatpageForm(FlatpageFormOld):
     content = forms.CharField(widget=CKEditorWidget())
     class Meta:
-        model = FlatPage # this is not automatically inherited from FlatpageFormOld
+        model = FlatPage
         fields = '__all__'
 
 
