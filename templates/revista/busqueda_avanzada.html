@@ -1,11 +1,160 @@
 {% extends "base.html" %}
 
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
+{% block extra_js %}
+<script type="text/javascript">
+$(document).ready(function(){
+  activaTab('aaa');
+});
+
+function activaTab(tab){
+  $('.nav-tabs a[href="#' + tab + '"]').tab('hide');
+};
+</script>
+{% endblock extra_js %}
+
 {% block contenido %}
-<div class="col-sm-8 blog-main">
 
-	<p>Consulte los articulos de Envío por</p>
-	<p> <a href="/busqueda/temas/">Temas</a> | <a href="/busqueda/zonas/">Zonas</a> | <a href="/busqueda/autores/">Autores</a></p>
+ <style type="text/css">
+        .barra-superior, .main-manu, .navbar-brand, .idiomas a.activo, .suscripcion a,
+        footer,.navbar-toggle .icon-bar{
 
+            background-color: #a90129;
+        }
+        .idiomas a.activo{
+            color: white;
+            border-color: #a90129;
+        }
+        .paginado a, .navbar-toggle{
+            border-color: #a90129;
+        }
+        .navbar-envios .navbar-nav>li.active>a, .navbar-envios .navbar-nav>li>a:focus,
+        .navbar-envios .navbar-nav>li>a:hover, .revista-actual span, .pais,.pais span,
+        .articulos p span a, .articulo-detalle h1, .articulo-detalle h2, .articulo-detalle h3,
+        .articulo-detalle h4, .articulo-detalle h5, .articulo-detalle h6, a.link-titulo:hover,
+        a.link-titulo:focus{
+            color:#a90129;
+        }
+        hr{
+            border-color:   #fbf2f4;
 
-</div><!-- /.blog-main -->
+        }
+        .revista-actual, .navbar-envios{
+            border-bottom: 1px solid    #fbf2f4;
+        }
+        .sidebar, .sm-menu{
+            background-color:   #fbf2f4;
+        }
+
+    </style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+            <div class="articulos">
+                    <div class="item">
+                        <h5 class="articulo-titulo">{{flatpage.title}}</h5>
+                        <p>
+                            <p>Consulte los articulos de Envío por</p>
+                          <ul class="nav nav-tabs">
+                            <li><a href="#aaa" data-toggle="tab">Temas</a></li>
+                            <li><a href="#bbb" data-toggle="tab">Zonas</a></li>
+                            <li><a href="#ccc" data-toggle="tab">Autores</a></li>
+                        </ul>
+                        <div class="tab-content" id="tabs">
+                            <div class="tab-pane" id="aaa">
+                                 <ul>
+                                {% for obj in  all_temas %}
+                                        <li><a href="">{{obj}}</a></li>
+                                {% endfor %}
+                            </ul>
+                            </div>
+                            <div class="tab-pane" id="bbb">
+                            <ul>
+                                    {% for obj in all_autores %}
+                                       <li><a href="">{{obj}}</a></li>
+                                    {% endfor %}
+                                    </ul>
+                            </div>
+                            <div class="tab-pane" id="ccc">
+                             <ul>
+                                    {% for obj in all_zonas %}
+                                            <li><a href="">{{obj}}</a></li>
+                                    {% endfor %}
+                                    </ul>
+                            </div>
+                        </div>
+                        </p>
+                    </div>
+            </div>
+        </div>
+        <div class="hidden-xs col-sm-4 col-md-4 col-lg-4">
+            <div class="sidebar">
+                <div class="lema">
+                    <p>
+                        <span class="fa fa-quote-left "></span>
+                        {% blocktrans %}Envío es información y análisis de Nicaragua desde Nicaragua de Centroamérica desde Centroamérica y de ese otro mundo posible por el que trabajamos.{% endblocktrans %}
+                        <span class="fa fa-quote-right "></span>
+
+                    </p>
+                    <div class="borde"></div>
+                </div>
+                {% include "busqueda_go.html" %}
+                <div class="idioma-container">
+                    <h6>{% trans "Idioma" %}</h6>
+                    <div class="idiomas container-fluid">
+                        <div class="row">
+                            <a href="/lang/es/" class="col-xs-6 col-sm-6 col-md-6 col-lg-6 es {% if LANGUAGE_CODE == 'es' %}activo{% endif %} ">
+                                {% trans "Español"%}
+                            </a>
+                            <a href="/lang/en/" class="col-xs-6 col-sm-6 col-md-6 col-lg-6 en {% if LANGUAGE_CODE == 'en' %}activo{% endif %}">
+                                {% trans "Ingles"%}
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="suscripcion-container ">
+                    <h6>{% trans "ARCHIVO"%}</h6>
+                    <div class="suscripcion container-fluid">
+                        <div class="row">
+                            <select name="" id="input" class="form-control archivo-select" required="required">
+                                <option value="">2016</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="suscripcion-container ">
+                    <h6>{% trans "Suscríbete"%}</h6>
+                    <div class="suscripcion container-fluid">
+                        <div class="row">
+                            <a class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                {% trans "Suscripción a la revista" %}
+                            </a>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="suscripcion-container ">
+                    <h6>{% trans "Donación"%}</h6>
+                    <div class="suscripcion container-fluid">
+                        <div class="row">
+                            <a class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                {% trans "Haz tu donación ahora" %}
+                            </a>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock contenido %}

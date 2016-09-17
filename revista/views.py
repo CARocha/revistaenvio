@@ -50,6 +50,15 @@ class DetailArticuloView(DetailView):
 
 
 def busqueda(request, template='revista/busqueda_avanzada.html'):
+    cur_language = translation.get_language()
+    if cur_language == 'en':
+        all_temas = Temas.objects.all().values_list('tema_en', flat=True)
+        all_zonas = Zonas.objects.all().values_list('zona_en', flat=True)
+        all_autores = Autores.objects.all().values_list('nombre_en', flat=True)
+    else:
+        all_temas = Temas.objects.all().values_list('tema_es', flat=True)
+        all_zonas = Zonas.objects.all().values_list('zona_es', flat=True)
+        all_autores = Autores.objects.all().values_list('nombre_es', flat=True)
 
 
     return render(request, template, locals())
