@@ -3,6 +3,15 @@
 {% load i18n %}
 {% get_current_language as LANGUAGE_CODE %}
 
+{% block extra_js %}
+<script type="text/javascript">
+ var urlmenu = document.getElementById( 'archivosDrop' );
+ urlmenu.onchange = function() {
+      window.open( this.options[ this.selectedIndex ].value, '_self');
+ };
+</script>
+{% endblock extra_js %}
+
 {% block contenido %}
  <style type="text/css">
         .barra-superior, .main-manu, .navbar-brand, .idiomas a.activo, .suscripcion a,
@@ -41,20 +50,10 @@
     <div class="row">
         <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
             <div class="articulos">
-                   {% for obj in all_year1 reversed %}
-                     <a href="{% url 'archivos' obj.0 %}">{{obj.0}}</a>
-                  {% endfor %}
                     <div class="item">
-                        <h5 class="articulo-titulo">{{query.0.ano}}</h5>
+                        <h5 class="articulo-titulo">{% trans "Suscribete" %}</h5>
                         <p>
-                             {% for valor in query %}
-                            <h2>{{valor.get_mes_display}} No. {{valor}}</h2>
-                                <ul>
-                                    {% for obj in valor.articulos_set.all %}
-                                        <li><a href="{% url 'articulo-detalle' obj.id %}">{{obj}}</a></li>
-                                    {% endfor %}
-                                </ul>
-            {% endfor %}
+                            {{form.as_p}}
                         </p>
                     </div>
             </div>
@@ -85,19 +84,21 @@
                     </div>
 
                 </div>
-
                 <div class="suscripcion-container ">
-                    <h6>{% trans "Suscríbete"%}</h6>
+                    <h6>{% trans "ARCHIVO"%}</h6>
                     <div class="suscripcion container-fluid">
                         <div class="row">
-                            <a class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                {% trans "Suscripción a la revista" %}
-                            </a>
+                            <select name="archivosDrop" id="archivosDrop" class="form-control archivo-select" required="required">
+                                {% for obj in all_year reversed %}
+                                    <option value="/archivos/{{obj.0}}">{{obj.1}}</option>
+                                {% endfor %}
+                            </select>
                         </div>
 
                     </div>
 
                 </div>
+
                 <div class="suscripcion-container ">
                     <h6>{% trans "Donación"%}</h6>
                     <div class="suscripcion container-fluid">

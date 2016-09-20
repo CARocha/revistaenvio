@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from revista.views import LatestEntriesFeed
 
 urlpatterns = [
     url(r'', include('revista.urls')),
@@ -22,4 +23,5 @@ urlpatterns = [
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
     url(r'^pages/', include('django.contrib.flatpages.urls')),
     url(r'^busqueda/', include('googlesearch.urls')),
+    url(r'^sitiorevista/rss/$', LatestEntriesFeed()),
 ]

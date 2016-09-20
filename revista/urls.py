@@ -9,5 +9,7 @@ urlpatterns = [
     #url(r'^busqueda/$', views.busqueda_google, name="googlesearch-results"),
     url(r'^archivos/$', views.archivos_revista, name="archivos"),
     url(r'^archivos/(?P<yearr>[0-9]+)/$', views.archivos_revista, name="archivos"),
+    url(r'^subcribase/$', views.suscribete, name="suscribete"),
+    url(r'^latest/feed/$', views.LatestEntriesFeed()),
 
 ]

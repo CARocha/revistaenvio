@@ -7,7 +7,10 @@ from django.conf import settings
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views.generic import TemplateView, DetailView, ListView
 from django.utils import translation
+from django.contrib.syndication.views import Feed
+from django.core.urlresolvers import reverse
 from .models import *
+from .forms import SubcribeteForm
 import datetime
 
 def set_lang(request, lang_code):
@@ -60,11 +63,6 @@ def busqueda(request, template='revista/busqueda_avanzada.html'):
         all_zonas = Zonas.objects.all().values_list('zona_es', flat=True)
         all_autores = Autores.objects.all().values_list('nombre_es', flat=True)
 
-
-    return render(request, template, locals())
-
-
-def busqueda_google(request, template='revista/google_search.html'):
     return render(request, template, locals())
 
 
@@ -74,13 +72,13 @@ def archivos_revista(request, template='revista/archivos.html', yearr=None):
         years = []
         for en in Revistas.objects.filter(ididioma='en').order_by('-ano').values_list('ano', flat=True):
             years.append((en,en))
-        all_year = list(sorted(set(years)))
+        all_year1 = list(sorted(set(years)))
         idioma = 'en'
     else:
         years = []
         for en in Revistas.objects.filter(ididioma='es').order_by('-ano').values_list('ano', flat=True):
             years.append((en,en))
-        all_year = list(sorted(set(years)))
+        all_year1 = list(sorted(set(years)))
         idioma = 'es'
 
     if yearr is None:
@@ -90,3 +88,27 @@ def archivos_revista(request, template='revista/archivos.html', yearr=None):
             query = Revistas.objects.filter(ano=yearr,ididioma=idioma).order_by('-numero')
 
     return render(request, template, locals())
+
+
+def suscribete(request, template='revista/suscribete.html'):    
+
+    form = SubcribeteForm()
+    return render(request, template, locals())
+
+class LatestEntriesFeed(Feed):
+    title = "Revista Envío"
+    link = "/sitiorevista/"
+    description = "Ultimas revistas de envío"
+
+    def items(self):
+        return Revistas.objects.order_by('-ano')[:5]
+
+    def item_title(self, item):
+        return item.ano
+
+    def item_description(self, item):
+        return item.get_mes_display()
+
+    # item_link is only needed if NewsItem has no get_absolute_url method.
+    def item_link(self, item):
+        return reverse('archivos', args=[item.pk])
