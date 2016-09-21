@@ -4,46 +4,38 @@
 {% get_current_language as LANGUAGE_CODE %}
 
 {% block contenido %}
- <style type="text/css">
-        .barra-superior, .main-manu, .navbar-brand, .idiomas a.activo, .suscripcion a,
-        footer,.navbar-toggle .icon-bar{
-
-            background-color: #a90129;
-        }
-        .idiomas a.activo{
-            color: white;
-            border-color: #a90129;
-        }
-        .paginado a, .navbar-toggle{
-            border-color: #a90129;
-        }
-        .navbar-envios .navbar-nav>li.active>a, .navbar-envios .navbar-nav>li>a:focus,
-        .navbar-envios .navbar-nav>li>a:hover, .revista-actual span, .pais,.pais span,
-        .articulos p span a, .articulo-detalle h1, .articulo-detalle h2, .articulo-detalle h3,
-        .articulo-detalle h4, .articulo-detalle h5, .articulo-detalle h6, a.link-titulo:hover,
-        a.link-titulo:focus{
-            color:#a90129;
-        }
-        hr{
-            border-color:   #fbf2f4;
-
-        }
-        .revista-actual, .navbar-envios{
-            border-bottom: 1px solid    #fbf2f4;
-        }
-        .sidebar, .sm-menu{
-            background-color:   #fbf2f4;
-        }
-
-    </style>
 
 <div class="container">
     <div class="row">
         <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+            <div class="container-archivo">
+                <div class="select-archivo">
+                <ul>
+                    <li class="dw"><h6> <span class="fa fa-file-o"> </span>Archivo año</h6></li>
+                    <li class="dw">
+                        <div class="dropdown">
+                            <button class="dropdown-toggle dw-anos" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                {{query.0.ano}}
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                {% for obj in all_year reversed %}
+                                <li><a href="{% url 'archivos' obj.0 %}">{{obj.0}}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+                    
+                    
+                </div>
+                
+            </div>
             <div class="articulos">
-                   {% for obj in all_year reversed %}
-                     <a href="{% url 'archivos' obj.0 %}">{{obj.0}}</a>
-                  {% endfor %}
+                   
+                     
+                     
+                  
                     <div class="item">
                         <h5 class="articulo-titulo">{{query.0.ano}}</h5>
                         <p>
