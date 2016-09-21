@@ -41,6 +41,12 @@ class IndexView(ListView):
             queryset = Revistas.objects.filter(ididioma='es').order_by('-numero')
         return queryset
 
+def revista_detail(request, pk=None, template='index.html'):
+    object_list = Revistas.objects.filter(id=pk);
+
+    return render(request, template, locals())
+
+
 class DetailArticuloView(DetailView):
     model = Articulos
 
@@ -94,21 +100,3 @@ def suscribete(request, template='revista/suscribete.html'):
 
     form = SubcribeteForm()
     return render(request, template, locals())
-
-class LatestEntriesFeed(Feed):
-    title = "Revista Envío"
-    link = "/sitiorevista/"
-    description = "Ultimas revistas de envío"
-
-    def items(self):
-        return Revistas.objects.order_by('-ano')[:5]
-
-    def item_title(self, item):
-        return item.ano
-
-    def item_description(self, item):
-        return item.get_mes_display()
-
-    # item_link is only needed if NewsItem has no get_absolute_url method.
-    def item_link(self, item):
-        return reverse('archivos', args=[item.pk])
