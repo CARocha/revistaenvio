@@ -3,6 +3,15 @@
 {% load i18n %}
 {% get_current_language as LANGUAGE_CODE %}
 
+{% block extra_js %}
+<script type="text/javascript">
+ var urlmenu = document.getElementById( 'archivosDrop' );
+ urlmenu.onchange = function() {
+      window.open( this.options[ this.selectedIndex ].value, '_self');
+ };
+</script>
+{% endblock extra_js %}
+
 {% block contenido %}
  <style type="text/css">
         .barra-superior, .main-manu, .navbar-brand, .idiomas a.activo, .suscripcion a,
@@ -108,8 +117,11 @@
                     <h6>{% trans "ARCHIVO"%}</h6>
                     <div class="suscripcion container-fluid">
                         <div class="row">
-                            <select name="" id="input" class="form-control archivo-select" required="required">
-                                <option value="">2016</option>
+                            <select name="archivosDrop" id="archivosDrop" class="form-control archivo-select" required="required">
+                                {% for obj in all_year reversed %}
+                                    <option value="/archivos/{{obj.0}}/">{{obj.1}}</option>
+                                {% endfor %}
+                                
                             </select>
                         </div>
 

@@ -31,7 +31,7 @@
                                 <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                {% for obj in all_year1 reversed %}
+                                {% for obj in all_year reversed %}
                                 <li><a href="{% url 'archivos' obj.0 %}">{{obj.0}}</a></li>
                                 {% endfor %}
                             </ul>
@@ -44,7 +44,10 @@
                 
             </div>
             <div class="articulos">
-
+                   
+                     
+                     
+                  
                     <div class="item">
                         
                              {% for valor in query %}

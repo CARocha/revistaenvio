@@ -5,23 +5,29 @@
 {% disqus_dev %}
 
 {% block extra_js %}
-	<script src="/static/js/jquery.jfontsize-1.0.js"></script>
-	<script type="text/javascript" language="javascript">
-		$( ".detalle h1" ).addClass( "changeMe" );
-		$( ".detalle h2" ).addClass( "changeMe" );
-		$( ".detalle h3" ).addClass( "changeMe" );
-		$( ".detalle h4" ).addClass( "changeMe" );
-		$( ".detalle h5" ).addClass( "changeMe" );
-		$( ".detalle h6" ).addClass( "changeMe" );
-		$('.changeMe').jfontsize({
-            btnMinusClasseId: '#jfontsize-m2',
-            btnDefaultClasseId: '#jfontsize-d2',
-            btnPlusClasseId: '#jfontsize-p2',
-            btnMinusMaxHits: 1,
-            btnPlusMaxHits: 5,
-            sizeChange: 2
-        });
-	</script>
+<script src="/static/js/jquery.jfontsize-1.0.js"></script>
+<script type="text/javascript" language="javascript">
+	$( ".detalle h1" ).addClass( "changeMe" );
+	$( ".detalle h2" ).addClass( "changeMe" );
+	$( ".detalle h3" ).addClass( "changeMe" );
+	$( ".detalle h4" ).addClass( "changeMe" );
+	$( ".detalle h5" ).addClass( "changeMe" );
+	$( ".detalle h6" ).addClass( "changeMe" );
+	$('.changeMe').jfontsize({
+        btnMinusClasseId: '#jfontsize-m2',
+        btnDefaultClasseId: '#jfontsize-d2',
+        btnPlusClasseId: '#jfontsize-p2',
+        btnMinusMaxHits: 1,
+        btnPlusMaxHits: 5,
+        sizeChange: 2
+    });
+</script>
+<script type="text/javascript">
+ var urlmenu = document.getElementById( 'archivosDrop' );
+ urlmenu.onchange = function() {
+      window.open( this.options[ this.selectedIndex ].value, '_self');
+ };
+</script>
 {% endblock extra_js %}
 {% block contenido %}
 
@@ -154,9 +160,11 @@
 					<h6>{% trans "ARCHIVO"%}</h6>
 					<div class="suscripcion container-fluid">
 						<div class="row">
-							<select name="" id="input" class="form-control archivo-select" required="required">
-								<option value="">2016</option>
-							</select>
+							<select name="archivosDrop" id="archivosDrop" class="form-control archivo-select" required="required">
+                                {% for obj in all_year reversed %}
+                                    <option value="/archivos/{{obj.0}}">{{obj.1}}</option>
+                                {% endfor %}
+                            </select>
 						</div>
 
 					</div>

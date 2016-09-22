@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from django.utils.translation import ugettext_lazy as _
 from ckeditor.fields import RichTextField
 from sorl.thumbnail import ImageField
 from .utils import get_file_path
@@ -47,35 +48,35 @@ class Temas(models.Model):
         verbose_name_plural='Temas'
 
 class Autores(models.Model):
-    nombre = models.CharField(max_length=150, blank=True, null=True)
-    email = models.CharField(max_length=50, blank=True, null=True)
-    titulo = models.CharField(max_length=50, blank=True, null=True)
-    cargo = models.TextField(blank=True, null=True)
-    nota = models.TextField(blank=True, null=True)
-    nombre_en = models.CharField(max_length=150, blank=True, null=True)
-    nombre_es = models.CharField(max_length=150, blank=True, null=True)
+    nombre = models.CharField(_('Nombre'), max_length=150, blank=True, null=True)
+    email = models.CharField(_('Correo'), max_length=50, blank=True, null=True)
+    titulo = models.CharField(_('Titulo'), max_length=50, blank=True, null=True)
+    cargo = models.TextField(_('Cargo'), blank=True, null=True)
+    nota = models.TextField(_('Nota'), blank=True, null=True)
+    nombre_en = models.CharField(_('Nombre ingles'), max_length=150, blank=True, null=True)
+    nombre_es = models.CharField(_('Nombre en español'), max_length=150, blank=True, null=True)
 
     def __unicode__(self):
         return u'%s' % self.nombre
 
     class Meta:
         db_table = 'autores'
-        verbose_name='Autor'
-        verbose_name_plural='Autores'
+        verbose_name= _('Autor')
+        verbose_name_plural= _('Autores')
 
 CHOICES_MES = (
-        (1, 'Enero'),
-        (2, 'Febrero'),
-        (3, 'Marzo'),
-        (4, 'Abril'),
-        (5, 'Mayo'),
-        (6, 'Junio'),
-        (7, 'Julio'),
-        (8, 'Agosto'),
-        (9, 'Septiembre'),
-        (10, 'Octubre'),
-        (11, 'Noviembre'),
-        (12, 'Diciembre')
+        (1, _('Enero')),
+        (2, _('Febrero')),
+        (3, _('Marzo')),
+        (4, _('Abril')),
+        (5, _('Mayo')),
+        (6, _('Junio')),
+        (7, _('Julio')),
+        (8, _('Agosto')),
+        (9, _('Septiembre')),
+        (10, _('Octubre')),
+        (11, _('Noviembre')),
+        (12, _('Diciembre'))
     )
 
 class ColoresRevista(models.Model):
