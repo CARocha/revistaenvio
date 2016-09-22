@@ -33,6 +33,7 @@ class Zonas(models.Model):
         db_table = 'zonas'
         verbose_name='Zona'
         verbose_name_plural='Zonas'
+        ordering = ('zona',)
 
 class Temas(models.Model):
     tema = models.CharField(max_length=150, blank=True, null=True)
@@ -46,6 +47,7 @@ class Temas(models.Model):
         db_table = 'temas'
         verbose_name='Tema'
         verbose_name_plural='Temas'
+        ordering = ('tema',)
 
 class Autores(models.Model):
     nombre = models.CharField(_('Nombre'), max_length=150, blank=True, null=True)
@@ -63,6 +65,7 @@ class Autores(models.Model):
         db_table = 'autores'
         verbose_name= _('Autor')
         verbose_name_plural= _('Autores')
+        ordering = ('nombre',)
 
 CHOICES_MES = (
         (1, _('Enero')),

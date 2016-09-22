@@ -11,5 +11,8 @@ urlpatterns = [
     url(r'^archivos/$', views.archivos_revista, name="archivos"),
     url(r'^archivos/(?P<yearr>[0-9]+)/$', views.archivos_revista, name="archivos"),
     url(r'^subcribase/$', views.suscribete, name="suscribete"),
+    url(r'^busqueda-por-tema/(?P<pk>[0-9]+)/$', views.articulo_busqueda_tema, name="tema"),
+    url(r'^busqueda-por-zona/(?P<pk>\w+)/$', views.articulo_busqueda_zona, name="zona"),
+    url(r'^busqueda-por-autor/(?P<pk>[0-9]+)/$', views.articulo_busqueda_autor, name="autor"),
 
 ]
