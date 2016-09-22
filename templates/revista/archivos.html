@@ -4,7 +4,19 @@
 {% get_current_language as LANGUAGE_CODE %}
 
 {% block contenido %}
-
+<style type="text/css">
+    .articulo-titulo{
+        color:  #a90129;
+        border-bottom: 1px solid    #fbf2f4;
+    }
+    .articulo-titulo .item ul{
+        list-style: none;
+        padding: 0px
+    }
+    .lista-articulos li a:hover{
+        color:  #a90129;
+    }
+</style>
 <div class="container">
     <div class="row">
         <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
@@ -37,17 +49,17 @@
                      
                   
                     <div class="item">
-                        <h5 class="articulo-titulo">{{query.0.ano}}</h5>
-                        <p>
+                        
                              {% for valor in query %}
-                            <h2>{{valor.get_mes_display}} No. {{valor}}</h2>
-                                <ul>
+                             <h5 class="articulo-titulo">{{valor.get_mes_display}} No. {{valor}}</h5>
+                            
+                                <ol class="lista-articulos">
                                     {% for obj in valor.articulos_set.all %}
                                         <li><a href="{% url 'articulo-detalle' obj.id %}">{{obj}}</a></li>
                                     {% endfor %}
-                                </ul>
+                                </ol>
             {% endfor %}
-                        </p>
+                        
                     </div>
             </div>
         </div>
