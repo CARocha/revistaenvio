@@ -96,25 +96,64 @@ def archivos_revista(request, template='revista/archivos.html', yearr=None):
     return render(request, template, locals())
 
 
-def suscribete(request, template='revista/suscribete.html'):    
+def suscribete(request, template='revista/suscribete.html'):
 
     form = SubcribeteForm()
     return render(request, template, locals())
 
 def articulo_busqueda_tema(request, pk=None, template='revista/por_tema.html'):
+    cur_language = translation.get_language()
+    if cur_language == 'en':
+        temas_articulos = Articulos.objects.filter(idioma='en', temas=pk);
+    else:
+         temas_articulos = Articulos.objects.filter(idioma='es', temas=pk);
 
-    object_list = Articulos.objects.filter(temas=pk);
+    paginator = Paginator(temas_articulos, 10)
+
+    page = request.GET.get('page')
+    try:
+        object_list = paginator.page(page)
+    except PageNotAnInteger:
+        object_list = paginator.page(1)
+    except EmptyPage:
+        object_list = paginator.page(paginator.num_pages)
 
     return render(request, template, locals())
 
 def articulo_busqueda_zona(request, pk=None, template='revista/por_zona.html'):
-    
-    object_list = Articulos.objects.filter(idzona=pk);
+    cur_language = translation.get_language()
+    if cur_language == 'en':
+        zonas_articulos = Articulos.objects.filter(idioma='en', idzona=pk);
+    else:
+         zonas_articulos = Articulos.objects.filter(idioma='es', idzona=pk);
+
+    paginator = Paginator(zonas_articulos, 10)
+
+    page = request.GET.get('page')
+    try:
+        object_list = paginator.page(page)
+    except PageNotAnInteger:
+        object_list = paginator.page(1)
+    except EmptyPage:
+        object_list = paginator.page(paginator.num_pages)
 
     return render(request, template, locals())
 
 def articulo_busqueda_autor(request, pk=None, template='revista/por_autor.html'):
-    
-    object_list = Articulos.objects.filter(autor=pk);
+    cur_language = translation.get_language()
+    if cur_language == 'en':
+        autor_articulos = Articulos.objects.filter(idioma='en', autor=pk);
+    else:
+         autor_articulos = Articulos.objects.filter(idioma='es', autor=pk);
+
+    paginator = Paginator(autor_articulos, 10)
+
+    page = request.GET.get('page')
+    try:
+        object_list = paginator.page(page)
+    except PageNotAnInteger:
+        object_list = paginator.page(1)
+    except EmptyPage:
+        object_list = paginator.page(paginator.num_pages)
 
     return render(request, template, locals())
