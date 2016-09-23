@@ -163,7 +163,7 @@ class Tipo(models.Model):
     tipo_en = models.CharField(max_length=500, blank=True, null=True)
 
     def __unicode__(self):
-        return u'%s' % self.tipo
+        return u'%s - %s' % (self.tipo, self.precio)
 
     class Meta:
         db_table = 'tipo'
