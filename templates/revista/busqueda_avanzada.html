@@ -47,7 +47,9 @@ function activaTab(tab){
         .sidebar, .sm-menu{
             background-color:   #fbf2f4;
         }
-
+        .menu-buqueda a:hover, .menu-buqueda.nav-tabs>li.active>a{
+            color:#a90129;
+        }
     </style>
 
 <div class="container">
@@ -57,12 +59,32 @@ function activaTab(tab){
                     <div class="item">
                         <h5 class="articulo-titulo">Sección de búsquedas</h5>
                        
-                        <ul class="nav nav-tabs">
-                            <li><a href="#aaa" data-toggle="tab">Temas</a></li>
-                            <li><a href="#bbb" data-toggle="tab">Zonas</a></li>
-                            <li><a href="#ccc" data-toggle="tab">Autores</a></li>
-                            <li><a href="#ddd" data-toggle="tab">Búsqueda avanzada</a></li>
-                            <li><a href="#eee" data-toggle="tab">Búsqueda con google</a></li>
+                        <ul class="nav nav-tabs menu-buqueda">
+                            <li>
+                                <a href="#aaa" data-toggle="tab">
+                                    <span class="fa fa-tag"></span> Temas  
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#bbb" data-toggle="tab">
+                                    <span class="fa fa-globe"></span> Zonas
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#ccc" data-toggle="tab">
+                                    <span class="fa fa-user"></span> Autores
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#ddd" data-toggle="tab">
+                                    <span class="fa fa-search"></span> Búsqueda avanzada
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#eee" data-toggle="tab">
+                                    <span class="fa fa-google"></span> Búsqueda con google
+                                </a>
+                            </li>
                         </ul>
                         <div class="tab-content" id="tabs">
                             <div class="tab-pane" id="aaa">
