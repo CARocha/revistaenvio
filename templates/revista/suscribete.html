@@ -53,7 +53,94 @@
                     <div class="item">
                         <h5 class="articulo-titulo">{% trans "Suscribete" %}</h5>
                         <p>
-                            {{form.as_p}}
+                        {{ form.non_field_errors }}
+                            <form action="http://www.google.com" method="post">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <label for="{{ form.idtipo.id_for_label }}"> {% trans "Suscripción anual de 11 números" %} </label>
+                                    {{ form.idtipo }}
+                                </div>
+                                 <div class="form-group">
+                                    <label for="{{ form.nombre.id_for_label }}"> {% trans "Nombres y apellidos" %} </label>
+                                    {{ form.nombre }}
+                                </div>
+                                <div class="form-group">
+                                    <label for="{{ form.institucion.id_for_label }}"> {% trans "Institución" %} </label>
+                                    {{ form.institucion }}
+                                </div>
+                                <div class="form-group">
+                                    <label for="{{ form.direccion.id_for_label }}"> {% trans "Dirección" %} </label>
+                                    {{ form.direccion }}
+                                </div>
+                                <div class="form-group">
+                                    <label for="{{ form.email.id_for_label }}"> {% trans "Correo electronico" %} </label>
+                                    {{ form.email }}
+                                </div>
+                                <div class="form-group">
+                                    <label for="{{ form.idpais.id_for_label }}"> {% trans "Pais" %} </label>
+                                    {{ form.idpais }}
+                                </div>
+                                <div class="form-group">
+                                    <label for="{{ form.ciudad.id_for_label }}"> {% trans "Ciudad" %} </label>
+                                    {{ form.ciudad }}
+                                </div>
+                                <div class="form-group">
+                                    <label for="{{ form.codigo.id_for_label }}"> {% trans "Código postal" %} </label>
+                                    {{ form.codigo }}
+                                </div>
+                                <div class="form-group">
+                                    <label for="{{ form.apdo.id_for_label }}"> {% trans "Apartado postal" %} </label>
+                                    {{ form.apdo }}
+                                </div>
+                                <div class="form-group">
+                                    <label for="{{ form.telefono.id_for_label }}"> {% trans "Teléfono" %} </label>
+                                    {{ form.telefono }}
+                                </div>
+                                <div class="form-group">
+                                    <label for="{{ form.fax.id_for_label }}"> {% trans "Fax" %} </label>
+                                    {{ form.fax }}
+                                </div>
+                                <div class="form-group">
+                                    <label for="{{ form.nueva.id_for_label }}"> {% trans "Suscripción" %} </label>
+                                    {{ form.nueva }}
+                                </div>
+                                <div class="form-group">
+                                    <label for="{{ form.idioma.id_for_label }}"> {% trans "Idioma" %} </label>
+                                    {{ form.idioma }}
+                                </div>
+                                <div class="form-group">
+                                    <label for="{{ form.envio.id_for_label }}"> {% trans "Envio" %} </label>
+                                    {{ form.envio }}
+                                </div>
+                                <div class="form-group">
+                                    <label for="{{ form.ttipo.id_for_label }}"> {% trans "Datos tarjeta de crédito" %} </label>
+                                    {{ form.ttipo }}
+                                </div>
+                                <div class="form-group">
+                                    <label for="{{ form.tnumero.id_for_label }}"> {% trans "Número de tarjeta" %} </label>
+                                    {{ form.tnumero }}
+                                </div>
+                                <div class="form-group">
+                                    <label for="{{ form.fecha.id_for_label }}"> {% trans "Fecha de vencimiento" %} </label>
+                                    {{ form.fecha }}
+                                </div>
+                                <div class="form-group">
+                                    <label for="{{ form.tnombre.id_for_label }}"> {% trans "Nombre del tarjeta habiente" %} </label>
+                                    {{ form.tnombre }}
+                                </div>
+                                <p><input type="checkbox"> Por la presente autorizo al Instituto Histórico Centroamericano (IHCA) a cargar los gastos de mi suscripción a la revista Envío a mi tarjeta de crédito actual, como se indica en esta solicitud.
+Si desea cancelar en EFECTIVO, CHEQUE o DEPOSITO (o prefiere enviar los datos por fax o correo) llene el siguiente formulario. Estos datos deben ser enviados a: Revista Envío, Apartado Postal A-194, Managua, Nicaragua.</p>
+<hr>
+<p>Para suscripciones electrónicas:
+
+Los campos con asteriscos (*) son requeridos. Su correo electrónico será utilizado como medio para enviarle la revista mensualmente.
+
+Los archivos serán enviados en formatos PDF.
+
+Queda rigurosamente prohibida, sin la autorización escrita de los titulares del “Copyright”, bajo las sanciones establecidas en las Leyes, la reproducción total o parcial de estos artículos por cualquier medio o procedimiento, así como la distribución de copias de los mismos.</p>
+                                
+                                <input type="submit" value="Enviar" />
+                            </form>
                         </p>
                     </div>
             </div>

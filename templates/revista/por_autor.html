@@ -3,21 +3,8 @@
 {% load i18n %}
 {% get_current_language as LANGUAGE_CODE %}
 
-{% block extra_js %}
-<script type="text/javascript">
-$(document).ready(function(){
-  activaTab('aaa');
-});
-
-function activaTab(tab){
-  $('.nav-tabs a[href="#' + tab + '"]').tab('hide');
-};
-</script>
-{% endblock extra_js %}
-
 {% block contenido %}
-
- <style type="text/css">
+<style type="text/css">
         .barra-superior, .main-manu, .navbar-brand, .idiomas a.activo, .suscripcion a,
         footer,.navbar-toggle .icon-bar{
 
@@ -54,74 +41,34 @@ function activaTab(tab){
     <div class="row">
         <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
             <div class="articulos">
+                {% for obj in object_list %}
                     <div class="item">
-                        <h5 class="articulo-titulo">Sección de búsquedas</h5>
-                       
-                        <ul class="nav nav-tabs">
-                            <li><a href="#aaa" data-toggle="tab">Temas</a></li>
-                            <li><a href="#bbb" data-toggle="tab">Zonas</a></li>
-                            <li><a href="#ccc" data-toggle="tab">Autores</a></li>
-                            <li><a href="#ddd" data-toggle="tab">Búsqueda avanzada</a></li>
-                            <li><a href="#eee" data-toggle="tab">Búsqueda con google</a></li>
-                        </ul>
-                        <div class="tab-content" id="tabs">
-                            <div class="tab-pane" id="aaa">
-                                <ul>
-                                {% for obj in  all_temas %}
-                                    <li><a href="{% url 'tema' obj.id %}">{{obj}}</a> - articulos escritos con este tema {{obj.articulos_set.count}}</li>
-                                {% endfor %}
-                                </ul>
-                            </div>
-                            <div class="tab-pane" id="bbb">
-                                <ul>
-                                {% for obj in all_zonas  %}
-                                    <li><a href="{% url 'zona' obj.id %}">{{obj}} </a>-  articulos escritos por zonas {{obj.articulos_set.count}}</li>
-                                {% endfor %}
-                                </ul>
-                            </div>
-                            <div class="tab-pane" id="ccc">
-                                <ul>
-                                    {% for obj in all_autores %}
-                                        <li><a href="{% url 'autor' obj.id %}">{{obj}}</a> - No. articulos escritos {{obj.articulos_set.count}}</li>
-                                    {% endfor %}
-                                </ul>
-                            </div>
-                            <div class="tab-pane" id="ddd">
-                                <ul>
-                                    aun no esta
-                                </ul>
-                            </div>
-                            <div class="tab-pane" id="eee">
-                                <ul>
-                                    <form method="get" action="http://www.google.com.ni/custom" target="_top">
-                                    <table border="0" bgcolor="#cccccc">
-                                    <tr>
-                                        <td nowrap="nowrap" valign="top" align="left" height="32">
-                                            <a href="http://www.google.com/">
-                                            <img src="http://www.google.com/logos/Logo_25gry.gif" border="0" alt="Google"></img></a>
-                                        </td>
-                                        <td nowrap="nowrap">
-                                            <input type="hidden" name="domains" value="www.envio.org.ni"></input>
-                                            <input type="text" name="q" size="31" maxlength="255" value=""></input>
-                                            <input type="submit" name="sa" value="B&uacute;squeda"></input>
-                                        </td>
-                                    </tr>
-                                    <table>
-                                        <tr>
-                                            <td>
-                                                <input type="radio" name="sitesearch" value="www.envio.org.ni" checked="checked"></input>
-                                                <font size="-1" color="#000000">www.envio.org.ni</font>
-                                            </td>
-                                        </tr>
-                                    </table>
-
-                                    </table>
-                                    </form>
-                                </ul>
-                            </div>
-                        </div>
-                      
+                        <h6 class="pais">{{obj.idzona}} - <span>OPINIÓN</span></h6>
+                        <h5 class="articulo-titulo"><a href="{% url 'articulo-detalle' obj.id %}">{{obj}}</a></h5>
+                        <p>
+                            {{obj.texto|truncatewords:22|striptags|safe }}
+                            <span><a href="{% url 'articulo-detalle' obj.id %}">{% trans "Continuar.."%}</a></span>
+                        </p>
                     </div>
+                    <hr>
+                {% endfor %}
+
+        <div class="paginado">
+            <span class="step-links">
+                {% if object_list.has_previous %}
+                    <a href="?page={{ object_list.previous_page_number }}">{% trans "Anterior" %}</a>
+                {% endif %}
+
+                <span class="current">
+                    {% trans "Pagina" %} {{ object_list.number }} {% trans "de" %} {{ object_list.paginator.num_pages }}.
+                </span>
+
+                {% if object_list.has_next %}
+                    <a href="?page={{ object_list.next_page_number }}">{% trans "Siguientes" %}</a>
+                {% endif %}
+            </span>
+        </div>
+
             </div>
         </div>
         <div class="hidden-xs col-sm-4 col-md-4 col-lg-4">
@@ -158,12 +105,9 @@ function activaTab(tab){
                                 {% for obj in all_year reversed %}
                                     <option value="/archivos/{{obj.0}}/">{{obj.1}}</option>
                                 {% endfor %}
-                                
                             </select>
                         </div>
-
                     </div>
-
                 </div>
 
                 <div class="suscripcion-container ">
@@ -174,10 +118,9 @@ function activaTab(tab){
                                 {% trans "Suscripción a la revista" %}
                             </a>
                         </div>
-
                     </div>
-
                 </div>
+
                 <div class="suscripcion-container ">
                     <h6>{% trans "Donación"%}</h6>
                     <div class="suscripcion container-fluid">
@@ -186,9 +129,7 @@ function activaTab(tab){
                                 {% trans "Haz tu donación ahora" %}
                             </a>
                         </div>
-
                     </div>
-
                 </div>
             </div>
         </div>
