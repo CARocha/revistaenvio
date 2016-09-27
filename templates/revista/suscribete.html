@@ -56,6 +56,7 @@
                         {{ form.non_field_errors }}
                             <form action="http://www.google.com" method="post">
                                 {% csrf_token %}
+                                
                                 <div class="form-group">
                                     <label for="{{ form.idtipo.id_for_label }}"> {% trans "Suscripción anual de 11 números" %} </label>
                                     {{ form.idtipo }}

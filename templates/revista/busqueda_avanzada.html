@@ -12,6 +12,28 @@ $(document).ready(function(){
 function activaTab(tab){
   $('.nav-tabs a[href="#' + tab + '"]').tab('hide');
 };
+
+</script>
+<script src="http://listjs.com/no-cdn/list.js"></script>
+<script type="text/javascript">
+    /****tema****/
+    var temaoptions = {
+      valueNames: [ 'b-tema']
+    };
+
+    var userList = new List('temas-envios', temaoptions);
+    /****zona****/
+    var zonaoptions = {
+      valueNames: [ 'b-zona']
+    };
+
+    var userList = new List('zona-envios', zonaoptions);
+    /****autor****/
+    var autoroptions = {
+      valueNames: [ 'b-autor']
+    };
+
+    var userList = new List('autor-envios', autoroptions);
 </script>
 {% endblock extra_js %}
 
@@ -19,7 +41,7 @@ function activaTab(tab){
 
  <style type="text/css">
         .barra-superior, .main-manu, .navbar-brand, .idiomas a.activo, .suscripcion a,
-        footer,.navbar-toggle .icon-bar{
+        footer,.navbar-toggle .icon-bar, .badge{
 
             background-color: #a90129;
         }
@@ -50,99 +72,187 @@ function activaTab(tab){
         .menu-buqueda a:hover, .menu-buqueda.nav-tabs>li.active>a{
             color:#a90129;
         }
+        .left-inner-addon{
+          border-color:   #fbf2f4;  
+        }
     </style>
 
 <div class="container">
     <div class="row">
         <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+           <!-- <div class="revista-actual">
+               <span class="fa">Sección de búsquedas</span> 
+            </div>-->
             <div class="articulos">
                     <div class="item">
-                        <h5 class="articulo-titulo">Sección de búsquedas</h5>
-                       
-                        <ul class="nav nav-tabs menu-buqueda">
-                            <li>
-                                <a href="#aaa" data-toggle="tab">
-                                    <span class="fa fa-tag"></span> Temas  
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#bbb" data-toggle="tab">
-                                    <span class="fa fa-globe"></span> Zonas
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#ccc" data-toggle="tab">
-                                    <span class="fa fa-user"></span> Autores
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#ddd" data-toggle="tab">
-                                    <span class="fa fa-search"></span> Búsqueda avanzada
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#eee" data-toggle="tab">
-                                    <span class="fa fa-google"></span> Búsqueda con google
-                                </a>
-                            </li>
-                        </ul>
-                        <div class="tab-content" id="tabs">
-                            <div class="tab-pane" id="aaa">
-                                <ul>
-                                {% for obj in  all_temas %}
-                                    <li><a href="{% url 'tema' obj.id %}">{{obj}}</a> - articulos escritos con este tema {{obj.articulos_set.count}}</li>
-                                {% endfor %}
+                        <div class="tabbable-panel">
+                            <div class="tabbable-line">
+                          
+                                <ul class="nav nav-tabs menu-buqueda">
+                                    <li class="active">
+                                        <a href="#aaa" data-toggle="tab" aria-expanded="true">
+                                            <span class="fa fa-tag"></span> Temas  
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#bbb" data-toggle="tab">
+                                            <span class="fa fa-globe"></span> Zonas
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#ccc" data-toggle="tab">
+                                            <span class="fa fa-user"></span> Autores
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#ddd" data-toggle="tab">
+                                            <span class="fa fa-search"></span> Búsqueda avanzada
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#eee" data-toggle="tab">
+                                            <span class="fa fa-google"></span> Búsqueda con google
+                                        </a>
+                                    </li>
                                 </ul>
-                            </div>
-                            <div class="tab-pane" id="bbb">
-                                <ul>
-                                {% for obj in all_zonas  %}
-                                    <li><a href="{% url 'zona' obj.id %}">{{obj}} </a>-  articulos escritos por zonas {{obj.articulos_set.count}}</li>
-                                {% endfor %}
-                                </ul>
-                            </div>
-                            <div class="tab-pane" id="ccc">
-                                <ul>
-                                    {% for obj in all_autores %}
-                                        <li><a href="{% url 'autor' obj.id %}">{{obj}}</a> - No. articulos escritos {{obj.articulos_set.count}}</li>
-                                    {% endfor %}
-                                </ul>
-                            </div>
-                            <div class="tab-pane" id="ddd">
-                                <ul>
-                                    aun no esta
-                                </ul>
-                            </div>
-                            <div class="tab-pane" id="eee">
-                                <ul>
-                                    <form method="get" action="http://www.google.com.ni/custom" target="_top">
-                                    <table border="0" bgcolor="#cccccc">
-                                    <tr>
-                                        <td nowrap="nowrap" valign="top" align="left" height="32">
-                                            <a href="http://www.google.com/">
-                                            <img src="http://www.google.com/logos/Logo_25gry.gif" border="0" alt="Google"></img></a>
-                                        </td>
-                                        <td nowrap="nowrap">
-                                            <input type="hidden" name="domains" value="www.envio.org.ni"></input>
-                                            <input type="text" name="q" size="31" maxlength="255" value=""></input>
-                                            <input type="submit" name="sa" value="B&uacute;squeda"></input>
-                                        </td>
-                                    </tr>
-                                    <table>
-                                        <tr>
-                                            <td>
-                                                <input type="radio" name="sitesearch" value="www.envio.org.ni" checked="checked"></input>
-                                                <font size="-1" color="#000000">www.envio.org.ni</font>
-                                            </td>
-                                        </tr>
-                                    </table>
+                                <div class="tab-content" id="tabs">
+                                    <div class="tab-pane active" id="aaa">
+                                        <div id="temas-envios">
+                                            <div class="left-inner-addon ">
+                                                <i class="fa fa-search"></i>
+                                                <input type="search" class="search form-control" placeholder="Buscar Tema" />
+                                            </div>
 
-                                    </table>
-                                    </form>
-                                </ul>
+                                          <ul class="list list-group">
+                                            {% for obj in  all_temas %}
+                                                <li class=" list-group-item">
+                                                <a class="b-tema" href="{% url 'tema' obj.id %}">
+                                                    {{obj}}
+                                                    <span class="badge pull-right">{{obj.articulos_set.count}} 
+                                                        <span>articulos</span> 
+                                                    </span>
+                                                </a>
+                                                </li>
+                                            
+                                            {% endfor %}
+                                          </ul>
+
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="bbb">
+
+                                        <div id="zona-envios">
+                                            <div class="left-inner-addon ">
+                                                <i class="fa fa-search"></i>
+                                                <input type="search" class="search form-control" placeholder="Buscar Tema" />
+                                            </div>
+                                            <ul class="list list-group">
+                                            {% for obj in  all_zonas %}
+                                                <li class=" list-group-item">
+                                                <a class="b-zona" href="{% url 'zona' obj.id %}">
+                                                    {{obj}}
+                                                    <span class="badge pull-right">{{obj.articulos_set.count}} 
+                                                        <span>articulos</span> 
+                                                    </span>
+                                                </a>
+                                                </li>
+                                            
+                                            {% endfor %}
+                                            </ul>
+
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="ccc">
+
+                                        <div id="autor-envios">
+                                          <div class="left-inner-addon ">
+                                                <i class="fa fa-search"></i>
+                                                <input type="search" class="search form-control" placeholder="Buscar Tema" />
+                                            </div>
+                                            <ul class="list list-group">
+                                            {% for obj in  all_autores %}
+                                                <li class=" list-group-item">
+                                                <a class="b-autor" href="{% url 'autor' obj.id %}">
+                                                    {{obj}}
+                                                    <span class="badge pull-right">{{obj.articulos_set.count}} 
+                                                        <span>articulos</span> 
+                                                    </span>
+                                                </a>
+                                                </li>
+                                            
+                                            {% endfor %}
+                                            </ul>
+
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="ddd">
+                                        <ul>
+                                            aun no esta
+                                        </ul>
+                                    </div>
+                                    <div class="tab-pane" id="eee">
+
+
+                                        <form method="get" action="http://www.google.com.ni/custom" target="_top">
+                                            <div class="b-google">
+                                                <a href="http://www.google.com/">
+                                                   <img class="logogoogle center-block" src="/static/img/logogoogle.png" alt=""> 
+                                                </a>
+                                               
+                                                    
+                                                    
+                                                <div class="row">
+
+                                                    <div class="col-lg-8 col-lg-offset-2">
+                                                        <div class="input-group">
+                                                            <input type="hidden" name="domains" value="www.envio.org.ni">
+                                                            <input type="text" name="q" class="form-control" placeholder="Buscar"  maxlength="255">
+                                                            <span class="input-group-btn">
+                                                                <input type="submit" class="btn btn-default" name="sa" value="Búsqueda">
+                                                            </span>
+                                                        </div><!-- /input-group -->
+                                                    </div><!-- /.col-lg-6 -->
+                                                </div><!-- /.row -->
+                                               
+                                                <div class="ocultar">
+                                                    <input type="radio" name="sitesearch" value="www.envio.org.ni" checked="checked">
+                                                        <font size="-1" color="#000000">www.envio.org.ni</font>
+                                                </div>
+
+                                            </div>
+                                        </form>
+
+                                        <!--
+                                        <ul>
+                                            <form method="get" action="http://www.google.com.ni/custom" target="_top">
+                                            <table border="0" bgcolor="#cccccc">
+                                            <tr>
+                                                <td nowrap="nowrap" valign="top" align="left" height="32">
+                                                    <a href="http://www.google.com/">
+                                                    <img src="http://www.google.com/logos/Logo_25gry.gif" border="0" alt="Google"></a>
+                                                </td>
+                                                <td nowrap="nowrap">
+                                                    <input type="hidden" name="domains" value="www.envio.org.ni">
+                                                    <input type="text" name="q" size="31" maxlength="255" value="">
+                                                    <input type="submit" name="sa" value="B&uacute;squeda">
+                                                </td>
+                                            </tr>
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <input type="radio" name="sitesearch" value="www.envio.org.ni" checked="checked">
+                                                        <font size="-1" color="#000000">www.envio.org.ni</font>
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+                                            </table>
+                                            </form>
+                                        </ul>-->
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                      
+                        </div> 
                     </div>
             </div>
         </div>
