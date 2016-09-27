@@ -10,7 +10,7 @@ from django.utils import translation
 from django.contrib.syndication.views import Feed
 from django.core.urlresolvers import reverse
 from .models import *
-from .forms import SubcribeteForm
+from .forms import SubcribeteForm, BusquedaAvanzada
 import datetime
 
 def set_lang(request, lang_code):
@@ -68,6 +68,8 @@ def busqueda(request, template='revista/busqueda_avanzada.html'):
         all_temas = Temas.objects.all()
         all_zonas = Zonas.objects.all()
         all_autores = Autores.objects.all()
+        
+    form = BusquedaAvanzada()
 
     return render(request, template, locals())
 
