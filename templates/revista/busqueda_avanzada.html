@@ -9,8 +9,9 @@
 
 <script type="text/javascript">
 $(document).ready(function(){
-  $('select').select2();
-  activaTab('aaa');
+    $('#id_temas').select2();
+    $('#id_zona').select2();
+    activaTab('aaa');
 });
 
 function activaTab(tab){
@@ -60,7 +61,7 @@ function activaTab(tab){
             <div class="articulos">
                     <div class="item">
                         <h5 class="articulo-titulo">Sección de búsquedas</h5>
-                       
+
                         <ul class="nav nav-tabs">
                             <li><a href="#aaa" data-toggle="tab">Temas</a></li>
                             <li><a href="#bbb" data-toggle="tab">Zonas</a></li>
@@ -124,7 +125,7 @@ function activaTab(tab){
                                 </ul>
                             </div>
                         </div>
-                      
+
                     </div>
             </div>
         </div>
@@ -162,7 +163,7 @@ function activaTab(tab){
                                 {% for obj in all_year reversed %}
                                     <option value="/archivos/{{obj.0}}/">{{obj.1}}</option>
                                 {% endfor %}
-                                
+
                             </select>
                         </div>
 
