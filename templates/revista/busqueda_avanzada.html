@@ -4,10 +4,17 @@
 {% get_current_language as LANGUAGE_CODE %}
 
 {% block extra_js %}
+<link rel="stylesheet" href="/static/select2/css/select2.min.css">
+<script src="/static/select2/js/select2.min.js"></script>
 <script type="text/javascript">
+
 $(document).ready(function(){
+    $('#id_temas').select2();
+    $('#id_zona').select2();
+    
   activaTab('aaa');
 });
+$('#id_mes_1,#id_mes_2,#id_year_1,#id_year_2, #id_buscar').addClass( "form-control" );
 
 function activaTab(tab){
   $('.nav-tabs a[href="#' + tab + '"]').tab('hide');
@@ -72,7 +79,7 @@ function activaTab(tab){
         .menu-buqueda a:hover, .menu-buqueda.nav-tabs>li.active>a{
             color:#a90129;
         }
-        .left-inner-addon{
+        .left-inner-addon,  .rango-fecha h5{
           border-color:   #fbf2f4;  
         }
     </style>
@@ -83,14 +90,20 @@ function activaTab(tab){
            <!-- <div class="revista-actual">
                <span class="fa">Sección de búsquedas</span> 
             </div>-->
+
             <div class="articulos">
                     <div class="item">
                         <div class="tabbable-panel">
                             <div class="tabbable-line">
                           
                                 <ul class="nav nav-tabs menu-buqueda">
-                                    <li class="active">
-                                        <a href="#aaa" data-toggle="tab" aria-expanded="true">
+                                    <li  class="active">
+                                        <a href="#ddd" data-toggle="tab" aria-expanded="true">
+                                            <span class="fa fa-search"></span> Búsqueda avanzada
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#aaa" data-toggle="tab">
                                             <span class="fa fa-tag"></span> Temas  
                                         </a>
                                     </li>
@@ -104,11 +117,7 @@ function activaTab(tab){
                                             <span class="fa fa-user"></span> Autores
                                         </a>
                                     </li>
-                                    <li>
-                                        <a href="#ddd" data-toggle="tab">
-                                            <span class="fa fa-search"></span> Búsqueda avanzada
-                                        </a>
-                                    </li>
+                                    
                                     <li>
                                         <a href="#eee" data-toggle="tab">
                                             <span class="fa fa-google"></span> Búsqueda con google
@@ -116,7 +125,7 @@ function activaTab(tab){
                                     </li>
                                 </ul>
                                 <div class="tab-content" id="tabs">
-                                    <div class="tab-pane active" id="aaa">
+                                    <div class="tab-pane" id="aaa">
                                         <div id="temas-envios">
                                             <div class="left-inner-addon ">
                                                 <i class="fa fa-search"></i>
@@ -185,10 +194,55 @@ function activaTab(tab){
 
                                         </div>
                                     </div>
-                                    <div class="tab-pane" id="ddd">
-                                        <ul>
-                                            {{form.as_p}}
-                                        </ul>
+                                    <div class="tab-pane  active" id="ddd">
+                                        <div class="rango-fecha">
+                                            <div class="row">
+                                            
+                                                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                                   
+                                                    <h5> {% trans "Desde" %} </h5>
+                                                    <div class="row">
+                                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                                            {{ form.mes_1 }}
+                                                        </div>
+                                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                                            {{ form.year_1 }} 
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                                    <h5> {% trans "Hasta" %} </h5>
+                                                    <div class="row">
+                                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                                            {{ form.mes_2 }}
+                                                        </div>
+                                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                                            {{ form.year_2 }} 
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                                <label for="{{ form.zona.id_for_label }}"> {% trans "Zona" %} </label>
+                                                {{form.zona}}
+                                            </div>
+                                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                                <label for="{{ form.temas.id_for_label }}"> {% trans "Tema" %} </label>
+                                                {{form.temas}}
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                                <label class="buscador-label" for="{{ form.buscar.id_for_label }}"> {% trans "Buscar" %} </label>
+                                                {{form.buscar}}
+                                            </div>
+                                        </div>
+
                                     </div>
                                     <div class="tab-pane" id="eee">
 

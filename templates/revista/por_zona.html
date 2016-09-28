@@ -40,11 +40,29 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+            <div class="revista-actual">
+                <span class="fa fa-search"> {% trans "Búsqueda por zona:" %}              
+                    zona buscada
+                </span>
+            </div>
             <div class="articulos">
                 {% for obj in object_list %}
                     <div class="item">
                         <h6 class="pais">{{obj.idzona}} - <span>OPINIÓN</span></h6>
                         <h5 class="articulo-titulo"><a href="{% url 'articulo-detalle' obj.id %}">{{obj}}</a></h5>
+                        <div class="detalle-articulo">
+                            <div class="autor-articulo">
+                                <a href="">
+                                    <span class="fa fa-user"> </span>{{obj.autor}}
+                                </a>
+                            </div>
+                            <div class="autor-articulo">
+                                
+                                    <span class="fa fa-tag"> </span>
+                                    <a href="">Cultura</a>, <a href="">Politica</a> 
+                                 
+                            </div>
+                        </div>
                         <p>
                             {{obj.texto|truncatewords:22|striptags|safe }}
                             <span><a href="{% url 'articulo-detalle' obj.id %}">{% trans "Continuar.."%}</a></span>
