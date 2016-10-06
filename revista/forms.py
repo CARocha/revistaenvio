@@ -16,28 +16,29 @@ class SubcribeteForm(ModelForm):
         fields = '__all__'
 
 
-def choice_year():
-    cur_language = translation.get_language()
-    all_year1 = []
-    if cur_language == 'en':
-        years = []
-        for en in Revistas.objects.filter(ididioma='en').order_by('-ano').values_list('ano', flat=True):
-            years.append((en,en))
-        all_year1 = list(sorted(set(years)))
-    else:
-        years = []
-        for en in Revistas.objects.filter(ididioma='es').order_by('-ano').values_list('ano', flat=True):
-            years.append((en,en))
-        all_year1 = list(sorted(set(years)))
-    return all_year1
+# def choice_year():
+#     cur_language = translation.get_language()
+#     all_year1 = []
+#     if cur_language == 'en':
+#         years = []
+#         for en in Revistas.objects.filter(ididioma='en').order_by('-ano').values_list('ano', flat=True):
+#             years.append((en,en))
+#         all_year1 = list(sorted(set(years)))
+#     else:
+#         years = []
+#         for en in Revistas.objects.filter(ididioma='es').order_by('-ano').values_list('ano', flat=True):
+#             years.append((en,en))
+#         all_year1 = list(sorted(set(years)))
+#     return all_year1
+choice_year = ((1,'uno'),(2,'dos'),)
 
 class BusquedaAvanzada(forms.Form):
     #------- inicio --------------
     mes_1 = forms.ChoiceField(choices=CHOICES_MES)
-    year_1 = forms.ChoiceField(choices=choice_year())
+    year_1 = forms.ChoiceField(choices=choice_year)
     #-------- fin ----------------
     mes_2 = forms.ChoiceField(choices=CHOICES_MES)
-    year_2 = forms.ChoiceField(choices=choice_year())
+    year_2 = forms.ChoiceField(choices=choice_year)
     #------- zona ---------------
     zona = forms.ModelMultipleChoiceField(queryset=Zonas.objects.all(), required=False)
     temas = forms.ModelMultipleChoiceField(queryset=Temas.objects.all(), required=False)
