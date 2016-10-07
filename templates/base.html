@@ -64,14 +64,14 @@
             <div class="barra-superior">
                 <div class="container">
                     <div class="row">
-                        <div class="col-xs-6 col-sm-8 col-md-9 col-lg-10">
+                        <div class="col-xs-4 col-sm-8 col-md-9 col-lg-10">
                             <img class="logo2" src="/static/img/logo2.png" alt="">
                         </div>
-                        <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="col-xs-8 col-sm-4 col-md-3 col-lg-2">
                             <ul class="social-icon">
-                                <li><a class="fa fa-facebook" href=""></a></li>
-                                <li><a class="fa fa-twitter" href=""></a></li>
-                                <li><a class="fa fa-google-plus" href=""></a></li>
+                                <li><a class="fa fa-facebook" href="https://www.facebook.com/Revista-Env%C3%ADo-105930609457482/" target="_blank"></a></li>
+                                <li><a class="fa fa-twitter" href="https://twitter.com/RevistaEnvio" target="_blank"></a></li>
+                                <li><a class="fa fa-google-plus" href="https://plus.google.com/u/1/+RevistaEnv%C3%ADoUCA" target="_blank"></a></li>
                             </ul>
                         </div>
                     </div>
@@ -100,7 +100,7 @@
                                 <li><a href="/quienes-somos/">{% trans "¿Quiénes Somos?" %}</a></li>
                                 <li><a href="/equipo/">{% trans "Equipo"%}</a></li>
                                 <li><a href="/enlaces/">{% trans "Enlaces"%}</a></li>
-                                <li><a href="/subcribase/">{% trans "Suscribete"%}</a></li>
+                                <li><a href="/subcribase/">{% trans "Suscripciones"%}</a></li>
                                 <li><a href="/contactenos/">{% trans "Contacto"%}</a></li>
                             </ul>
                         {% else %}
@@ -109,7 +109,7 @@
                                 <li><a href="/about-us/">{% trans "¿Quiénes Somos?" %}</a></li>
                                 <li><a href="/team/">{% trans "Equipo"%}</a></li>
                                 <li><a href="/links/">{% trans "Enlaces"%}</a></li>
-                                <li><a href="/subcribase/">{% trans "Suscribete"%}</a></li>
+                                <li><a href="/subcribase/">{% trans "Suscripciones"%}</a></li>
                                 <li><a href="/contact-us/">{% trans "Contacto"%}</a></li>
                             </ul>
                         {%endif%}
@@ -120,6 +120,29 @@
         </header>
 
         <div class="contenido">
+            <div class="sm-menu visible-xs">
+                <div class="row">
+                    <div class="col-xs-6 ">
+                        {% include "busqueda_go.html" %}
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="idioma-container">
+                            <h6>{% trans "Idioma" %}</h6>
+                            <div class="idiomas container-fluid">
+                                <div class="row">
+                                    <a href="/lang/es/" class="col-xs-6 col-sm-6 col-md-6 col-lg-6 es {% if LANGUAGE_CODE == 'es' %}activo{% endif %} ">
+                                        {% trans "Español"%}
+                                    </a>
+                                    <a href="/lang/en/" class="col-xs-6 col-sm-6 col-md-6 col-lg-6 en {% if LANGUAGE_CODE == 'en' %}activo{% endif %}">
+                                        {% trans "Ingles"%}
+                                    </a>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
             {% block contenido %}
 
             {% endblock contenido %}
@@ -131,7 +154,7 @@
             <div class="sub-footer">
                 <div class="container">
                     <div class="row">
-                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                        <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
                             <div class="texto-left">
                                 <p>Revista Envío
                                 <br> Edificio Nitlapán, 2do. piso
@@ -144,13 +167,13 @@
                             </div>
 
                         </div>
-                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                        <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
                             <div class="texto-central">
                                 <p>Tel: (505) 22782557</p>
                                 <ul class="social-icon footer-social">
-                                    <li><a class="fa fa-facebook" href=""></a></li>
-                                    <li><a class="fa fa-twitter" href=""></a></li>
-                                    <li><a class="fa fa-google-plus" href=""></a></li>
+                                    <li><a class="fa fa-facebook" href="https://www.facebook.com/Revista-Env%C3%ADo-105930609457482/" target="_blank"></a></li>
+                                    <li><a class="fa fa-twitter" href="https://twitter.com/RevistaEnvio" target="_blank"></a></li>
+                                    <li><a class="fa fa-google-plus" href="https://plus.google.com/u/1/+RevistaEnv%C3%ADoUCA" target="_blank"></a></li>
                                 </ul>
                                 <p>
                                     © Copyright Revista Envío
@@ -160,11 +183,11 @@
                             </div>
 
                         </div>
-                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
                             <div class="texto-right">
                                 <p>
                                     {% blocktrans %}Revista mensual de ánalisis <br>
-                                    de Nicaragua y Centro America
+                                    de Nicaragua y Centro América
                                     {% endblocktrans %}
                                 </p>
                                 <ul class="logos-footer">
