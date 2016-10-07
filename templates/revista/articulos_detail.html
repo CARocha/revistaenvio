@@ -72,7 +72,7 @@
 		.revista-actual, .navbar-envios{
 			border-bottom: 1px solid {{ultima_revista.color.color2}};
 		}
-		.sidebar, .sm-menu{
+		.sidebar, .sm-menu,.articulo-detalle .suscripcion-container{
 			background-color: {{ultima_revista.color.color2}};
 		}
 		.autor-articulo a:hover{
@@ -81,6 +81,9 @@
 		blockquote{
             border-left:5px solid {{ultima_revista.color.color1}};
 
+        }
+        .articulo-detalle .suscripcion-container h6{
+        	border-bottom: 1px solid {{ultima_revista.color.color2}};
         }
 
 	</style>
@@ -162,19 +165,24 @@
 				</div>
 
 				<!--Agregar paginado a alos articulos-->
-				<div class="paginado">
-		          
-		             <a class="right" href="/?page={{ page_obj.next_page_number }}">
-		                {% trans "Articulo anterior"%} <span class="fa fa-arrow-right"></span>
-		            </a>
-		           
+				<div class="suscripcion-container  visible-xs">
+					<h6>{% trans "En este mismo número"%}:</h6>
+					{% for obj in  articulos %}
+						<div class="item-detalle">
+						<ul>
+							<li>
+								<a class="link-titulo" href="{% url 'articulo-detalle' obj.id %}">
+								{{obj.titulo|truncatewords:22|safe }}
+								</a>
+							</li>
+						</ul>
+							
+						</div>
+					{% endfor %}
 
-		          
-		                <a class="left" href="/?page={{ page_obj.previous_page_number }}">
-		                <span class="fa fa-arrow-left"></span>{% trans "Articulo siguiente"%}
-		                </a>
-		          
-		        </div>
+
+
+				</div>
 			</div>
 			<div class="social-share">
 				<div class="row">
