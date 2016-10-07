@@ -22,6 +22,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
     url(r'^pages/', include('django.contrib.flatpages.urls')),
-    url(r'^busqueda/', include('googlesearch.urls')),
+    #url(r'^busqueda/', include('googlesearch.urls')),
+    url(r'^busqueda/', include('django_google_cse.urls')),
     url(r'^rss/$', LatestRevistaFeed()),
 ]

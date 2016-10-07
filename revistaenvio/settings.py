@@ -18,7 +18,8 @@ INSTALLED_APPS = [
     'import_export',
     'ckeditor',
     'ckeditor_uploader',
-    'googlesearch',
+    #'googlesearch',
+    'django_google_cse',
     'disqus',
     'sorl.thumbnail',
 ]
@@ -155,3 +156,5 @@ SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
 
 DISQUS_API_KEY = 'uR4XndjXbwpDidizpZPY9IWHP8m8VWG2uVSK9Dktibv4aUa4c0V1Ns79GirFmvXG'
 DISQUS_WEBSITE_SHORTNAME = 'envio'
+
+CX_CODE = '005566980429085431315:e2ov4hqoxcm'
