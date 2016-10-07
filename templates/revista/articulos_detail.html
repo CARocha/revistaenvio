@@ -70,15 +70,30 @@
 		<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
 			<div class="revista-actual">
 				<div class="row">
-					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-8">
 						<div class="detalle-pais">
-							<div class="pais">
-								{{object.idzona}} - <span>OPINIÓN</span>
-							</div>
-						</div>
+			                <span class="fa fa-calendar"> {{ ultima_revista.get_mes_display }} {{ultima_revista.ano}} </span>
+			                <span class="fa fa-file-o"> {% trans "NÚMERO" %}  {{ultima_revista.numero}} </span>
+
+			                
+			                <div class="detalle-articulo">
+	                            <div class="autor-articulo">
+	                                <a href="">
+	                                    <span class="fa fa-user"> </span>Nombre Autor
+	                                </a>
+	                            </div>
+	                            <div class="autor-articulo">
+	                                
+	                                    <span class="fa fa-tag"> </span>
+	                                    <a href="">Cultura</a>, <a href="">Politica</a> 
+	                                 
+	                            </div>
+	                        </div>
+			            </div>
+			            
 
 					</div>
-					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-4">
 					<div class="fuente pull-right">
 						<a class="jfontsize-button" id="jfontsize-m2" href="#">
 						- A
@@ -107,6 +122,10 @@
 			</div>
 
 			<div class="articulo-detalle">
+				<h6 class="pais">
+					<span>	{{object.idzona}} - <span>OPINIÓN</span></span>
+				</h6>
+				
 				<h5 class="titulo-detalle">
 					{{object.titulo}}
 				</h5>
