@@ -30,6 +30,40 @@
 </script>
 {% endblock extra_js %}
 {% block contenido %}
+<style type="text/css">
+        .barra-superior, .main-manu, .navbar-brand, .idiomas a.activo, .suscripcion a,
+        footer,.navbar-toggle .icon-bar{
+
+            background-color:  {{ultima_revista.color.color1}} ;
+        }
+        .idiomas a.activo{
+            color: white;
+            border-color: {{ultima_revista.color.color1}};
+        }
+        .paginado a, .navbar-toggle{
+            border-color: {{ultima_revista.color.color1}};
+        }
+        .navbar-envios .navbar-nav>li.active>a, .navbar-envios .navbar-nav>li>a:focus,
+        .navbar-envios .navbar-nav>li>a:hover, .revista-actual span, .pais,.pais span,
+        .articulos p span a, .articulo-detalle h1, .articulo-detalle h2, .articulo-detalle h3,
+        .articulo-detalle h4, .articulo-detalle h5, .articulo-detalle h6, a.link-titulo:hover,
+        a.link-titulo:focus{
+            color: {{ultima_revista.color.color1}};
+        }
+        hr{
+            border-color: {{ultima_revista.color.color2}};
+
+        }
+        .revista-actual, .navbar-envios{
+            border-bottom: 1px solid {{ultima_revista.color.color2}};
+        }
+        .sidebar, .sm-menu{
+            background-color: {{ultima_revista.color.color2}};
+        }
+        .autor-articulo a:hover{
+            color: {{ultima_revista.color.color1}};
+        }
+    </style>
 
 <div class="container">
 	<div class="row">
@@ -139,7 +173,7 @@
                         <div class="search-icon"><i class="fa fa-search"></i></div>
                         <input id="search" type="text" class="search-input" name="q" value="{{request.GET.q}}"/>
 
-                        <a class="search-avanzada" href="#">{% trans "Búsqueda Avanzada"%}</a>
+                        <a class="search-avanzada" href="/busqueda/">{% trans "Búsqueda Avanzada"%}</a>
                     </div>
                 </form>
 				<div class="idioma-container">
