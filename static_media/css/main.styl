@@ -682,3 +682,24 @@ a.link-titulo
 	color #333
 	font-family 'Roboto',sans-serif
 	margin-top 15px
+.quote
+	font-family 'Roboto',sans-serif
+	font-size 16px
+	font-style italic
+	background-color #eee
+	padding 15px
+	&:before
+		content: "\f10d";
+		font normal normal normal 80px/1 FontAwesome
+		position absolute
+		color rgba(154,154,156,0.2)
+		z-index: 1;
+	p
+		z-index: 2;
+	.autor
+		text-align right
+		font-size 14px
+.articulo-detalle .paginado
+	display block
+	min-height: 30px;
+	
