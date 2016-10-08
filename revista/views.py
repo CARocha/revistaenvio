@@ -68,7 +68,7 @@ def busqueda(request, template='revista/busqueda_avanzada.html'):
         all_temas = Temas.objects.all()
         all_zonas = Zonas.objects.all()
         all_autores = Autores.objects.all()
-        
+
     form = BusquedaAvanzada()
 
     return render(request, template, locals())

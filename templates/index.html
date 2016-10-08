@@ -2,6 +2,7 @@
 
 {% load i18n %}
 {% get_current_language as LANGUAGE_CODE %}
+{% load thumbnail %}
 
 {% block extra_js %}
 <script type="text/javascript">
@@ -68,10 +69,10 @@
                                 </a>
                             </div>
                             <div class="autor-articulo">
-                                
+
                                     <span class="fa fa-tag"> </span>
-                                    <a href="">Cultura</a>, <a href="">Politica</a> 
-                                 
+                                    <a href="">Cultura</a>, <a href="">Politica</a>
+
                             </div>
                         </div>
                         <p>
@@ -136,7 +137,7 @@
                                 {% for obj in all_year reversed %}
                                     <option value="/archivos/{{obj.0}}/">{{obj.1}}</option>
                                 {% endfor %}
-                                
+
                             </select>
                         </div>
 
@@ -174,7 +175,13 @@
                         <div class="row">
                             <a class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                 <span class="img-publicacion">
-                                    <img class="center-block" src="http://placehold.it/250x330" alt="">
+                                {% if ultima.portada %}
+                                    {% thumbnail ultima.portada "250x330"  as im %}
+                                        <img src="/media/{{ im }}" alt="ultima.numero">
+                                    {% endthumbnail %}
+                                {% else %}
+                                        <img class="center-block" src="http://placehold.it/250x330" alt="">
+                                {% endif %}
                                 </span>
                             </a>
                         </div>
