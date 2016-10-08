@@ -98,7 +98,7 @@
 							<span class="fa fa-calendar"> {{ ultima_revista.get_mes_display }} {{ultima_revista.ano}} </span>
 							<span class="fa fa-file-o"> {% trans "NÚMERO" %}  {{ultima_revista.numero}} </span>
 
-							
+
 							<div class="detalle-articulo">
 								<div class="autor-articulo">
 									<a href="">
@@ -106,14 +106,16 @@
 									</a>
 								</div>
 								<div class="autor-articulo">
-									
+
 										<span class="fa fa-tag"> </span>
-										<a href="">Cultura</a>, <a href="">Politica</a> 
-									 
+										{% for tema in object.temas.all %}
+											<a href="{% url 'tema' tema.id %}">{{tema}}</a>{% if forloop.last %} {%else%}, {%endif%}
+										{% endfor %}
+
 								</div>
 							</div>
 						</div>
-						
+
 
 					</div>
 					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-4">
@@ -148,7 +150,7 @@
 				<h6 class="pais">
 					<span>	{{object.idzona}} - <span>OPINIÓN</span></span>
 				</h6>
-				
+
 				<h5 class="titulo-detalle">
 					{{object.titulo}}
 				</h5>
@@ -176,7 +178,7 @@
 								</a>
 							</li>
 						</ul>
-							
+
 						</div>
 					{% endfor %}
 

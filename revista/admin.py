@@ -30,7 +30,7 @@ class RevistasAdmin(ImportExportModelAdmin):
     list_display = ['numero','ididioma','volumen','mes','articulos_conteo']
     list_display_links = ['numero','ididioma']
     search_fields = ['numero',]
-    list_filter = ['ano', 'mes', 'ididioma',]
+    list_filter = ['ididioma', 'mes', 'ano',]
 
     def articulos_conteo(self, obj):
         return '%s'%(obj.articulos_set.count())

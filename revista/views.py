@@ -105,6 +105,7 @@ def suscribete(request, template='revista/suscribete.html'):
 
 def articulo_busqueda_tema(request, pk=None, template='revista/por_tema.html'):
     cur_language = translation.get_language()
+    tema_buscado = Temas.objects.get(id=pk)
     if cur_language == 'en':
         temas_articulos = Articulos.objects.filter(idioma='en', temas=pk);
     else:
