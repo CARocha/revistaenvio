@@ -26,7 +26,7 @@ class ArticulosInline(admin.StackedInline):
     extra = 1
 
 class RevistasAdmin(ImportExportModelAdmin):
-    inlines = [ArticulosInline]
+    #inlines = [ArticulosInline]
     list_display = ['numero','ididioma','volumen','mes','articulos_conteo']
     list_display_links = ['numero','ididioma']
     search_fields = ['numero',]
