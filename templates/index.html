@@ -47,6 +47,9 @@
         .autor-articulo a:hover{
             color:{% for obj in object_list %} {{obj.color.color1}}{%endfor%};
         }
+        a.back-to-top{
+            background-color: {% for obj in object_list %} {{obj.color.color1}}{%endfor%};
+        }
     </style>
 
 <div class="container">
