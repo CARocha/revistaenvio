@@ -102,12 +102,13 @@ class Revistas(models.Model):
     fileDir = 'portadas/'
 
     def __unicode__(self):
-        return u'%s' % str(self.numero)
+        return u'%s %s: Número: %s' % (str(self.get_mes_display()),str(self.ano),str(self.numero))
 
     class Meta:
         db_table = 'revistas'
         verbose_name='Revista'
         verbose_name_plural='Revistas'
+        ordering = ('-numero',)
 
 class Articulos(models.Model):
     revista = models.ForeignKey(Revistas)
