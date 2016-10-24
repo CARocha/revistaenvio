@@ -21,15 +21,16 @@
 		btnPlusMaxHits: 5,
 		sizeChange: 2
 	});
+	$('.btnprint').click(function() {
+		window.print();
+		return false;
+	});
 </script>
 <script type="text/javascript">
  var urlmenu = document.getElementById( 'archivosDrop' );
  urlmenu.onchange = function() {
 	  window.open( this.options[ this.selectedIndex ].value, '_self');
  };
-
-
-
 
 </script>
 <script src="/static/js/social.js"></script>
@@ -91,7 +92,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
-			<div class="revista-actual">
+			<div class="revista-actual btnPrint">
 				<div class="row">
 					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-8">
 						<div class="detalle-pais">
@@ -210,12 +211,12 @@
 							</li>
 
 							<li>
-								<a class="" href="">
+								<a class="" href="mailto:amigo@example.com?subject={{object.titulo}}&amp;body=http://envio.org.ni{{request.path}}">
 									<span class="fa fa-envelope" ></span>
 								</a>
 							</li>
 							<li>
-								<a class="" href="">
+								<a class="btnPrint" href="#btnprint">
 									<span class="fa fa-print" ></span>
 								</a>
 							</li>
