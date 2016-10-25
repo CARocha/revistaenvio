@@ -102,7 +102,7 @@ class Revistas(models.Model):
     fileDir = 'portadas/'
 
     def __unicode__(self):
-        return u'%s %s: Número: %s' % (str(self.get_mes_display()),str(self.ano),str(self.numero))
+        return u'%s %s: Número: %s - Idioma: %s' % (str(self.get_mes_display()),str(self.ano),str(self.numero),self.ididioma)
 
     class Meta:
         db_table = 'revistas'
