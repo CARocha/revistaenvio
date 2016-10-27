@@ -62,7 +62,7 @@
 		.navbar-envios .navbar-nav>li>a:hover, .revista-actual span, .pais,.pais span,
 		.articulos p span a, .articulo-detalle h1, .articulo-detalle h2, .articulo-detalle h3,
 		.articulo-detalle h4, .articulo-detalle h5, .articulo-detalle h6, a.link-titulo:hover,
-		a.link-titulo:focus, blockquote .autor{
+		a.link-titulo:focus, blockquote .autor, .autor-articulo{
 			color: {{ultima_revista.color.color1}};
 		}
 		hr{
@@ -97,21 +97,6 @@
 						<div class="detalle-pais">
 							<span class="fa fa-calendar"> {{ ultima_revista.get_mes_display }} {{ultima_revista.ano}} </span>
 							<span class="fa fa-file-o"> {% trans "NÚMERO" %}  {{ultima_revista.numero}} </span>
-
-							
-							<div class="detalle-articulo">
-								<div class="autor-articulo">
-									<a href="">
-										<span class="fa fa-user"> </span> {{object.autor}}
-									</a>
-								</div>
-								<div class="autor-articulo">
-									
-										<span class="fa fa-tag"> </span>
-										<a href="">Cultura</a>, <a href="">Politica</a> 
-									 
-								</div>
-							</div>
 						</div>
 						
 
@@ -155,10 +140,10 @@
 				{% if object.autornota %}
 				<blockquote class="quote changeMe">
 					{{object.autornota|safe}}
-					<div class="autor">
-						{{object.autor}}
-					</div>
 				</blockquote>
+				<div class="autor-articulo changeMe">
+					{{object.autor}}
+				</div>
 				{%endif%}
 				<div class="detalle changeMe">
 					{{object.texto|safe|linebreaks }}
@@ -230,9 +215,9 @@
 			<div class="sidebar">
 				<div class="lema">
 					<p>
-						<span class="fa fa-quote-left "></span>
-						{% blocktrans %}Envío es información y análisis de Nicaragua desde Nicaragua de Centroamérica desde Centroamérica y de ese otro mundo posible por el que trabajamos.{% endblocktrans %}
-						<span class="fa fa-quote-right "></span>
+						{% blocktrans %}
+                            Envío es información y análisis<br>de Nicaragua desde Nicaragua,<br> de Centroamérica desde Centroamérica<br>y de ese otro mundo posible<br>por el que trabajamos.
+                        {% endblocktrans %}
 
 					</p>
 					<div class="borde"></div>

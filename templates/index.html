@@ -64,19 +64,6 @@
                     <div class="item">
                         <h6 class="pais">{{obj.idzona}} - <span>OPINIÓN</span></h6>
                         <h5 class="articulo-titulo"><a href="{% url 'articulo-detalle' obj.id %}">{{obj}}</a></h5>
-                        <div class="detalle-articulo">
-                            <div class="autor-articulo">
-                                <a href="">
-                                    <span class="fa fa-user"> </span>{{obj.autor}}
-                                </a>
-                            </div>
-                            <div class="autor-articulo">
-                                
-                                    <span class="fa fa-tag"> </span>
-                                    <a href="">Cultura</a>, <a href="">Politica</a> 
-                                 
-                            </div>
-                        </div>
                         <p>
                         	{{obj.texto|truncatewords:22|striptags|safe }}
                         	<span><a href="{% url 'articulo-detalle' obj.id %}">{% trans "Continuar.."%}</a></span>
@@ -109,9 +96,11 @@
             <div class="sidebar">
                 <div class="lema">
                     <p>
-                        <span class="fa fa-quote-left "></span>
-                        {% blocktrans %}Envío es información y análisis de Nicaragua desde Nicaragua de Centroamérica desde Centroamérica y de ese otro mundo posible por el que trabajamos.{% endblocktrans %}
-                        <span class="fa fa-quote-right "></span>
+                       
+                        {% blocktrans %}
+                            Envío es información y análisis<br>de Nicaragua desde Nicaragua,<br> de Centroamérica desde Centroamérica<br>y de ese otro mundo posible<br>por el que trabajamos.
+                        {% endblocktrans %}
+                       
 
                     </p>
                     <div class="borde"></div>

@@ -42,6 +42,12 @@ function activaTab(tab){
 
     var userList = new List('autor-envios', autoroptions);
 </script>
+<script type="text/javascript">
+ var urlmenu = document.getElementById( 'archivosDrop' );
+ urlmenu.onchange = function() {
+      window.open( this.options[ this.selectedIndex ].value, '_self');
+ };
+</script>
 {% endblock extra_js %}
 
 {% block contenido %}
@@ -109,7 +115,7 @@ function activaTab(tab){
                                     </li>
                                     <li>
                                         <a href="#bbb" data-toggle="tab">
-                                            <span class="fa fa-globe"></span> Zonas
+                                            <span class="fa fa-globe"></span> Países
                                         </a>
                                     </li>
                                     <li>
@@ -138,7 +144,7 @@ function activaTab(tab){
                                                 <a class="b-tema" href="{% url 'tema' obj.id %}">
                                                     {{obj}}
                                                     <span class="badge pull-right">{{obj.articulos_set.count}} 
-                                                        <span>articulos</span> 
+                                                        <span>Textos</span> 
                                                     </span>
                                                 </a>
                                                 </li>
@@ -153,7 +159,7 @@ function activaTab(tab){
                                         <div id="zona-envios">
                                             <div class="left-inner-addon ">
                                                 <i class="fa fa-search"></i>
-                                                <input type="search" class="search form-control" placeholder="Buscar Tema" />
+                                                <input type="search" class="search form-control" placeholder="Buscar País" />
                                             </div>
                                             <ul class="list list-group">
                                             {% for obj in  all_zonas %}
@@ -161,7 +167,7 @@ function activaTab(tab){
                                                 <a class="b-zona" href="{% url 'zona' obj.id %}">
                                                     {{obj}}
                                                     <span class="badge pull-right">{{obj.articulos_set.count}} 
-                                                        <span>articulos</span> 
+                                                        <span>Textos</span> 
                                                     </span>
                                                 </a>
                                                 </li>
@@ -176,7 +182,7 @@ function activaTab(tab){
                                         <div id="autor-envios">
                                           <div class="left-inner-addon ">
                                                 <i class="fa fa-search"></i>
-                                                <input type="search" class="search form-control" placeholder="Buscar Tema" />
+                                                <input type="search" class="search form-control" placeholder="Buscar Autor" />
                                             </div>
                                             <ul class="list list-group">
                                             {% for obj in  all_autores %}
@@ -184,7 +190,7 @@ function activaTab(tab){
                                                 <a class="b-autor" href="{% url 'autor' obj.id %}">
                                                     {{obj}}
                                                     <span class="badge pull-right">{{obj.articulos_set.count}} 
-                                                        <span>articulos</span> 
+                                                        <span>Textos</span> 
                                                     </span>
                                                 </a>
                                                 </li>
@@ -229,17 +235,17 @@ function activaTab(tab){
                                         </div>
                                         <div class="row">
                                             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                                                <label for="{{ form.zona.id_for_label }}"> {% trans "Zona" %} </label>
+                                                <label for="{{ form.zona.id_for_label }}"> {% trans "País" %} </label>
                                                 {{form.zona}}
                                             </div>
                                             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                                                <label for="{{ form.temas.id_for_label }}"> {% trans "Tema" %} </label>
+                                                <label for="{{ form.temas.id_for_label }}"> {% trans "Temas" %} </label>
                                                 {{form.temas}}
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                                <label class="buscador-label" for="{{ form.buscar.id_for_label }}"> {% trans "Buscar" %} </label>
+                                                <label class="buscador-label" for="{{ form.buscar.id_for_label }}"> {% trans "Buscar general" %} </label>
                                                 {{form.buscar}}
                                             </div>
                                         </div>
@@ -317,9 +323,9 @@ function activaTab(tab){
             <div class="sidebar">
                 <div class="lema">
                     <p>
-                        <span class="fa fa-quote-left "></span>
-                        {% blocktrans %}Envío es información y análisis de Nicaragua desde Nicaragua de Centroamérica desde Centroamérica y de ese otro mundo posible por el que trabajamos.{% endblocktrans %}
-                        <span class="fa fa-quote-right "></span>
+                        {% blocktrans %}
+                            Envío es información y análisis<br>de Nicaragua desde Nicaragua,<br> de Centroamérica desde Centroamérica<br>y de ese otro mundo posible<br>por el que trabajamos.
+                        {% endblocktrans %}
 
                     </p>
                     <div class="borde"></div>

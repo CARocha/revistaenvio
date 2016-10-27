@@ -31,6 +31,12 @@
       }
     }, true);
 </script>
+<script type="text/javascript">
+ var urlmenu = document.getElementById( 'archivosDrop' );
+ urlmenu.onchange = function() {
+      window.open( this.options[ this.selectedIndex ].value, '_self');
+ };
+</script>
 {% endblock %}
 
 {% block contenido %}
@@ -49,9 +55,9 @@
             <div class="sidebar">
                 <div class="lema">
                     <p>
-                        <span class="fa fa-quote-left "></span>
-                        {% blocktrans %}Envío es información y análisis de Nicaragua desde Nicaragua de Centroamérica desde Centroamérica y de ese otro mundo posible por el que trabajamos.{% endblocktrans %}
-                        <span class="fa fa-quote-right "></span>
+                        {% blocktrans %}
+                            Envío es información y análisis<br>de Nicaragua desde Nicaragua,<br> de Centroamérica desde Centroamérica<br>y de ese otro mundo posible<br>por el que trabajamos.
+                        {% endblocktrans %}
 
                     </p>
                     <div class="borde"></div>
@@ -75,8 +81,11 @@
                     <h6>{% trans "ARCHIVO"%}</h6>
                     <div class="suscripcion container-fluid">
                         <div class="row">
-                            <select name="" id="input" class="form-control archivo-select" required="required">
-                                <option value="">2016</option>
+                            <select name="archivosDrop" id="archivosDrop" class="form-control archivo-select" required="required">
+                                {% for obj in all_year reversed %}
+                                    <option value="/archivos/{{obj.0}}/">{{obj.1}}</option>
+                                {% endfor %}
+                                
                             </select>
                         </div>
 

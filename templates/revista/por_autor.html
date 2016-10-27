@@ -2,7 +2,14 @@
 
 {% load i18n %}
 {% get_current_language as LANGUAGE_CODE %}
-
+{% block extra_js %}
+<script type="text/javascript">
+ var urlmenu = document.getElementById( 'archivosDrop' );
+ urlmenu.onchange = function() {
+      window.open( this.options[ this.selectedIndex ].value, '_self');
+ };
+</script>
+{% endblock extra_js %}
 {% block contenido %}
 <style type="text/css">
         .barra-superior, .main-manu, .navbar-brand, .idiomas a.activo, .suscripcion a,
@@ -94,9 +101,9 @@
             <div class="sidebar">
                 <div class="lema">
                     <p>
-                        <span class="fa fa-quote-left "></span>
-                        {% blocktrans %}Envío es información y análisis de Nicaragua desde Nicaragua de Centroamérica desde Centroamérica y de ese otro mundo posible por el que trabajamos.{% endblocktrans %}
-                        <span class="fa fa-quote-right "></span>
+                        {% blocktrans %}
+                            Envío es información y análisis<br>de Nicaragua desde Nicaragua,<br> de Centroamérica desde Centroamérica<br>y de ese otro mundo posible<br>por el que trabajamos.
+                        {% endblocktrans %}
 
                     </p>
                     <div class="borde"></div>
