@@ -85,9 +85,10 @@ CHOICES_MES = (
 class ColoresRevista(models.Model):
     color1 = models.CharField(max_length=50, null=True, blank=True)
     color2 = models.CharField(max_length=50, null=True, blank=True)
+    color = models.CharField(max_length=50, null=True, blank=True)
 
     def __unicode__(self):
-        return self.color1
+        return self.color
 
 class Revistas(models.Model):
     volumen = models.IntegerField()
@@ -102,20 +103,22 @@ class Revistas(models.Model):
     fileDir = 'portadas/'
 
     def __unicode__(self):
-        return u'%s' % str(self.numero)
+        return u'%s %s: Número: %s - Idioma: %s' % (str(self.get_mes_display()),str(self.ano),str(self.numero),self.ididioma)
 
     class Meta:
         db_table = 'revistas'
         verbose_name='Revista'
         verbose_name_plural='Revistas'
+        ordering = ('-numero',)
 
 class Articulos(models.Model):
     revista = models.ForeignKey(Revistas)
     titulo = models.CharField(max_length=255, blank=True, null=True)
+    opinion = models.NullBooleanField()
     idioma = models.ForeignKey(Idiomas, null=True, blank=True)
     idzona = models.ForeignKey('Zonas', blank=True, null=True)
     autor = models.ForeignKey('Autores', blank=True, null=True)
-    autornota = RichTextField(blank=True, null=True)
+    autornota = RichTextField('Introducción', blank=True, null=True)
     cambio = RichTextField(blank=True, null=True)
     texto = RichTextField(blank=True, null=True)
     codigoml = models.IntegerField(blank=True, null=True)

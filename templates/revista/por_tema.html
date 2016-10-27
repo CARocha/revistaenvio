@@ -48,9 +48,9 @@
     <div class="row">
         <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
             <div class="revista-actual">
-                
-                <span class="fa fa-search"> {% trans "Búsqueda por tema:" %}              
-                Tema buscado
+
+                <span class="fa fa-search"> {% trans "Búsqueda por tema:" %}
+                <strong>{{tema_buscado}}</strong>
                 </span>
             </div>
             <div class="articulos">
@@ -65,10 +65,12 @@
                                 </a>
                             </div>
                             <div class="autor-articulo">
-                                
+
                                     <span class="fa fa-tag"> </span>
-                                    <a href="">Cultura</a>, <a href="">Politica</a> 
-                                 
+                                    {% for tema in obj.temas.all %}
+                                            <a href="#">{{tema}}</a>{% if forloop.last %} {%else%}, {% endif %}
+                                    {% endfor %}
+
                             </div>
                         </div>
                         <p>

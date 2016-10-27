@@ -21,6 +21,10 @@
 		btnPlusMaxHits: 5,
 		sizeChange: 2
 	});
+	$('.btnprint').click(function() {
+		window.print();
+		return false;
+	});
 </script>
 <script type="text/javascript">
  var urlmenu = document.getElementById( 'archivosDrop' );
@@ -28,16 +32,13 @@
 	  window.open( this.options[ this.selectedIndex ].value, '_self');
  };
 
-
-
-
 </script>
 <script src="/static/js/social.js"></script>
 {% endblock extra_js %}
 {% block share_fb %}
 	<meta property="og:title" content="{{object.titulo}}" />
 	<meta property="og:type" content="article" />
-	<meta property="og:image" content="http://cambiaahora.com/media/{{object.foto}}">
+	<meta property="og:image" content="http://envio.org.ni/media/{{object.foto}}">
 	<meta property="og:image:width" content="300" />
 	<meta property="og:image:height" content="300" />
 	<meta property="og:description" content="{{object.texto|safe|linebreaks }}" />
@@ -91,14 +92,14 @@
 <div class="container">
 	<div class="row">
 		<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
-			<div class="revista-actual">
+			<div class="revista-actual btnPrint">
 				<div class="row">
 					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-8">
 						<div class="detalle-pais">
 							<span class="fa fa-calendar"> {{ ultima_revista.get_mes_display }} {{ultima_revista.ano}} </span>
 							<span class="fa fa-file-o"> {% trans "NÚMERO" %}  {{ultima_revista.numero}} </span>
 						</div>
-						
+
 
 					</div>
 					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-4">
@@ -133,7 +134,7 @@
 				<h6 class="pais">
 					<span>	{{object.idzona}} - <span>OPINIÓN</span></span>
 				</h6>
-				
+
 				<h5 class="titulo-detalle">
 					{{object.titulo}}
 				</h5>
@@ -161,7 +162,7 @@
 								</a>
 							</li>
 						</ul>
-							
+
 						</div>
 					{% endfor %}
 
@@ -193,12 +194,12 @@
 							</li>
 
 							<li>
-								<a class="" href="">
+								<a class="" href="mailto:amigo@example.com?subject={{object.titulo}}&amp;body=http://envio.org.ni{{request.path}}">
 									<span class="fa fa-envelope" ></span>
 								</a>
 							</li>
 							<li>
-								<a class="" href="">
+								<a class="btnPrint" href="#btnprint">
 									<span class="fa fa-print" ></span>
 								</a>
 							</li>
@@ -259,7 +260,12 @@
 
 							<div class="detalle-pais">
 								<div class="pais">
-									{{obj.idzona}} - <span>OPINIÓN</span>
+									{{obj.idzona}}
+									<span>
+										{% if obj.opinion == True %}
+		                                   - OPINIÓN 
+		                                {% endif %}
+									</span>
 								</div>
 							</div>
 							<a class="link-titulo" href="{% url 'articulo-detalle' obj.id %}">
