@@ -27,6 +27,7 @@ class ArticulosInline(admin.StackedInline):
 
 class RevistasAdmin(ImportExportModelAdmin):
     #inlines = [ArticulosInline]
+    fields = ('volumen','ano','mes','numero','ididioma','color','portada')
     list_display = ['numero','ididioma','volumen','mes','articulos_conteo']
     list_display_links = ['numero','ididioma']
     search_fields = ['numero',]
@@ -71,7 +72,7 @@ class PaisAdmin(ImportExportModelAdmin):
     list_display = ['id', 'pais']
 
 class colorAdmin(ImportExportModelAdmin):
-    list_display = ['id','color1', 'color2']
+    list_display = ['id','color1', 'color2', 'color']
 # Register your models here.
 admin.site.register(Articulos, ArticulosAdmin)
 admin.site.register(Revistas, RevistasAdmin)
@@ -79,7 +80,7 @@ admin.site.register(Idiomas, IdiomasAdmin)
 admin.site.register(Zonas, ZonasAdmin)
 admin.site.register(Temas, TemasAdmin)
 admin.site.register(Autores, AutoresAdmin)
-admin.site.register(Enlaces, EnlacesAdmin)
+#admin.site.register(Enlaces, EnlacesAdmin)
 admin.site.register(Tipo, TipoAdmin)
 admin.site.register(Envio, EnvioAdmin)
 admin.site.register(Pais, PaisAdmin)
