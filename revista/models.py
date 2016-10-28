@@ -88,7 +88,7 @@ class ColoresRevista(models.Model):
     color = models.CharField(max_length=50, null=True, blank=True)
 
     def __unicode__(self):
-        return self.color
+        return self.color1
 
 class Revistas(models.Model):
     volumen = models.IntegerField()
