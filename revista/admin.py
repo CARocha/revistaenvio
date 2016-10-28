@@ -9,6 +9,7 @@ from django.contrib.flatpages.admin import FlatpageForm as FlatpageFormOld
 
 from django import forms
 from ckeditor.widgets import CKEditorWidget
+from django.utils.html import format_html
 
 class FlatpageForm(FlatpageFormOld):
     content = forms.CharField(widget=CKEditorWidget())
@@ -36,6 +37,9 @@ class RevistasAdmin(ImportExportModelAdmin):
     def articulos_conteo(self, obj):
         return '%s'%(obj.articulos_set.count())
     articulos_conteo.short_description = '# articulos'
+
+    class Media:
+        js = ('/static/js/colorAdmin.js',)
 
 class ArticulosAdmin(ImportExportModelAdmin):
     exclude = ('cambio','codigoml',)
@@ -72,7 +76,12 @@ class PaisAdmin(ImportExportModelAdmin):
     list_display = ['id', 'pais']
 
 class colorAdmin(ImportExportModelAdmin):
-    list_display = ['id','color1', 'color2', 'color']
+    list_display = ['id','color1', 'color2', 'color', 'colored_name']
+
+    def colored_name(self, obj):
+        return format_html('<span style="background-color:{};width:40px; heigth:20px; color:{};">COLOR</span>',obj.color1,obj.color1)
+    colored_name.short_description = 'Color visual'
+
 # Register your models here.
 admin.site.register(Articulos, ArticulosAdmin)
 admin.site.register(Revistas, RevistasAdmin)
