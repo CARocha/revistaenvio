@@ -132,7 +132,13 @@
 
 			<div class="articulo-detalle">
 				<h6 class="pais">
-					<span>	{{object.idzona}} - <span>OPINIÓN</span></span>
+					<span>	{{object.idzona}}
+						<span>
+                             {% if object.opinion == True %}
+                                   - OPINIÓN 
+                            {% endif %}
+                        </span>
+                    </span>
 				</h6>
 
 				<h5 class="titulo-detalle">
