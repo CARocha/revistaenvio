@@ -58,21 +58,6 @@
                     <div class="item">
                         <h6 class="pais">{{obj.idzona}} - <span>OPINIÓN</span></h6>
                         <h5 class="articulo-titulo"><a href="{% url 'articulo-detalle' obj.id %}">{{obj}}</a></h5>
-                        <div class="detalle-articulo">
-                            <div class="autor-articulo">
-                                <a href="">
-                                    <span class="fa fa-user"> </span>{{obj.autor}}
-                                </a>
-                            </div>
-                            <div class="autor-articulo">
-
-                                    <span class="fa fa-tag"> </span>
-                                    {% for tema in obj.temas.all %}
-                                            <a href="#">{{tema}}</a>{% if forloop.last %} {%else%}, {% endif %}
-                                    {% endfor %}
-
-                            </div>
-                        </div>
                         <p>
                             {{obj.texto|truncatewords:22|striptags|safe }}
                             <span><a href="{% url 'articulo-detalle' obj.id %}">{% trans "Continuar.."%}</a></span>
