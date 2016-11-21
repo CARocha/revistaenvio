@@ -144,6 +144,19 @@ CKEDITOR_CONFIGS = {
         ],
         'height': 'auto',
         'width': 'auto',
+        'extraPlugins': ','.join(
+            [
+                # your extra plugins here
+                'div',
+                'widget',
+                'youtube',
+                'image2',
+                # 'devtools',
+                'clipboard',
+                'dialog',
+                'dialogui',
+                'elementspath'
+            ]),
     },
 }
 
