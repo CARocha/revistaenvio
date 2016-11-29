@@ -67,7 +67,7 @@ sombras()
 		font-style normal
 		span
 			font-weight 400
-			font-size 8pt
+			font-size 10pt
 	.articulo-titulo
 		font-size 18px
 		font-family 'Roboto', sans-serif
@@ -98,7 +98,6 @@ sombras()
 		font-family "Roboto", Arial, sans-serif
 		font-style normal
 		font-size 16px
-		text-transform uppercase
 	.search-box 
 		redondeado 3px
 		background-color transparent
@@ -153,7 +152,6 @@ sombras()
 		font-family "Roboto", Arial, sans-serif
 		font-style normal
 		font-size 16px
-		text-transform uppercase
 
 .idiomas
 	a
@@ -169,13 +167,15 @@ sombras()
 		border-bottom 1px solid #555557
 		text-decoration none
 		cursor pointer
-		text-transform uppercase
 	a.en
-		redondeado 0px 3px 3px 0px
+		redondeado 0px 0px 0px 0px
 		border-right 1px solid #555557
 	a.es
 		redondeado 3px 0px 0px 3px
 		border-left 1px solid #555557
+	a.it
+		redondeado 0px 1px 3px 0px
+		border-right 1px solid #555557
 .suscripcion a
 	text-align center
 	background transparent
@@ -187,7 +187,7 @@ sombras()
 	color white
 	text-decoration none
 	cursor pointer
-	text-transform uppercase
+	text-transform initial
 	redondeado 3px
 .publicacion a
 	text-align center
@@ -344,7 +344,7 @@ footer
 		h1,h2,h3,h4,h5,h6
 
 			font-size 17px
-			text-transform uppercase
+			text-transform initial
 			font-weight bold !important
 		
 .detalle-pais
@@ -613,6 +613,8 @@ a.link-titulo
 	font-family 'Roboto',sans-serif
 	font-size 14px
 	color white
+	&:hover
+		color white
 
 		
 
@@ -698,15 +700,15 @@ a.link-titulo
 	padding 10px
 a.back-to-top
 	display none
-	width 55px
-	height 55px
+	width 45px
+	height 45px
 	text-indent -9999px
 	position fixed
 	z-index 999
-	right 20px
-	bottom 20px
-	background url("../img/up-arrow.png") no-repeat center 43%
+	right 10px
+	bottom 10px
+	background url("../img/up-arrow.png") no-repeat center 45%
 	-webkit-border-radius 30px
 	-moz-border-radius 30px
 	border-radius 30px
-	border 1px solid white
+	background-color rgba(0,0,0,0.2)

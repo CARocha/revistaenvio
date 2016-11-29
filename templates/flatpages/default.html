@@ -56,9 +56,11 @@
             <div class="sidebar">
                 <div class="lema">
                     <p>
+                       
                         {% blocktrans %}
                             Envío es información y análisis<br>de Nicaragua desde Nicaragua,<br> de Centroamérica desde Centroamérica<br>y de ese otro mundo posible<br>por el que trabajamos.
                         {% endblocktrans %}
+                       
 
                     </p>
                     <div class="borde"></div>
@@ -68,22 +70,28 @@
                     <h6>{% trans "Idioma" %}</h6>
                     <div class="idiomas container-fluid">
                         <div class="row">
-                            <a href="/lang/es/" class="col-xs-6 col-sm-6 col-md-6 col-lg-6 es {% if LANGUAGE_CODE == 'es' %}activo{% endif %} ">
+                            <a href="/lang/es/" class="col-xs-6 col-sm-6 col-md-4 col-lg-4 es {% if LANGUAGE_CODE == 'es' %}activo{% endif %} ">
                                 {% trans "Español"%}
                             </a>
-                            <a href="/lang/en/" class="col-xs-6 col-sm-6 col-md-6 col-lg-6 en {% if LANGUAGE_CODE == 'en' %}activo{% endif %}">
-                                {% trans "Ingles"%}
+                            <a href="/lang/en/" class="col-xs-6 col-sm-6 col-md-4 col-lg-4 en {% if LANGUAGE_CODE == 'en' %}activo{% endif %}">
+                                {% trans "Inglés"%}
+                            </a>
+                            <a href="http://www.ans21.org" class="col-xs-6 col-sm-6 col-md-4 col-lg-4 it" target="_blank">
+                                {% trans "Italiano"%}
                             </a>
                         </div>
                     </div>
 
                 </div>
                 <div class="suscripcion-container ">
-                    <h6>{% trans "ARCHIVO"%}</h6>
+                    <h6>{% trans "Archivo"%}</h6>
                     <div class="suscripcion container-fluid">
                         <div class="row">
-                            <select name="" id="input" class="form-control archivo-select" required="required">
-                                <option value="">2016</option>
+                            <select name="archivosDrop" id="archivosDrop" class="form-control archivo-select" required="required">
+                                {% for obj in all_year reversed %}
+                                    <option value="/archivos/{{obj.0}}/">{{obj.1}}</option>
+                                {% endfor %}
+
                             </select>
                         </div>
 
@@ -95,7 +103,7 @@
                     <h6>{% trans "Suscríbete"%}</h6>
                     <div class="suscripcion container-fluid">
                         <div class="row">
-                            <a class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <a href="/subcribase/" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                 {% trans "Suscripción a la revista" %}
                             </a>
                         </div>
