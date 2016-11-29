@@ -234,33 +234,37 @@
 				</div>
 				{% include "busqueda_go.html" %}
 				<div class="idioma-container">
-					<h6>{% trans "Idioma"%}</h6>
-					<div class="idiomas container-fluid">
-						<div class="row">
-							<a href="/lang/es/" class="col-xs-6 col-sm-6 col-md-6 col-lg-6 es  {% if LANGUAGE_CODE == 'es' %}activo{% endif %} ">
-								{% trans "Español"%}
-							</a>
-							<a href="/lang/en/" class="col-xs-6 col-sm-6 col-md-6 col-lg-6 en  {% if LANGUAGE_CODE == 'en' %}activo{% endif %}">
-								{% trans "Inglés"%}
-							</a>
-						</div>
-					</div>
+                    <h6>{% trans "Idioma" %}</h6>
+                    <div class="idiomas container-fluid">
+                        <div class="row">
+                            <a href="/lang/es/" class="col-xs-6 col-sm-6 col-md-4 col-lg-4 es {% if LANGUAGE_CODE == 'es' %}activo{% endif %} ">
+                                {% trans "Español"%}
+                            </a>
+                            <a href="/lang/en/" class="col-xs-6 col-sm-6 col-md-4 col-lg-4 en {% if LANGUAGE_CODE == 'en' %}activo{% endif %}">
+                                {% trans "Inglés"%}
+                            </a>
+                            <a href="http://www.ans21.org" class="col-xs-6 col-sm-6 col-md-4 col-lg-4 it" target="_blank">
+                                {% trans "Italiano"%}
+                            </a>
+                        </div>
+                    </div>
 
-				</div>
-				<div class="suscripcion-container ">
-					<h6>{% trans "ARCHIVO"%}</h6>
-					<div class="suscripcion container-fluid">
-						<div class="row">
-							<select name="archivosDrop" id="archivosDrop" class="form-control archivo-select" required="required">
-								{% for obj in all_year reversed %}
-									<option value="/archivos/{{obj.0}}">{{obj.1}}</option>
-								{% endfor %}
-							</select>
-						</div>
+                </div>
+                <div class="suscripcion-container ">
+                    <h6>{% trans "Archivo"%}</h6>
+                    <div class="suscripcion container-fluid">
+                        <div class="row">
+                            <select name="archivosDrop" id="archivosDrop" class="form-control archivo-select" required="required">
+                                {% for obj in all_year reversed %}
+                                    <option value="/archivos/{{obj.0}}/">{{obj.1}}</option>
+                                {% endfor %}
 
-					</div>
+                            </select>
+                        </div>
 
-				</div>
+                    </div>
+
+                </div>
 
 				<div class="suscripcion-container ">
 					<h6>{% trans "En este mismo número"%}:</h6>

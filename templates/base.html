@@ -59,9 +59,7 @@
         .container-archivo{
             border-color: #fbf2f4;
         }
-        a.back-to-top{
-            background-color: #a90129;
-        }
+
 
     </style>
         <header>
@@ -103,18 +101,12 @@
                                 <li class="active"><a href="/">{% trans "Inicio" %}</a></li>
                                 <li><a href="/quienes-somos/">{% trans "¿Quiénes Somos?" %}</a></li>
                                 <li><a href="/equipo/">{% trans "Equipo"%}</a></li>
-                                <li><a href="/enlaces/">{% trans "Enlaces"%}</a></li>
-                                <li><a href="/subcribase/">{% trans "Suscripciones"%}</a></li>
-                                <li><a href="/contactenos/">{% trans "Contacto"%}</a></li>
                             </ul>
                         {% else %}
                              <ul class="nav navbar-nav navbar-right">
                                 <li class="active"><a href="/">{% trans "Inicio" %}</a></li>
                                 <li><a href="/about-us/">{% trans "¿Quiénes Somos?" %}</a></li>
                                 <li><a href="/team/">{% trans "Equipo"%}</a></li>
-                                <li><a href="/links/">{% trans "Enlaces"%}</a></li>
-                                <li><a href="/subcribase/">{% trans "Suscripciones"%}</a></li>
-                                <li><a href="/contact-us/">{% trans "Contacto"%}</a></li>
                             </ul>
                         {%endif%}
                         </div><!-- /.navbar-collapse -->
@@ -139,6 +131,9 @@
                                     </a>
                                     <a href="/lang/en/" class="col-xs-6 col-sm-6 col-md-6 col-lg-6 en {% if LANGUAGE_CODE == 'en' %}activo{% endif %}">
                                         {% trans "Ingles"%}
+                                    </a>
+                                    <a href="http://www.ans21.org" class="col-xs-6 col-sm-6 col-md-6 col-lg-4 it target="_blank"">
+                                        {% trans "Italiano"%}
                                     </a>
                                 </div>
                             </div>
