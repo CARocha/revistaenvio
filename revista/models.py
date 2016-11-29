@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from ckeditor.fields import RichTextField
+from ckeditor_uploader.fields import RichTextUploadingField
 from sorl.thumbnail import ImageField
 from .utils import get_file_path
 
@@ -120,7 +121,7 @@ class Articulos(models.Model):
     autor = models.ForeignKey('Autores', blank=True, null=True)
     autornota = RichTextField('Introducción', blank=True, null=True)
     cambio = RichTextField(blank=True, null=True)
-    texto = RichTextField(blank=True, null=True)
+    texto = RichTextUploadingField(blank=True, null=True)
     codigoml = models.IntegerField(blank=True, null=True)
     nota = RichTextField(blank=True, null=True)
     temas = models.ManyToManyField(Temas, blank=True)
