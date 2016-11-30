@@ -160,3 +160,30 @@ def articulo_busqueda_autor(request, pk=None, template='revista/por_autor.html')
         object_list = paginator.page(paginator.num_pages)
 
     return render(request, template, locals())
+
+
+def busqueda_avanzada(request, template='revista/busqueda_mega_avanzada.html'):
+    params = {}
+    if request.method == 'POST':
+        params['revista__mes__gte'] = request.POST.get('mes_1')
+        params['revista__ano__gte'] = request.POST.get('year_1')
+        params['revista__mes__lte'] = request.POST.get('mes_2')
+        params['revista__ano__lte'] = request.POST.get('year_2')
+        params['idzona'] = request.POST.get('zona')
+        params['temas__in'] = request.POST.get('temas')
+        params['titulo'] = request.POST.get('buscar')
+
+    unvalid_keys = []
+    for key in params:
+        if not params[key]:
+            unvalid_keys.append(key)
+
+    for key in unvalid_keys:
+        del params[key]
+        
+    object_list = Articulos.objects.filter(**params)
+    #Articulos.objects.filter(revista__ano__gte=2015,revista__ano__lte=2016, revista__mes__gte=1, revista__mes__lte=2)
+    print len(object_list)
+    print "---- arriba imprimio----"
+
+    return render(request, template, locals())

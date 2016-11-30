@@ -203,7 +203,7 @@ function activaTab(tab){
                                     <div class="tab-pane  active" id="ddd">
                                         <div class="rango-fecha">
                                             <div class="row">
-                                            <form action="" method="get" accept-charset="utf-8"> 
+                                            <form action="{% url 'busqueda-avanzada' %}" method="POST" accept-charset="utf-8"> {% csrf_token %}
                                            
                                                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                                                    
