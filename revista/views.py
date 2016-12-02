@@ -183,7 +183,5 @@ def busqueda_avanzada(request, template='revista/busqueda_mega_avanzada.html'):
         
     object_list = Articulos.objects.filter(**params)
     #Articulos.objects.filter(revista__ano__gte=2015,revista__ano__lte=2016, revista__mes__gte=1, revista__mes__lte=2)
-    print len(object_list)
-    print "---- arriba imprimio----"
 
     return render(request, template, locals())
