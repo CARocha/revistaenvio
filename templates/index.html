@@ -16,7 +16,7 @@
 {% block contenido %}
  <style type="text/css">
         .barra-superior, .main-manu, .navbar-brand, .idiomas a.activo, .suscripcion a,
-        footer,.navbar-toggle .icon-bar{
+        footer,.navbar-toggle .icon-bar,  .navbar-envios{
 
             background-color: {% for obj in object_list %} {{obj.color.color1}} {%endfor%};
         }
@@ -27,18 +27,17 @@
         .paginado a, .navbar-toggle{
             border-color: {% for obj in object_list %}{{obj.color.color1}}{%endfor%};
         }
-        .navbar-envios .navbar-nav>li.active>a, .navbar-envios .navbar-nav>li>a:focus,
-        .navbar-envios .navbar-nav>li>a:hover, .revista-actual span, .pais,.pais span,
+        .revista-actual span, .pais,.pais span,
         .articulos p span a, .articulo-detalle h1, .articulo-detalle h2, .articulo-detalle h3,
         .articulo-detalle h4, .articulo-detalle h5, .articulo-detalle h6, a.link-titulo:hover,
-        a.link-titulo:focus{
+        a.link-titulo:focus {
             color:{% for obj in object_list %} {{obj.color.color1}}{%endfor%};
         }
         hr{
             border-color: {% for obj in object_list %}{{obj.color.color2}}{%endfor%};
 
         }
-        .revista-actual, .navbar-envios{
+        .revista-actual{
             border-bottom: 1px solid {% for obj in object_list %}{{obj.color.color2}}{%endfor%};
         }
         .sidebar, .sm-menu{
