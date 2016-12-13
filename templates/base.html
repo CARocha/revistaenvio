@@ -36,8 +36,7 @@
         .paginado a, .navbar-toggle, .container-archivo .select-archivo .dw-anos{
             border-color: #a90129;
         }
-        .navbar-envios .navbar-nav>li.active>a, .navbar-envios .navbar-nav>li>a:focus,
-        .navbar-envios .navbar-nav>li>a:hover, .revista-actual span, .pais,.pais span,
+        .revista-actual span, .pais,.pais span,
         .articulos p span a, .articulo-detalle h1, .articulo-detalle h2, .articulo-detalle h3,
         .articulo-detalle h4, .articulo-detalle h5, .articulo-detalle h6, a.link-titulo:hover,
         a.link-titulo:focus, .sub-titulo{
@@ -47,7 +46,7 @@
             border-color:   #fbf2f4;
 
         }
-        .revista-actual, .navbar-envios{
+        .revista-actual{
             border-bottom: 1px solid    #fbf2f4;
         }
         .sidebar, .sm-menu{
@@ -63,7 +62,7 @@
 
     </style>
         <header>
-            <div class="barra-superior">
+            <!-- <div class="barra-superior">
                 <div class="container">
                     <div class="row">
                         <div class="col-xs-4 col-sm-8 col-md-9 col-lg-10">
@@ -79,11 +78,11 @@
                     </div>
                 </div>
 
-            </div>
+            </div> -->
             <div class="main-manu">
                 <nav class="navbar navbar-envios">
                     <div class="container">
-                        <!-- Brand and toggle get grouped for better mobile display -->
+                        
                         <div class="navbar-header">
                             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                                 <span class="sr-only">Toggle navigation</span>
@@ -91,10 +90,10 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                            <a class="navbar-brand" href="/"><img src="/static/img/logo.png" alt=""></a>
+                            <a class="navbar-brand" href="/"><img src="/static/img/logoblanco.png" alt=""></a>
                         </div>
 
-                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         {% if LANGUAGE_CODE == 'es' %}
                             <ul class="nav navbar-nav navbar-right">
@@ -109,10 +108,81 @@
                                 <li><a href="/team/">{% trans "Equipo"%}</a></li>
                             </ul>
                         {%endif%}
-                        </div><!-- /.navbar-collapse -->
-                    </div><!-- /.container-fluid -->
+                        </div>
+                    </div>
                 </nav>
             </div>
+            <div id="carousel-example" class="carousel slide" data-ride="carousel">
+              <ol class="carousel-indicators">
+                <li data-target="#carousel-example" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-example" data-slide-to="1"></li>
+                <li data-target="#carousel-example" data-slide-to="2"></li>
+              </ol>
+
+              <div class="carousel-inner">
+                <div class="item active">
+                  <a href="#"><img src="/static/img/slide1.jpg" /></a>
+                  <div class="carousel-caption">
+                    <p>De la primera a la última página Envío me lleva a Nicaragua y a<br>mis otros amados pedacitos de la patria de Morazán.
+                        
+
+                    </p>
+                    <p class="autor-slide">
+                            -Eduardo Galeano.
+                    </p>
+                  </div>
+                </div>
+                <div class="item">
+                  <a href="#"><img src="/static/img/slide2.jpg" /></a>
+                  <div class="carousel-caption">
+                    <p>He dedicado la mayor parte de mi carrera profesional a Nicaragua <br>
+                        Y siempre dependo de Envío como la fuente más confiable.
+                        
+
+                    </p>
+                    <p class="autor-slide">
+                            -Thomas W. Walker.
+                    </p>
+                  </div>
+                </div>
+                <div class="item">
+                  <a href="#"><img src="/static/img/slide3.jpg" /></a>
+                  <div class="carousel-caption">
+                    <p>Envío nunca ha sido complaciente con el poder político. Es una <br>
+                    voz crítica sobre los problemas nacionales y sus alternativas de solución.
+                        
+
+                    </p>
+                    <p class="autor-slide">
+                            -Dora María Téllez.
+                    </p>
+                  </div>
+                </div>
+                <div class="item">
+                  <a href="#"><img src="/static/img/slide4.jpg" /></a>
+                  <div class="carousel-caption">
+                    <p>Con Envío no sólo nos informamos. Fortalecemos nuestra <br>
+                        conciencia para no dejar de luchar por los derechos humanos.
+                        
+
+                    </p>
+                    <p class="autor-slide">
+                            -Dora María Téllez.
+                    </p>
+                  </div>
+                </div>
+
+              </div>
+
+              <a class="left carousel-control" href="#carousel-example" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+              </a>
+              <a class="right carousel-control" href="#carousel-example" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+              </a>
+            </div>
+
+            
         </header>
 
         <div class="contenido">
