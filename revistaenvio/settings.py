@@ -15,6 +15,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.flatpages',
     'revista',
+    'fotosportada',
     'import_export',
     'ckeditor',
     'ckeditor_uploader',
