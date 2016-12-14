@@ -112,65 +112,27 @@
                     </div>
                 </nav>
             </div>
+            {% for obj in portada %}
             <div id="carousel-example" class="carousel slide" data-ride="carousel">
               <ol class="carousel-indicators">
-                <li data-target="#carousel-example" data-slide-to="0" class="active"></li>
-                <li data-target="#carousel-example" data-slide-to="1"></li>
-                <li data-target="#carousel-example" data-slide-to="2"></li>
+                {% for x in obj.fotos_set.all %}
+                    <li data-target="#carousel-example" data-slide-to="{{forloop.revcounter0}}" {% if forloop.counter == 1 %}class="active"{% endif %}></li>
+                {% endfor %}
               </ol>
 
               <div class="carousel-inner">
-                <div class="item active">
-                  <a href="#"><img src="/static/img/slide1.jpg" /></a>
+                {% for x in obj.fotos_set.all %}
+                <div class="item {% if forloop.counter == 1 %}active{% endif %}">
+                  <a href="#"><img src="/media/{{x.imagen}}" /></a>
                   <div class="carousel-caption">
-                    <p>De la primera a la última página Envío me lleva a Nicaragua y a<br>mis otros amados pedacitos de la patria de Morazán.
-                        
-
+                    <p>{{x.frase}}
                     </p>
                     <p class="autor-slide">
-                            -Eduardo Galeano.
+                            -{{x.autor}}.
                     </p>
                   </div>
                 </div>
-                <div class="item">
-                  <a href="#"><img src="/static/img/slide2.jpg" /></a>
-                  <div class="carousel-caption">
-                    <p>He dedicado la mayor parte de mi carrera profesional a Nicaragua <br>
-                        Y siempre dependo de Envío como la fuente más confiable.
-                        
-
-                    </p>
-                    <p class="autor-slide">
-                            -Thomas W. Walker.
-                    </p>
-                  </div>
-                </div>
-                <div class="item">
-                  <a href="#"><img src="/static/img/slide3.jpg" /></a>
-                  <div class="carousel-caption">
-                    <p>Envío nunca ha sido complaciente con el poder político. Es una <br>
-                    voz crítica sobre los problemas nacionales y sus alternativas de solución.
-                        
-
-                    </p>
-                    <p class="autor-slide">
-                            -Dora María Téllez.
-                    </p>
-                  </div>
-                </div>
-                <div class="item">
-                  <a href="#"><img src="/static/img/slide4.jpg" /></a>
-                  <div class="carousel-caption">
-                    <p>Con Envío no sólo nos informamos. Fortalecemos nuestra <br>
-                        conciencia para no dejar de luchar por los derechos humanos.
-                        
-
-                    </p>
-                    <p class="autor-slide">
-                            -Dora María Téllez.
-                    </p>
-                  </div>
-                </div>
+                {% endfor %}
 
               </div>
 
@@ -181,7 +143,7 @@
                 <span class="glyphicon glyphicon-chevron-right"></span>
               </a>
             </div>
-
+             {% endfor %}
             
         </header>
 

@@ -9,3 +9,4 @@ class FotosPortadaAdmin(admin.ModelAdmin):
 	inlines = [FotosInline]
 
 # Register your models here.
+admin.site.register(FotosPortada, FotosPortadaAdmin)
