@@ -31,3 +31,4 @@ class Fotos(models.Model):
 	class Meta:
 		verbose_name = 'Foto'
 		verbose_name_plural = 'Fotos'
+		ordering = ('id',)
