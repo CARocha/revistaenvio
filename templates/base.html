@@ -125,7 +125,7 @@
                 <div class="item {% if forloop.counter == 1 %}active{% endif %}">
                   <a href="#"><img src="/media/{{x.imagen}}" /></a>
                   <div class="carousel-caption">
-                    <p>{{x.frase}}
+                    <p>{{x.frase|safe}}
                     </p>
                     <p class="autor-slide">
                             -{{x.autor}}.
