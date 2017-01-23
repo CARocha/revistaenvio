@@ -46,6 +46,7 @@ class ArticulosAdmin(ImportExportModelAdmin):
     exclude = ('cambio','codigoml',)
     list_display = ['id', 'titulo','revista','idioma', 'idzona']
     list_display_links = ['id','titulo','revista']
+    search_fields = ['titulo','texto']
     list_filter = ['idzona','idioma','revista__mes', 'revista__ano']
     ordering = ('-id',)
 
