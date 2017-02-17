@@ -171,7 +171,7 @@ def busqueda_avanzada(request, template='revista/busqueda_mega_avanzada.html'):
         params['revista__ano__lte'] = request.POST.get('year_2')
         params['idzona'] = request.POST.get('zona')
         params['temas__in'] = request.POST.get('temas')
-        params['titulo'] = request.POST.get('buscar')
+        params['titulo__icontains'] = request.POST.get('buscar')
 
     unvalid_keys = []
     for key in params:
@@ -180,8 +180,16 @@ def busqueda_avanzada(request, template='revista/busqueda_mega_avanzada.html'):
 
     for key in unvalid_keys:
         del params[key]
-        
-    object_list = Articulos.objects.filter(**params)
-    #Articulos.objects.filter(revista__ano__gte=2015,revista__ano__lte=2016, revista__mes__gte=1, revista__mes__lte=2)
 
+    articulos_list = Articulos.objects.filter(**params)
+    
+    #Articulos.objects.filter(revista__ano__gte=2015,revista__ano__lte=2016, revista__mes__gte=1, revista__mes__lte=2)
+    paginator = Paginator(articulos_list, 10)
+    page = request.GET.get('page')
+    try:
+        object_list = paginator.page(page)
+    except PageNotAnInteger:
+        object_list = paginator.page(1)
+    except EmptyPage:
+        object_list = paginator.page(paginator.num_pages)
     return render(request, template, locals())
