@@ -102,13 +102,9 @@ function activaTab(tab){
                             <div class="tabbable-line">
                           
                                 <ul class="nav nav-tabs menu-buqueda">
-                                    <li  class="active">
-                                        <a href="#ddd" data-toggle="tab" aria-expanded="true">
-                                            <span class="fa fa-search"></span> Búsqueda avanzada
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#aaa" data-toggle="tab">
+                                    
+                                    <li class="active">
+                                        <a href="#aaa" data-toggle="tab" aria-expanded="true">
                                             <span class="fa fa-tag"></span> Temas  
                                         </a>
                                     </li>
@@ -122,15 +118,21 @@ function activaTab(tab){
                                             <span class="fa fa-user"></span> Autores
                                         </a>
                                     </li>
+                                    <li>
+                                        <a href="#ddd" data-toggle="tab">
+                                            <span class="fa fa-search"></span> Búsqueda avanzada
+                                        </a>
+                                    </li>
                                     
                                     <li>
                                         <a href="#eee" data-toggle="tab">
                                             <span class="fa fa-google"></span> Búsqueda con google
                                         </a>
                                     </li>
+
                                 </ul>
                                 <div class="tab-content" id="tabs">
-                                    <div class="tab-pane" id="aaa">
+                                    <div class="tab-pane active" id="aaa">
                                         <div id="temas-envios">
                                             <div class="left-inner-addon ">
                                                 <i class="fa fa-search"></i>
@@ -199,7 +201,7 @@ function activaTab(tab){
 
                                         </div>
                                     </div>
-                                    <div class="tab-pane  active" id="ddd">
+                                    <div class="tab-pane" id="ddd">
                                         <div class="rango-fecha">
                                             <div class="row">
                                             <form action="{% url 'busqueda-avanzada' %}" method="POST" accept-charset="utf-8"> {% csrf_token %}
