@@ -100,12 +100,16 @@
                             <ul class="nav navbar-nav navbar-right">
                                 <li class="active"><a href="/">{% trans "Inicio" %}</a></li>
                                 <li><a href="/quienes-somos/">{% trans "¿Quiénes somos?" %}</a></li>
+                                <li><a href="/busqueda-avanzada/">{% trans "Búsqueda" %}</a></li>
+                                <li><a href="/archivos/">{% trans "Archivo" %}</a></li>
                                 <li><a href="/equipo/">{% trans "Equipo"%}</a></li>
                             </ul>
                         {% else %}
                              <ul class="nav navbar-nav navbar-right">
                                 <li class="active"><a href="/">{% trans "Inicio" %}</a></li>
                                 <li><a href="/about-us/">{% trans "¿Quiénes Somos?" %}</a></li>
+                                <li><a href="/busqueda-avanzada/">{% trans "Búsqueda" %}</a></li>
+                                <li><a href="/archivos/">{% trans "Archivo" %}</a></li>
                                 <li><a href="/team/">{% trans "Equipo"%}</a></li>
                             </ul>
                         {%endif%}
@@ -224,7 +228,7 @@
                             <div class="texto-right">
                                 <p>
                                     {% blocktrans %}Revista mensual de ánalisis <br>
-                                    de Nicaragua y Centro América
+                                    de Nicaragua y Centroamérica
                                     {% endblocktrans %}
                                 </p>
                                 <ul class="logos-footer">

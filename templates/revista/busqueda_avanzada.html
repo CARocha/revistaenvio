@@ -120,7 +120,7 @@ function activaTab(tab){
                                     </li>
                                     <li>
                                         <a href="#ddd" data-toggle="tab">
-                                            <span class="fa fa-search"></span> Búsqueda avanzada
+                                            <span class="fa fa-folder"></span> {% trans "Archivo"%}
                                         </a>
                                     </li>
                                     
@@ -144,9 +144,7 @@ function activaTab(tab){
                                                 <li class=" list-group-item">
                                                 <a class="b-tema" href="{% url 'tema' obj.id %}">
                                                     {{obj}}
-                                                    <span class="badge pull-right">{{obj.articulos_set.count}} 
-                                                        <span>textos</span> 
-                                                    </span>
+                                                    
                                                 </a>
                                                 </li>
                                             
@@ -167,9 +165,7 @@ function activaTab(tab){
                                                 <li class=" list-group-item">
                                                 <a class="b-zona" href="{% url 'zona' obj.id %}">
                                                     {{obj}}
-                                                    <span class="badge pull-right">{{obj.articulos_set.count}} 
-                                                        <span>textos</span> 
-                                                    </span>
+                                                    
                                                 </a>
                                                 </li>
                                             
@@ -190,9 +186,7 @@ function activaTab(tab){
                                                 <li class=" list-group-item">
                                                 <a class="b-autor" href="{% url 'autor' obj.id %}">
                                                     {{obj}}
-                                                    <span class="badge pull-right">{{obj.articulos_set.count}} 
-                                                        <span>textos</span> 
-                                                    </span>
+                                                    
                                                 </a>
                                                 </li>
                                             
@@ -202,57 +196,15 @@ function activaTab(tab){
                                         </div>
                                     </div>
                                     <div class="tab-pane" id="ddd">
-                                        <div class="rango-fecha">
-                                            <div class="row">
-                                            <form action="{% url 'busqueda-avanzada' %}" method="POST" accept-charset="utf-8"> {% csrf_token %}
-                                           
-                                                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                                                   
-                                                    <h5> {% trans "Desde" %} </h5>
-                                                    <div class="row">
-                                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                                                            {{ form.mes_1 }}
-                                                        </div>
-                                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                                                            {{ form.year_1 }} 
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                                                    <h5> {% trans "Hasta" %} </h5>
-                                                    <div class="row">
-                                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                                                            {{ form.mes_2 }}
-                                                        </div>
-                                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                                                            {{ form.year_2 }} 
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-
-                                            </div>
-                                        </div>
                                         <div class="row">
-                                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                                                <label for="{{ form.zona.id_for_label }}"> {% trans "País" %} </label>
-                                                {{form.zona}}
-                                            </div>
-                                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                                                <label for="{{ form.temas.id_for_label }}"> {% trans "Temas" %} </label>
-                                                {{form.temas}}
-                                            </div>
+                                            <select name="archivosDrop" id="archivosDrop" class="form-control archivo-select" required="required">
+                                                {% for obj in all_year reversed %}
+                                                    <option value="/archivos/{{obj.0}}/">{{obj.1}}</option>
+                                                {% endfor %}
+
+                                            </select>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                                <label class="buscador-label" for="{{ form.buscar.id_for_label }}"> {% trans "Buscar general" %} </label>
-                                                {{form.buscar}}
-                                            </div>
-                                        </div>
-                                        <br>
-                                        <input class='btn btn-sub center-block' type="submit" name="" value="Buscar">
-                                     </form>
+
                                     </div>
                                     <div class="tab-pane" id="eee">
 
@@ -320,79 +272,7 @@ function activaTab(tab){
                     </div>
             </div>
         </div>
-        <div class="hidden-xs col-sm-4 col-md-4 col-lg-4">
-            <div class="sidebar">
-                <div class="lema">
-                    <p>
-                       
-                        {% blocktrans %}
-                            Envío es información y análisis<br>de Nicaragua desde Nicaragua,<br> de Centroamérica desde Centroamérica<br>y de ese otro mundo posible<br>por el que trabajamos.
-                        {% endblocktrans %}
-                       
-
-                    </p>
-                    <div class="borde"></div>
-                </div>
-                {% include "busqueda_go.html" %}
-                <div class="idioma-container">
-                    <h6>{% trans "Idioma" %}</h6>
-                    <div class="idiomas container-fluid">
-                        <div class="row">
-                            <a href="/lang/es/" class="col-xs-6 col-sm-6 col-md-4 col-lg-4 es {% if LANGUAGE_CODE == 'es' %}activo{% endif %} ">
-                                {% trans "Español"%}
-                            </a>
-                            <a href="/lang/en/" class="col-xs-6 col-sm-6 col-md-4 col-lg-4 en {% if LANGUAGE_CODE == 'en' %}activo{% endif %}">
-                                {% trans "Inglés"%}
-                            </a>
-                            <a href="http://www.ans21.org" class="col-xs-6 col-sm-6 col-md-4 col-lg-4 it" target="_blank">
-                                {% trans "Italiano"%}
-                            </a>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="suscripcion-container ">
-                    <h6>{% trans "Archivo"%}</h6>
-                    <div class="suscripcion container-fluid">
-                        <div class="row">
-                            <select name="archivosDrop" id="archivosDrop" class="form-control archivo-select" required="required">
-                                {% for obj in all_year reversed %}
-                                    <option value="/archivos/{{obj.0}}/">{{obj.1}}</option>
-                                {% endfor %}
-
-                            </select>
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="suscripcion-container ">
-                    <h6>{% trans "Suscríbete"%}</h6>
-                    <div class="suscripcion container-fluid">
-                        <div class="row">
-                            <a href="/subcribase/" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                {% trans "Suscripción a la revista" %}
-                            </a>
-                        </div>
-
-                    </div>
-
-                </div>
-                <div class="suscripcion-container ">
-                    <h6>{% trans "Donación"%}</h6>
-                    <div class="suscripcion container-fluid">
-                        <div class="row">
-                            <a class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                {% trans "Haz tu donación ahora" %}
-                            </a>
-                        </div>
-
-                    </div>
-
-                </div>
-            </div>
-        </div>
+        {% include "sidebar.html" %}
     </div>
 </div>
 {% endblock contenido %}
