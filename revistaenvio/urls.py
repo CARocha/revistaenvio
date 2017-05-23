@@ -21,12 +21,11 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from revista.feeds import LatestRevistaFeed
 
 urlpatterns = [
+    url(r'^busqueda/', include('django_google_cse.urls')),
     url(r'', include('revista.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
     url(r'^pages/', include('django.contrib.flatpages.urls')),
-    #url(r'^busqueda/', include('googlesearch.urls')),
-    url(r'^busqueda/', include('django_google_cse.urls')),
     url(r'^rss/$', LatestRevistaFeed()),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
