@@ -52,7 +52,7 @@
 
                     <ul class="lista-articulos">
                         {% for obj in valor.articulos_set.all %}
-                        <li><a href="{% url 'articulo-detalle' obj.id %}">{{obj}}</a></li>
+                        <li><a href="{% url 'articulo-detalle' obj.id %}"><strong>{{obj.idzona}}:</strong> {{obj}}</a></li>
                         {% endfor %}
                     </ul>
                     {% endfor %}

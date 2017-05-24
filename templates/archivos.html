@@ -7,7 +7,7 @@
 <style type="text/css">
     .articulo-titulo{
         color:  #a90129;
-        border-bottom: 1px solid    #fbf2f4;
+        border-bottom: 1px solid #fbf2f4;
     }
     .articulo-titulo .item ul{
         list-style: none;
@@ -45,16 +45,16 @@
             </div>
             <div class="articulos">
                    
-                    <div class="item">
+            <div class="item">
                         
-                             {% for valor in query %}
-                             <h5 class="articulo-titulo">{{valor.get_mes_display}} No. {{valor}}</h5>
-                            
-                                <ol class="lista-articulos">
-                                    {% for obj in valor.articulos_set.all %}
-                                        <li><a href="{% url 'articulo-detalle' obj.id %}">{{obj}}</a></li>
-                                    {% endfor %}
-                                </ol>
+             {% for valor in query %}
+             <h5 class="articulo-titulo">{{valor.get_mes_display}} No. {{valor}}</h5>
+            
+                <ol class="lista-articulos">
+                    {% for obj in valor.articulos_set.all %}
+                        <li><a href="{% url 'articulo-detalle' obj.id %}">{{obj.idzona}}: {{obj}}</a></li>
+                    {% endfor %}
+                </ol>
             {% endfor %}
                         
                     </div>

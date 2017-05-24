@@ -60,16 +60,22 @@ class DetailArticuloView(DetailView):
 
 def busqueda(request, template='revista/busqueda_avanzada.html'):
     cur_language = translation.get_language()
+    years = []
+    for en in Revistas.objects.order_by('-ano').values_list('ano', flat=True):
+        years.append((en,en))
+    all_year1 = list(sorted(set(years)))
+    fecha = all_year1[-1][0]
     if cur_language == 'en':
         all_temas = Temas.objects.all()
         all_zonas = Zonas.objects.all()
         all_autores = Autores.objects.all()
+        query = Revistas.objects.filter(ididioma='en',ano=unicode(fecha)).order_by('-mes')
     else:
         all_temas = Temas.objects.all()
         all_zonas = Zonas.objects.all()
         all_autores = Autores.objects.all()
-
-    form = BusquedaAvanzada()
+        query = Revistas.objects.filter(ididioma='es',ano=unicode(fecha)).order_by('-mes')
+    
 
     return render(request, template, locals())
 
@@ -90,10 +96,10 @@ def archivos_revista(request, template='revista/archivos.html', yearr=None):
         idioma = 'es'
 
     if yearr is None:
-            now = datetime.datetime.now()
-            query = Revistas.objects.filter(ididioma=idioma,ano=now.year).order_by('-mes')
+        fecha = all_year1[-1][0]
+        query = Revistas.objects.filter(ididioma=idioma,ano=unicode(fecha)).order_by('-mes')
     else:
-            query = Revistas.objects.filter(ano=yearr,ididioma=idioma).order_by('-numero')
+        query = Revistas.objects.filter(ano=yearr,ididioma=idioma).order_by('-numero')
 
     return render(request, template, locals())
 

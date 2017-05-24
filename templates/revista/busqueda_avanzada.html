@@ -14,7 +14,6 @@ $(document).ready(function(){
     
   activaTab('aaa');
 });
-$('#id_mes_1,#id_mes_2,#id_year_1,#id_year_2, #id_buscar').addClass( "form-control" );
 
 function activaTab(tab){
   $('.nav-tabs a[href="#' + tab + '"]').tab('hide');
@@ -203,6 +202,23 @@ function activaTab(tab){
                                                 {% endfor %}
 
                                             </select>
+                                        </div>
+
+                                        <div class="articulos">
+
+                                            <div class="item">
+
+                                                {% for valor in query %}
+                                                <h5 class="articulo-titulo"> {{valor.ano}} {{valor.get_mes_display}}  No.{{valor.numero}}</h5>
+
+                                                <ul class="lista-articulos">
+                                                    {% for obj in valor.articulos_set.all %}
+                                                    <li><a href="{% url 'articulo-detalle' obj.id %}"><strong>{{obj.idzona}}:</strong> {{obj}}</a></li>
+                                                    {% endfor %}
+                                                </ul>
+                                                {% endfor %}
+
+                                            </div>
                                         </div>
 
                                     </div>
