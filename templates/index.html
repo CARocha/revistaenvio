@@ -82,17 +82,19 @@
 
                 {% if is_paginated %}
                     <div class="paginado">
+                        {% if page_obj.has_previous %}
+                            <a class="right" href="/?page={{ page_obj.previous_page_number }}">
+                                {% trans "Siguiente"%} <span class="fa fa-arrow-right"></span>
+                            </a>
+                        {% endif %}
+
                         {% if page_obj.has_next %}
-                         <a class="right" href="/?page={{ page_obj.next_page_number }}">
-                            {% trans "Nro. anterior"%} <span class="fa fa-arrow-right"></span>
+                         <a class="left" href="/?page={{ page_obj.next_page_number }}">
+                            <span class="fa fa-arrow-left"></span>{% trans "Anterior"%} 
                         </a>
                         {% endif %}
 
-                        {% if page_obj.has_previous %}
-                            <a class="left" href="/?page={{ page_obj.previous_page_number }}">
-                            <span class="fa fa-arrow-left"></span>{% trans "Nro. siguiente"%}
-                            </a>
-                        {% endif %}
+                        
                     </div>
                 {% endif %}
 
