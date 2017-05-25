@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% load i18n %}
+{% load el_pagination_tags %}
 {% get_current_language as LANGUAGE_CODE %}
 {% block extra_js %}
 <script type="text/javascript">
@@ -21,7 +22,7 @@
             color: white;
             border-color: #a90129;
         }
-        .paginado a, .navbar-toggle{
+        .navbar-toggle{
             border-color: #a90129;
         }
         .revista-actual span, .pais,.pais span,
@@ -53,7 +54,8 @@
                 </span>
             </div>
             <div class="articulos">
-                {% for obj in object_list %}
+                {% paginate 10 autor_articulos %}
+                {% for obj in autor_articulos %}
                     <div class="item">
                         <h6 class="pais">{{obj.idzona}}
                                 {% if obj.opinion == True %}
@@ -69,21 +71,12 @@
                     <hr>
                 {% endfor %}
 
-        <div class="paginado">
-            <span class="step-links">
-                {% if object_list.has_previous %}
-                    <a href="?page={{ object_list.previous_page_number }}">{% trans "Anterior" %}</a>
-                {% endif %}
-
-                <span class="current">
-                    {% trans "Pagina" %} {{ object_list.number }} {% trans "de" %} {{ object_list.paginator.num_pages }}.
-                </span>
-
-                {% if object_list.has_next %}
-                    <a href="?page={{ object_list.next_page_number }}">{% trans "Siguientes" %}</a>
-                {% endif %}
-            </span>
-        </div>
+                <div class="paginado">
+                    <ul class="pagination pagination-list">
+                        <li>{% show_pages %}</li>
+                    </ul>
+                   
+                </div>
 
             </div>
         </div>

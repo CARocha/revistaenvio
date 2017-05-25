@@ -34,7 +34,7 @@
             color: white;
             border-color: #a90129;
         }
-        .paginado a, .navbar-toggle, .container-archivo .select-archivo .dw-anos{
+        .navbar-toggle, .container-archivo .select-archivo .dw-anos{
             border-color: #a90129;
         }
         .revista-actual span, .pais,.pais span,
@@ -217,7 +217,7 @@
                                     <li><a class="fa fa-google-plus" href="https://plus.google.com/u/1/+RevistaEnv%C3%ADoUCA" target="_blank"></a></li>
                                 </ul>
                                 <p>
-                                    © Copyright Revista Envío
+                                   Revista Envío
                                 <br>
                                     {% trans "Desarrollado por " %}<a href="http://simas.org.ni">SIMAS</a>
                                 </p>
@@ -269,6 +269,10 @@
             $('#carousel-example').carousel({
                 interval: 9000
             });
+        </script>
+        <script type="text/javascript">
+            $(".pagination a:contains('>')").html("<span class='fa fa-arrow-right'></span>");
+            $(".pagination a:contains('<')").html("<span class='fa fa-arrow-left'></span>");
         </script>
         {% block extra_js %}
 

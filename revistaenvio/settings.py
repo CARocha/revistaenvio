@@ -23,6 +23,7 @@ INSTALLED_APPS = [
     'django_google_cse',
     'disqus',
     'sorl.thumbnail',
+    'el_pagination',
 ]
 
 MIDDLEWARE_CLASSES = [

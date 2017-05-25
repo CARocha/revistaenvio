@@ -117,15 +117,15 @@ def articulo_busqueda_tema(request, pk=None, template='revista/por_tema.html'):
     else:
          temas_articulos = Articulos.objects.filter(idioma='es', temas=pk);
 
-    paginator = Paginator(temas_articulos, 10)
+    # paginator = Paginator(temas_articulos, 10)
 
-    page = request.GET.get('page')
-    try:
-        object_list = paginator.page(page)
-    except PageNotAnInteger:
-        object_list = paginator.page(1)
-    except EmptyPage:
-        object_list = paginator.page(paginator.num_pages)
+    # page = request.GET.get('page')
+    # try:
+    #     object_list = paginator.page(page)
+    # except PageNotAnInteger:
+    #     object_list = paginator.page(1)
+    # except EmptyPage:
+    #     object_list = paginator.page(paginator.num_pages)
 
     return render(request, template, locals())
 
@@ -136,15 +136,15 @@ def articulo_busqueda_zona(request, pk=None, template='revista/por_zona.html'):
     else:
          zonas_articulos = Articulos.objects.filter(idioma='es', idzona=pk);
 
-    paginator = Paginator(zonas_articulos, 10)
+    # paginator = Paginator(zonas_articulos, 10)
 
-    page = request.GET.get('page')
-    try:
-        object_list = paginator.page(page)
-    except PageNotAnInteger:
-        object_list = paginator.page(1)
-    except EmptyPage:
-        object_list = paginator.page(paginator.num_pages)
+    # page = request.GET.get('page')
+    # try:
+    #     object_list = paginator.page(page)
+    # except PageNotAnInteger:
+    #     object_list = paginator.page(1)
+    # except EmptyPage:
+    #     object_list = paginator.page(paginator.num_pages)
 
     return render(request, template, locals())
 
@@ -155,15 +155,15 @@ def articulo_busqueda_autor(request, pk=None, template='revista/por_autor.html')
     else:
          autor_articulos = Articulos.objects.filter(idioma='es', autor=pk);
 
-    paginator = Paginator(autor_articulos, 10)
+    # paginator = Paginator(autor_articulos, 10)
 
-    page = request.GET.get('page')
-    try:
-        object_list = paginator.page(page)
-    except PageNotAnInteger:
-        object_list = paginator.page(1)
-    except EmptyPage:
-        object_list = paginator.page(paginator.num_pages)
+    # page = request.GET.get('page')
+    # try:
+    #     object_list = paginator.page(page)
+    # except PageNotAnInteger:
+    #     object_list = paginator.page(1)
+    # except EmptyPage:
+    #     object_list = paginator.page(paginator.num_pages)
 
     return render(request, template, locals())
 
