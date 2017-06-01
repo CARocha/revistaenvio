@@ -12,7 +12,7 @@ def years_archive(request):
         for en in Revistas.objects.filter(ididioma='en').order_by('-ano').values_list('ano', flat=True):
             years.append((en,en))
         all_year = list(sorted(set(years)))
-        all_year.append(('Choose one year','Choose one year'))
+        all_year.append(('Choose a year','Choose a year'))
 
     else:
         ultima = Revistas.objects.filter(ididioma='es').latest('numero')

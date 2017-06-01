@@ -220,7 +220,68 @@
 				{% disqus_show_comments %}
 			</div>
 		</div>
-		{% include "sidebar.html" %}
+		<div class="hidden-xs col-sm-4 col-md-4 col-lg-4">
+            <div class="sidebar">
+                <div class="lema">
+                    <p>
+                       
+                        
+                            {% trans "Envío es información y análisis" %}<br>
+                            {% trans "de Nicaragua desde Nicaragua," %}<br>
+                            {% trans "de Centroamérica desde Centroamérica" %} <br>
+                            {% trans "y de ese otro mundo posible" %}<br>
+                            {% trans "por el que trabajamos." %}
+                        
+                       
+
+                    </p>
+                    <div class="borde"></div>
+                </div>
+                {% include "busqueda_go.html" %}
+                <div class="idioma-container">
+                    <h6>{% trans "Idioma" %}</h6>
+                    <div class="idiomas container-fluid">
+                        <div class="row">
+                            <a href="/lang/es/" class="col-xs-6 col-sm-6 col-md-4 col-lg-4 es {% if LANGUAGE_CODE == 'es' %}activo{% endif %} ">
+                                {% trans "Español"%}
+                            </a>
+                            <a href="/lang/en/" class="col-xs-6 col-sm-6 col-md-4 col-lg-4 en {% if LANGUAGE_CODE == 'en' %}activo{% endif %}">
+                                {% trans "Inglés"%}
+                            </a>
+                            <a href="http://www.ans21.org" class="col-xs-6 col-sm-6 col-md-4 col-lg-4 it" target="_blank">
+                                {% trans "Italiano"%}
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+				<div class="suscripcion-container ">
+					<h6>{% trans "En este mismo número"%}:</h6>
+					{% for obj in  articulos %}
+						<div class="item-detalle">
+
+							<div class="detalle-pais">
+								<div class="pais">
+									{{obj.idzona}}
+									<span>
+										{% if obj.opinion == True %}
+		                                   - OPINIÓN 
+		                                {% endif %}
+									</span>
+								</div>
+							</div>
+							<a class="link-titulo" href="{% url 'articulo-detalle' obj.id %}">
+								{{obj.titulo|truncatewords:22|safe }}
+							</a>
+						</div>
+					{% endfor %}
+
+
+
+				</div>
+
+            </div>
+        </div>
 	</div>
 </div>
 {% endblock contenido %}

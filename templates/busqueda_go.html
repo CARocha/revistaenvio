@@ -1,6 +1,6 @@
 {% load i18n %}
 <form class="search-container" action="{% url 'googlesearch-results' %}" id="cse-search-box" method='GET'>
-	<h6><span class="fa fa-search"></span> {% trans "Buscar" %}</h6>
+	<h6><span class="fa fa-search"></span> {% trans "Buscar por palabras" %}</h6>
 	<div class="search-box">
     <input onclick="updateState.focus();" onblur="updateState.blur();" type="text" name="q" id="searchfield" class="search-input sm-imput" placeholder="Buscar">
 

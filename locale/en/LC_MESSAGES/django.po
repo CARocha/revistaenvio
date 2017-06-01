@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-20 21:34+0000\n"
+"POT-Creation-Date: 2017-06-01 10:36-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,249 +17,398 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: googlesearch/templates/googlesearch/inclusion_tags/form.html:8
-msgid "Search"
-msgstr "Buscar"
-
-#: googlesearch/templates/googlesearch/results.html:7
-msgid "Search results"
-msgstr "Resultado de la busqueda"
-
-#: revista/models.py:51
+#: revista/models.py:54
 msgid "Nombre"
 msgstr "Name"
 
-#: revista/models.py:52
+#: revista/models.py:55
 msgid "Correo"
 msgstr "Mail"
 
-#: revista/models.py:53
+#: revista/models.py:56
 msgid "Titulo"
 msgstr "Title"
 
-#: revista/models.py:54
+#: revista/models.py:57
 msgid "Cargo"
 msgstr "Position"
 
-#: revista/models.py:55
+#: revista/models.py:58
 msgid "Nota"
 msgstr "Note"
 
-#: revista/models.py:56
+#: revista/models.py:59
 msgid "Nombre ingles"
 msgstr "Name in English"
 
-#: revista/models.py:57
+#: revista/models.py:60
 msgid "Nombre en español"
 msgstr "Name in Spanish"
 
-#: revista/models.py:63
-msgid "autores"
-msgstr "Author's"
-
-#: revista/models.py:64
+#: revista/models.py:67
 msgid "Autor"
 msgstr "Author"
 
-#: revista/models.py:65
+#: revista/models.py:68 templates/revista/busqueda_avanzada.html:117
 msgid "Autores"
-msgstr ""
+msgstr "By author"
 
-#: revista/models.py:68
+#: revista/models.py:72
 msgid "Enero"
 msgstr "January"
 
-#: revista/models.py:69
+#: revista/models.py:73
 msgid "Febrero"
 msgstr "February"
 
-#: revista/models.py:70
+#: revista/models.py:74
 msgid "Marzo"
 msgstr "March"
 
-#: revista/models.py:71
+#: revista/models.py:75
 msgid "Abril"
 msgstr "April"
 
-#: revista/models.py:72
+#: revista/models.py:76
 msgid "Mayo"
 msgstr "May"
 
-#: revista/models.py:73
+#: revista/models.py:77
 msgid "Junio"
 msgstr "June"
 
-#: revista/models.py:74
+#: revista/models.py:78
 msgid "Julio"
 msgstr "July"
 
-#: revista/models.py:75
+#: revista/models.py:79
 msgid "Agosto"
 msgstr "August"
 
-#: revista/models.py:76
+#: revista/models.py:80
 msgid "Septiembre"
 msgstr "September"
 
-#: revista/models.py:77
+#: revista/models.py:81
 msgid "Octubre"
 msgstr "October"
 
-#: revista/models.py:78
+#: revista/models.py:82
 msgid "Noviembre"
 msgstr "November"
 
-#: revista/models.py:79
+#: revista/models.py:83
 msgid "Diciembre"
 msgstr "December"
 
-#: revistaenvio/settings.py:90 templates/flatpages/default.html:69
-#: templates/index.html:107 templates/revista/archivos.html:79
-#: templates/revista/articulos_detail.html:150
-#: templates/revista/busqueda_avanzada.html:110
-#: templates/revista/suscribete.html:78
+#: revistaenvio/settings.py:93 templates/base.html:170
+#: templates/sidebar.html:27
 msgid "Español"
 msgstr "Spanish"
 
-#: revistaenvio/settings.py:91
+#: revistaenvio/settings.py:94
 msgid "English"
 msgstr "Inglés"
 
-#: templates/base.html:92 templates/base.html:101
+#: templates/base.html:101 templates/base.html:109
 msgid "Inicio"
 msgstr "Home"
 
-#: templates/base.html:93 templates/base.html:102
-msgid "¿Quiénes Somos?"
+#: templates/base.html:102
+msgid "¿Quiénes somos?"
 msgstr "About us?"
 
-#: templates/base.html:94 templates/base.html:103
+#: templates/base.html:103 templates/base.html:111
+msgid "Búsqueda"
+msgstr "Search"
+
+#: templates/base.html:104 templates/base.html:112
+#: templates/revista/busqueda_avanzada.html:122
+msgid "Archivo"
+msgstr "Back Issues"
+
+#: templates/base.html:105 templates/base.html:113
 msgid "Equipo"
 msgstr "Team"
 
-#: templates/base.html:95 templates/base.html:104
-msgid "Enlaces"
-msgstr "Links"
+#: templates/base.html:110
+msgid "¿Quiénes Somos?"
+msgstr "About us?"
 
-#: templates/base.html:96 templates/base.html:105
-#: templates/revista/suscribete.html:54
-msgid "Suscribete"
-msgstr "Suscriptions"
-
-#: templates/base.html:97 templates/base.html:106
-msgid "Contacto"
-msgstr "Contact us"
-
-#: templates/base.html:151
-msgid "Desarrollado por "
-msgstr "Developed by "
-
-#: templates/base.html:159
-msgid ""
-"Revista mensual de ánalisis <br>\n"
-"                                    de Nicaragua y Centro America\n"
-"                                    "
-msgstr " a monthly magazine of analysis on Central America"
-
-#: templates/busqueda_go.html:3 templates/busqueda_go.html:8
-#: templates/revista/articulos_detail.html:137
-msgid "Buscar"
-msgstr "Search"
-
-#: templates/busqueda_go.html:11 templates/revista/articulos_detail.html:142
-msgid "Búsqueda Avanzada"
-msgstr "Advanced search"
-
-#: templates/flatpages/default.html:57 templates/index.html:95
-#: templates/revista/archivos.html:67
-#: templates/revista/articulos_detail.html:130
-#: templates/revista/busqueda_avanzada.html:98
-#: templates/revista/suscribete.html:66
-msgid ""
-"Envío es información y análisis de Nicaragua desde Nicaragua de "
-"Centroamérica desde Centroamérica y de ese otro mundo posible por el que "
-"trabajamos."
-msgstr ""
-"Envío offers information and analysis on Nicaragua from Nicaragua, on "
-"Central America from Central America, on the larger world we want to "
-"transform and on that other possible world we are working to bring about."
-
-#: templates/flatpages/default.html:65 templates/index.html:103
-#: templates/revista/archivos.html:75
-#: templates/revista/articulos_detail.html:146
-#: templates/revista/busqueda_avanzada.html:106
-#: templates/revista/suscribete.html:74
+#: templates/base.html:166 templates/revista/suscribete.html:136
+#: templates/sidebar.html:23
 msgid "Idioma"
 msgstr "Language"
 
-#: templates/flatpages/default.html:72 templates/index.html:110
-#: templates/revista/archivos.html:82
-#: templates/revista/articulos_detail.html:153
-#: templates/revista/busqueda_avanzada.html:113
-#: templates/revista/suscribete.html:81
+#: templates/base.html:173
 msgid "Ingles"
 msgstr "English"
 
-#: templates/flatpages/default.html:79 templates/index.html:117
-#: templates/revista/articulos_detail.html:160
-#: templates/revista/busqueda_avanzada.html:120
-#: templates/revista/suscribete.html:88
-msgid "ARCHIVO"
-msgstr "ARCHIVE"
+#: templates/base.html:176 templates/sidebar.html:33
+msgid "Italiano"
+msgstr "Italian"
 
-#: templates/flatpages/default.html:92 templates/index.html:133
-#: templates/revista/archivos.html:90
-#: templates/revista/busqueda_avanzada.html:133
-msgid "Suscríbete"
-msgstr "Subscribe"
+#: templates/base.html:222
+msgid "Desarrollado por "
+msgstr "Developed by "
 
-#: templates/flatpages/default.html:96 templates/index.html:137
-#: templates/revista/archivos.html:94
-#: templates/revista/busqueda_avanzada.html:137
-msgid "Suscripción a la revista"
-msgstr "Magazine Subscription"
+#: templates/base.html:230
+msgid ""
+"Revista mensual de ánalisis <br>\n"
+"                                    de Nicaragua y Centroamérica\n"
+"                                    "
+msgstr ""
+"The monthly magazine of analysis<br>\n"
+"\t\t\t\t\t\t\t\t\ton Central America\t\t\t\t\t\t\t\t\t"
 
-#: templates/flatpages/default.html:104 templates/index.html:145
-#: templates/revista/archivos.html:102
-#: templates/revista/busqueda_avanzada.html:145
-#: templates/revista/suscribete.html:103
-msgid "Donación"
-msgstr "Donation"
+#: templates/busqueda_go.html:3
+msgid "Buscar por palabras"
+msgstr "Search by words"
 
-#: templates/flatpages/default.html:108 templates/index.html:149
-#: templates/revista/archivos.html:106
-#: templates/revista/busqueda_avanzada.html:149
-#: templates/revista/suscribete.html:107
-msgid "Haz tu donación ahora"
-msgstr "Make your donation now"
+#: templates/busqueda_go.html:7
+msgid "Otras búsquedas"
+msgstr "Other searches"
 
-#: templates/index.html:54
-msgid "NÚMERO"
+#: templates/index.html:57
+msgid "Número"
 msgstr "Number"
 
-#: templates/index.html:64
+#: templates/index.html:75 templates/revista/busqueda_mega_avanzada.html:66
+#: templates/revista/por_autor.html:68 templates/revista/por_tema.html:68
+#: templates/revista/por_zona.html:67
 msgid "Continuar.."
 msgstr "Read more.."
 
-#: templates/index.html:76
-msgid "Nro. anterior"
-msgstr "Nro. previous"
+#: templates/index.html:87
+msgid "Siguiente"
+msgstr "Next Issue"
 
-#: templates/index.html:82
-msgid "Nro. siguiente"
-msgstr "Nro. next"
+#: templates/index.html:93 templates/revista/busqueda_mega_avanzada.html:75
+msgid "Anterior"
+msgstr "Previous Issue"
 
-#: templates/index.html:157
-msgid "Última publicación"
-msgstr "Last post"
+#: templates/revista/archivos.html:26
 
-#: templates/revista/articulos_detail.html:86
-msgid "Compartir este articulo"
-msgstr "Share this article"
+msgid "Archivo año"
+msgstr "Back Issues Year"
 
-#: templates/revista/articulos_detail.html:175
+#: templates/revista/articulos_detail.html:102
+msgid "NÚMERO"
+msgstr "Number"
+
+#: templates/revista/articulos_detail.html:163
 msgid "En este mismo número"
 msgstr "Also"
 
-msgid "Revista mensual de ánalisisde Nicaragua y Centro America"
-msgstr " a monthly magazine of analysis on Central America"
+#: templates/revista/articulos_detail.html:184
+msgid "Compartir este articulo"
+msgstr "Share this article"
+
+#: templates/revista/busqueda_avanzada.html:107
+msgid "Temas"
+msgstr "By topic"
+
+#: templates/revista/busqueda_avanzada.html:112
+msgid "Países"
+msgstr "By country"
+
+#: templates/revista/busqueda_avanzada.html:128
+msgid "Búsqueda con google"
+msgstr "Search with google"
+
+#: templates/revista/busqueda_avanzada.html:138
+msgid "Buscar Tema"
+msgstr "Search"
+
+#: templates/revista/busqueda_avanzada.html:161
+msgid "Buscar País"
+msgstr "Search"
+
+#: templates/revista/busqueda_avanzada.html:182
+msgid "Buscar Autor"
+msgstr "Search"
+
+#: templates/revista/busqueda_mega_avanzada.html:51
+#, fuzzy
+#| msgid "Búsqueda Avanzada"
+msgid "Búsqueda avanzada:"
+msgstr "Advanced search"
+
+#: templates/revista/busqueda_mega_avanzada.html:79
+msgid "Pagina"
+msgstr ""
+
+#: templates/revista/busqueda_mega_avanzada.html:79
+msgid "de"
+msgstr ""
+
+#: templates/revista/busqueda_mega_avanzada.html:83
+msgid "Siguientes"
+msgstr "Next Issue"
+
+#: templates/revista/por_autor.html:52
+msgid "Búsqueda por autor:"
+msgstr "Search by Author:"
+
+#: templates/revista/por_tema.html:52
+msgid "Búsqueda por tema:"
+msgstr "Search by topic:"
+
+#: templates/revista/por_zona.html:51
+#, fuzzy
+#| msgid "Búsqueda Avanzada"
+msgid "Búsqueda por zona:"
+msgstr "Search by country"
+
+#: templates/revista/suscribete.html:53
+msgid "Suscribete"
+msgstr "Suscriptions"
+
+#: templates/revista/suscribete.html:63
+#, fuzzy
+#| msgid "Suscripción a la revista"
+msgid "Suscripción anual de 11 números"
+msgstr "Magazine Subscription"
+
+#: templates/revista/suscribete.html:69
+msgid "Nombres y apellidos"
+msgstr ""
+
+#: templates/revista/suscribete.html:75
+msgid "Pais"
+msgstr ""
+
+#: templates/revista/suscribete.html:81
+msgid "Ciudad"
+msgstr ""
+
+#: templates/revista/suscribete.html:88
+#, fuzzy
+#| msgid "Donación"
+msgid "Dirección"
+msgstr "Donation"
+
+#: templates/revista/suscribete.html:94
+msgid "Institución"
+msgstr ""
+
+#: templates/revista/suscribete.html:100
+msgid "Correo electrónico"
+msgstr ""
+
+#: templates/revista/suscribete.html:106
+msgid "Código postal"
+msgstr ""
+
+#: templates/revista/suscribete.html:112
+msgid "Apartado postal"
+msgstr ""
+
+#: templates/revista/suscribete.html:118
+msgid "Teléfono"
+msgstr ""
+
+#: templates/revista/suscribete.html:124
+msgid "Fax"
+msgstr ""
+
+#: templates/revista/suscribete.html:130
+#, fuzzy
+#| msgid "Suscripción a la revista"
+msgid "Suscripción"
+msgstr "Magazine Subscription"
+
+#: templates/revista/suscribete.html:142
+msgid "Envio"
+msgstr ""
+
+#: templates/revista/suscribete.html:148
+msgid "Datos tarjeta de crédito"
+msgstr ""
+
+#: templates/revista/suscribete.html:154
+msgid "Número de tarjeta"
+msgstr ""
+
+#: templates/revista/suscribete.html:160
+msgid "Fecha de vencimiento"
+msgstr ""
+
+#: templates/revista/suscribete.html:166
+msgid "Nombre del tarjeta habiente"
+msgstr ""
+
+#: templates/sidebar.html:10
+msgid "Envío es información y análisis"
+msgstr "Envío is information and analysis"
+
+#: templates/sidebar.html:11
+msgid "de Nicaragua desde Nicaragua,"
+msgstr "about Nicaragua from Nicaragua,"
+
+#: templates/sidebar.html:12
+msgid "de Centroamérica desde Centroamérica"
+msgstr "about Central America from Central America"
+
+#: templates/sidebar.html:13
+msgid "y de ese otro mundo posible"
+msgstr "and about that other possible world"
+
+#: templates/sidebar.html:14
+msgid "por el que trabajamos."
+msgstr "for which we are working."
+
+#: templates/sidebar.html:30
+msgid "Inglés"
+msgstr "English"
+
+#: templates/sidebar.html:41
+msgid "Suscríbete"
+msgstr "Subscribe"
+
+#: templates/sidebar.html:45
+msgid "Suscripción a la revista"
+msgstr "Magazine Subscription"
+
+#: templates/sidebar.html:53
+msgid "Donación"
+msgstr "Donation"
+
+#: templates/sidebar.html:57
+msgid "Haz tu donación ahora"
+msgstr "Donate"
+
+#: templates/sidebar.html:65
+msgid "Última número"
+msgstr "Latest issue"
+
+#~ msgid ""
+#~ "                            Envío es información y análisis<br>de "
+#~ "Nicaragua desde Nicaragua,<br> de Centroamérica desde Centroamérica<br>y "
+#~ "de ese otro mundo posible<br>por el que trabajamos.\n"
+#~ "                        "
+#~ msgstr ""
+#~ "Envío offers information and analysis on Nicaragua from Nicaragua, on "
+#~ "Central America from Central America, on the larger world we want to "
+#~ "transform and on that other possible world we are working to bring about."
+
+#~ msgid "Search"
+#~ msgstr "Buscar"
+
+#~ msgid "Search results"
+#~ msgstr "Resultado de la busqueda"
+
+#~ msgid "autores"
+#~ msgstr "Author's"
+
+#~ msgid "Enlaces"
+#~ msgstr "Links"
+
+#~ msgid "Contacto"
+#~ msgstr "Contact us"
+
+#~ msgid "Última publicación"
+#~ msgstr "Last post"
+
+#~ msgid "Revista mensual de ánalisisde Nicaragua y Centro America"
+#~ msgstr " a monthly magazine of analysis on Central America"

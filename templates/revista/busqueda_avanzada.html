@@ -104,17 +104,17 @@ function activaTab(tab){
                                     
                                     <li class="active">
                                         <a href="#aaa" data-toggle="tab" aria-expanded="true">
-                                            <span class="fa fa-tag"></span> Temas  
+                                            <span class="fa fa-tag"></span> {% trans "Temas"%} 
                                         </a>
                                     </li>
                                     <li>
                                         <a href="#bbb" data-toggle="tab">
-                                            <span class="fa fa-globe"></span> Países
+                                            <span class="fa fa-globe"></span> {% trans "Países"%}
                                         </a>
                                     </li>
                                     <li>
                                         <a href="#ccc" data-toggle="tab">
-                                            <span class="fa fa-user"></span> Autores
+                                            <span class="fa fa-user"></span> {% trans "Autores"%}
                                         </a>
                                     </li>
                                     <li>
@@ -125,7 +125,7 @@ function activaTab(tab){
                                     
                                     <li>
                                         <a href="#eee" data-toggle="tab">
-                                            <span class="fa fa-google"></span> Búsqueda con google
+                                            <span class="fa fa-google"></span> {% trans "Búsqueda con google"%}
                                         </a>
                                     </li>
 
@@ -135,7 +135,8 @@ function activaTab(tab){
                                         <div id="temas-envios">
                                             <div class="left-inner-addon ">
                                                 <i class="fa fa-search"></i>
-                                                <input type="search" class="search form-control" placeholder="Buscar Tema" />
+                                                <input type="search" class="search form-control" placeholder='{% trans "Buscar Tema"%}' />
+                                                
                                             </div>
 
                                           <ul class="list list-group">
@@ -157,7 +158,7 @@ function activaTab(tab){
                                         <div id="zona-envios">
                                             <div class="left-inner-addon ">
                                                 <i class="fa fa-search"></i>
-                                                <input type="search" class="search form-control" placeholder="Buscar País" />
+                                                <input type="search" class="search form-control" placeholder='{% trans "Buscar País"%}' />
                                             </div>
                                             <ul class="list list-group">
                                             {% for obj in  all_zonas %}
@@ -178,7 +179,7 @@ function activaTab(tab){
                                         <div id="autor-envios">
                                           <div class="left-inner-addon ">
                                                 <i class="fa fa-search"></i>
-                                                <input type="search" class="search form-control" placeholder="Buscar Autor" />
+                                                <input type="search" class="search form-control" placeholder='{% trans "Buscar Autor"%}'/>
                                             </div>
                                             <ul class="list list-group">
                                             {% for obj in  all_autores %}
