@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-01 10:36-0600\n"
+"POT-Creation-Date: 2017-08-09 09:52-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -102,7 +102,7 @@ msgid "Diciembre"
 msgstr "December"
 
 #: revistaenvio/settings.py:93 templates/base.html:170
-#: templates/sidebar.html:27
+#: templates/revista/articulos_detail.html:246 templates/sidebar.html:27
 msgid "Español"
 msgstr "Spanish"
 
@@ -135,8 +135,8 @@ msgstr "Team"
 msgid "¿Quiénes Somos?"
 msgstr "About us?"
 
-#: templates/base.html:166 templates/revista/suscribete.html:136
-#: templates/sidebar.html:23
+#: templates/base.html:166 templates/revista/articulos_detail.html:242
+#: templates/revista/suscribete.html:136 templates/sidebar.html:23
 msgid "Idioma"
 msgstr "Language"
 
@@ -144,7 +144,8 @@ msgstr "Language"
 msgid "Ingles"
 msgstr "English"
 
-#: templates/base.html:176 templates/sidebar.html:33
+#: templates/base.html:176 templates/revista/articulos_detail.html:252
+#: templates/sidebar.html:33
 msgid "Italiano"
 msgstr "Italian"
 
@@ -188,7 +189,6 @@ msgid "Anterior"
 msgstr "Previous Issue"
 
 #: templates/revista/archivos.html:26
-
 msgid "Archivo año"
 msgstr "Back Issues Year"
 
@@ -197,12 +197,37 @@ msgid "NÚMERO"
 msgstr "Number"
 
 #: templates/revista/articulos_detail.html:163
+#: templates/revista/articulos_detail.html:259
 msgid "En este mismo número"
 msgstr "Also"
 
 #: templates/revista/articulos_detail.html:184
 msgid "Compartir este articulo"
 msgstr "Share this article"
+
+#: templates/revista/articulos_detail.html:229 templates/sidebar.html:10
+msgid "Envío es información y análisis"
+msgstr "Envío is information and analysis"
+
+#: templates/revista/articulos_detail.html:230 templates/sidebar.html:11
+msgid "de Nicaragua desde Nicaragua,"
+msgstr "about Nicaragua from Nicaragua,"
+
+#: templates/revista/articulos_detail.html:231 templates/sidebar.html:12
+msgid "de Centroamérica desde Centroamérica"
+msgstr "about Central America from Central America"
+
+#: templates/revista/articulos_detail.html:232 templates/sidebar.html:13
+msgid "y de ese otro mundo posible"
+msgstr "and about that other possible world"
+
+#: templates/revista/articulos_detail.html:233 templates/sidebar.html:14
+msgid "por el que trabajamos."
+msgstr "for which we are working."
+
+#: templates/revista/articulos_detail.html:249 templates/sidebar.html:30
+msgid "Inglés"
+msgstr "English"
 
 #: templates/revista/busqueda_avanzada.html:107
 msgid "Temas"
@@ -338,30 +363,6 @@ msgstr ""
 msgid "Nombre del tarjeta habiente"
 msgstr ""
 
-#: templates/sidebar.html:10
-msgid "Envío es información y análisis"
-msgstr "Envío is information and analysis"
-
-#: templates/sidebar.html:11
-msgid "de Nicaragua desde Nicaragua,"
-msgstr "about Nicaragua from Nicaragua,"
-
-#: templates/sidebar.html:12
-msgid "de Centroamérica desde Centroamérica"
-msgstr "about Central America from Central America"
-
-#: templates/sidebar.html:13
-msgid "y de ese otro mundo posible"
-msgstr "and about that other possible world"
-
-#: templates/sidebar.html:14
-msgid "por el que trabajamos."
-msgstr "for which we are working."
-
-#: templates/sidebar.html:30
-msgid "Inglés"
-msgstr "English"
-
 #: templates/sidebar.html:41
 msgid "Suscríbete"
 msgstr "Subscribe"
@@ -379,7 +380,7 @@ msgid "Haz tu donación ahora"
 msgstr "Donate"
 
 #: templates/sidebar.html:65
-msgid "Última número"
+msgid "Último número"
 msgstr "Latest issue"
 
 #~ msgid ""
