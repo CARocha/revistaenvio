@@ -50,19 +50,20 @@
             <div class="revista-actual">
 
                 <span class="fa fa-search"> {% trans "Búsqueda por tema:" %}
-                <strong>{{tema_buscado}}</strong>
+                    <strong>{{tema_buscado}}</strong>
                 </span>
             </div>
             <div class="articulos">
                 {% paginate 10 temas_articulos %}
                 {% for obj in temas_articulos %}
                     <div class="item">
-                        <h6 class="pais">{{obj.idzona}}
+                        
+                        <h5 class="articulo-titulo"><a href="{% url 'articulo-detalle' obj.id %}">{{obj}}</a></h5>
+                        <h6 class="pais">{{obj.revista.ano}} {{obj.revista.get_mes_display}} {{obj.idzona}}
                                 {% if obj.opinion == True %}
                                    <span> - OPINIÓN</span>
                                 {% endif %}
                         </h6>
-                        <h5 class="articulo-titulo"><a href="{% url 'articulo-detalle' obj.id %}">{{obj}}</a></h5>
                         <p>
                             {{obj.texto|truncatewords:22|striptags|safe }}
                             <span><a href="{% url 'articulo-detalle' obj.id %}">{% trans "Continuar.."%}</a></span>

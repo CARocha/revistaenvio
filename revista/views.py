@@ -113,9 +113,9 @@ def articulo_busqueda_tema(request, pk=None, template='revista/por_tema.html'):
     cur_language = translation.get_language()
     tema_buscado = Temas.objects.get(id=pk)
     if cur_language == 'en':
-        temas_articulos = Articulos.objects.filter(idioma='en', temas=pk);
+        temas_articulos = Articulos.objects.filter(idioma='en', temas=pk).order_by('-id');
     else:
-         temas_articulos = Articulos.objects.filter(idioma='es', temas=pk);
+         temas_articulos = Articulos.objects.filter(idioma='es', temas=pk).order_by('-id');
 
     # paginator = Paginator(temas_articulos, 10)
 
@@ -131,10 +131,11 @@ def articulo_busqueda_tema(request, pk=None, template='revista/por_tema.html'):
 
 def articulo_busqueda_zona(request, pk=None, template='revista/por_zona.html'):
     cur_language = translation.get_language()
+    zona_buscado = Zonas.objects.get(id=pk)
     if cur_language == 'en':
-        zonas_articulos = Articulos.objects.filter(idioma='en', idzona=pk);
+        zonas_articulos = Articulos.objects.filter(idioma='en', idzona=pk).order_by('-id');
     else:
-         zonas_articulos = Articulos.objects.filter(idioma='es', idzona=pk);
+         zonas_articulos = Articulos.objects.filter(idioma='es', idzona=pk).order_by('-id');
 
     # paginator = Paginator(zonas_articulos, 10)
 
@@ -150,10 +151,11 @@ def articulo_busqueda_zona(request, pk=None, template='revista/por_zona.html'):
 
 def articulo_busqueda_autor(request, pk=None, template='revista/por_autor.html'):
     cur_language = translation.get_language()
+    autor_buscado = Autores.objects.get(id=pk)
     if cur_language == 'en':
-        autor_articulos = Articulos.objects.filter(idioma='en', autor=pk);
+        autor_articulos = Articulos.objects.filter(idioma='en', autor=pk).order_by('-id');
     else:
-         autor_articulos = Articulos.objects.filter(idioma='es', autor=pk);
+         autor_articulos = Articulos.objects.filter(idioma='es', autor=pk).order_by('-id');
 
     # paginator = Paginator(autor_articulos, 10)
 
