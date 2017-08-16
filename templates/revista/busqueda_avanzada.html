@@ -46,7 +46,18 @@ function activaTab(tab){
  urlmenu.onchange = function() {
       window.open( this.options[ this.selectedIndex ].value, '_self');
  };
+
+$('a[data-toggle="tab"]').on('show.bs.tab', function(e) {
+    localStorage.setItem('activeTab', $(e.target).attr('href'));
+});
+var activeTab = localStorage.getItem('activeTab');
+if (activeTab) {
+   $('.nav-tabs a[href="' + activeTab + '"]').tab('show');
+}
+
 </script>
+
+
 {% endblock extra_js %}
 
 {% block contenido %}
