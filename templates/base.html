@@ -133,11 +133,14 @@
                     {% endthumbnail %}
                   
                   <div class="carousel-caption">
-                    <p>{{x.frase|safe}}
-                    </p>
-                    <p class="autor-slide">
-                            - {{x.autor}}
-                    </p>
+                  {% if LANGUAGE_CODE == 'es' %}
+                    <p>{{x.frase|safe}}</p>
+                    <p class="autor-slide">- {{x.autor}}</p>
+                  {% else %}
+                    <p>{{x.frase_en|safe}}</p>
+                    <p class="autor-slide">- {{x.autor_en}}</p>
+                  {% endif %}
+                    
                   </div>
                 </div>
                 {% endfor %}

@@ -21,7 +21,9 @@ class Fotos(models.Model):
 	portada = models.ForeignKey(FotosPortada)
 	imagen = ImageField(upload_to=get_file_path, null=True, blank=True)
 	frase = models.TextField()
+	frase_en = models.TextField(null=True, blank=True)
 	autor = models.CharField(max_length=250)
+	autor_en = models.CharField(max_length=250, null=True, blank=True)
 
 	fileDir = 'slider/'
 
