@@ -66,14 +66,14 @@ def busqueda(request, template='revista/busqueda_avanzada.html'):
     all_year1 = list(sorted(set(years)))
     fecha = all_year1[-1][0]
     if cur_language == 'en':
-        all_temas = Temas.objects.all()
-        all_zonas = Zonas.objects.all()
-        all_autores = Autores.objects.all()
+        all_temas = Temas.objects.all().order_by('tema_en')
+        all_zonas = Zonas.objects.all().order_by('zona_en')
+        all_autores = Autores.objects.all().order_by('nombre_en')
         query = Revistas.objects.filter(ididioma='en',ano=unicode(fecha)).order_by('-mes')
     else:
-        all_temas = Temas.objects.all()
-        all_zonas = Zonas.objects.all()
-        all_autores = Autores.objects.all()
+        all_temas = Temas.objects.all().order_by('tema_es')
+        all_zonas = Zonas.objects.all().order_by('zona_es')
+        all_autores = Autores.objects.all().order_by('nombre_es')
         query = Revistas.objects.filter(ididioma='es',ano=unicode(fecha)).order_by('-mes')
     
 
