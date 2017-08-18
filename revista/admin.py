@@ -54,14 +54,16 @@ class IdiomasAdmin(ImportExportModelAdmin):
     pass
 
 class ZonasAdmin(ImportExportModelAdmin):
-    pass
+    list_display = ('zona_es', 'zona_en')
+    search_fields = ('zona_es', 'zona_en')
 
 class TemasAdmin(ImportExportModelAdmin):
-    pass
+    list_display = ('tema_es', 'tema_en')
+    search_fields = ('tema_es', 'tema_en')
 
 class AutoresAdmin(ImportExportModelAdmin):
-    list_display = ['id', 'nombre','email']
-    search_fields = ['nombre']
+    list_display = ['id', 'nombre','email','nombre_en']
+    search_fields = ['nombre', 'nombre_en']
 
 class EnlacesAdmin(ImportExportModelAdmin):
     pass
@@ -83,6 +85,7 @@ class colorAdmin(ImportExportModelAdmin):
     def colored_name(self, obj):
         return format_html('<span style="background-color:{};width:40px; heigth:20px; color:{};">COLOR</span>',obj.color1,obj.color1)
     colored_name.short_description = 'Color visual'
+
 
 # Register your models here.
 admin.site.register(Articulos, ArticulosAdmin)
