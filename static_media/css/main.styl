@@ -108,7 +108,6 @@ sombras()
 			-webkit-box-sizing border-box
 			-moz-box-sizing border-box
 			box-sizing border-box
-			float left
 			width 10%
 			height 40px
 			color #555557
@@ -119,7 +118,6 @@ sombras()
 			-moz-box-sizing border-box
 			box-sizing border-box
 			height 38px
-			float left
 			background-color transparent
 			border 0px
 			padding 10px
@@ -129,13 +127,19 @@ sombras()
 			outline 0px
 			&:focus
 				background-color transparent
-		.search-avanzada
-			display block
-			float right
-			text-decoration none
-			font-family "Roboto", Arial, sans-serif
-			padding 5px 0px
-			text-align right
+		
+		.input-group-addon
+			background transparent
+			border none
+.search-avanzada
+	display block
+	float right
+	text-decoration none
+	font-family "Roboto", Arial, sans-serif
+	padding 5px 0px
+	text-align right
+.form-control:focus
+	box-shadow none
 .lema p
 	font-family "Roboto", Arial, sans-serif
 	font-style normal
@@ -261,8 +265,8 @@ span.fa.fa-quote-right
 		float left
 	a.right
 		float right
-span.fa.fa-arrow-right
-	margin-left 10px
+// span.fa.fa-arrow-right
+// 	margin-left 10px
 span.fa.fa-arrow-left
 	margin-right 10px
 footer
@@ -309,6 +313,7 @@ footer
 		margin 40px 0px
 		.search-box
 			height 35px !important
+			
 	.search-container, .idioma-container
 		margin 0px
 	.idiomas a.it
@@ -318,7 +323,16 @@ footer
 .sm-imput
 	width 100%
 	height 32px !important
-	
+input[type="text"].search-input::-webkit-input-placeholder
+	color: transparent;
+input[type="text"].search-input::-moz-placeholder /* Firefox 19+ */
+	color: transparent;
+input[type="text"].search-input::-ms-input-placeholder/* IE 10+ */
+	color: transparent;
+
+.icon-s{
+	position: relative;
+}
 	
 
 

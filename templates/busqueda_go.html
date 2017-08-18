@@ -1,11 +1,12 @@
 {% load i18n %}
 <form class="search-container" action="{% url 'googlesearch-results' %}" id="cse-search-box" method='GET'>
-	<h6><span class="fa fa-search"></span> {% trans "Buscar por palabras" %}</h6>
-	<div class="search-box">
-    <input onclick="updateState.focus();" onblur="updateState.blur();" type="text" name="q" id="searchfield" class="search-input sm-imput" placeholder="Buscar">
+    <div class="search-box input-group" >
+        <div class="input-group-addon"><span class="fa fa-search icon-s"></span></div>
+        <input onclick="updateState.focus();" onblur="updateState.blur();" type="text" name="q" id="searchfield" class="search-input sm-imput form-control" placeholder="Buscar">
 
-    <a class="search-avanzada" href="/busqueda-avanzada/"><span class="fa fa-search"></span> {% trans "Otras búsquedas" %}</a>
+    
     </div>
+    <a class="search-avanzada" href="/busqueda-avanzada/"><span class="fa fa-search"></span> {% trans "Otras búsquedas" %}</a>
 </form>
 
 <script type="text/javascript">
