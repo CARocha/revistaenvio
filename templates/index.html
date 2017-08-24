@@ -72,7 +72,7 @@
                         <h5 class="articulo-titulo"><a href="{% url 'articulo-detalle' obj.id %}">{{obj}}</a></h5>
                         <p>
                         	{{obj.texto|truncatewords:22|striptags|safe }}
-                        	<span><a href="{% url 'articulo-detalle' obj.id %}"><span class="fa fa-arrow-right"></a></span>
+                        	<span><a href="{% url 'articulo-detalle' obj.id %}"><span class="fa fa-arrow-right"></span></a><span>
                         </p>
                     </div>
                     <hr>
