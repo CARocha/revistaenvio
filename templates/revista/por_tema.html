@@ -50,7 +50,13 @@
             <div class="revista-actual">
 
                 <span class="fa fa-search"> {% trans "Búsqueda por tema:" %}
-                    <strong>{{tema_buscado}}</strong>
+                    <strong>
+                        {% if LANGUAGE_CODE == 'es' %}
+                            {{tema_buscado}}
+                        {% else %}
+                            {{tema_buscado.tema_en}}
+                        {% endif %}
+                    </strong>
                 </span>
             </div>
             <div class="articulos">
