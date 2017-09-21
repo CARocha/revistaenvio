@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div ng-app ng-controller="Ctrl">
+    <input type="text" ng-model="search">
+    <ul>
+        <li ng-repeat="name in names | filter:ignoreAccents">{{ name }}</li>
+    </ul>
+    </div>
+    <script src="../jquery.min.js"></script>
+     <script src="../../bootstrap/js/bootstrap.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.min.js"></script>
+	<script type="text/javascript">
+		function Ctrl($scope) {
+    function removeAccents(value) {
+        return value
+            .replace(/á/g, 'a')            
+            .replace(/é/g, 'e')
+            .replace(/í/g, 'i')
+            .replace(/ó/g, 'o')
+            .replace(/ú/g, 'u');
+    }
+    
+    $scope.ignoreAccents = function(item) {               
+        if (!$scope.search)
+            return true;       
+        var text = removeAccents(item.toLowerCase())
+        var search = removeAccents($scope.search.toLowerCase());
+        return text.indexOf(search) > -1;
+    };
+        
+    $scope.names = ['Jamón', 'Andrés', 'Cristián', 'Fernán', 'Raúl', 'Agustín'];
+};
+	</script>
+</body>
+</html>
