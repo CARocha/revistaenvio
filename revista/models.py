@@ -218,3 +218,4 @@ class Pais(models.Model):
         db_table = 'pais'
         verbose_name='Pais'
         verbose_name_plural='Paises'
+        ordering = ('pais',)
