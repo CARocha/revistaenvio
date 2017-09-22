@@ -133,7 +133,8 @@ class Articulos(models.Model):
         db_table = 'articulos'
         verbose_name='Articulo'
         verbose_name_plural='Articulos'
-        ordering = ['id']
+        #ordering = ['id']
+        ordering = ['-revista__ano','-revista__mes']
 
 
 # class Articulotemas(models.Model):
