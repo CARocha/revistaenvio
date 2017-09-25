@@ -48,7 +48,7 @@
     <div class="row">
         <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
             <div class="revista-actual">
-                <span class="fa fa-search"> {% trans "Búsqueda por zona:" %}              
+                 {% trans "Búsqueda por zona:" %}              
                     <strong>
                         {% if LANGUAGE_CODE == 'es' %}
                             {{zona_buscado}}
@@ -56,7 +56,7 @@
                             {{zona_buscado.zona_en}}
                         {% endif %}
                     </strong>
-                </span>
+
             </div>
             <div class="articulos">
                 {% paginate 10 zonas_articulos %}

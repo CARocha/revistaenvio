@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{%load static%}
 {% load i18n %}
 {% get_current_language as LANGUAGE_CODE %}
 
@@ -85,9 +85,6 @@ if (activeTab) {
             border-color:   #fbf2f4;
 
         }
-        .revista-actual, .navbar-envios{
-            border-bottom: 1px solid    #fbf2f4;
-        }
         .sidebar, .sm-menu{
             background-color:   #fbf2f4;
         }
@@ -96,6 +93,18 @@ if (activeTab) {
         }
         .left-inner-addon,  .rango-fecha h5{
           border-color:   #fbf2f4;  
+        }
+
+        .articulo-titulo{
+            color:  #a90129;
+            border-bottom: 1px solid #fbf2f4;
+        }
+        .articulo-titulo .item ul{
+            list-style: none;
+            padding: 0px
+        }
+        .lista-articulos li a:hover{
+            color:  #a90129;
         }
     </style>
 
@@ -218,7 +227,7 @@ if (activeTab) {
                                         </div>
                                     </div>
                                     <div class="tab-pane" id="ddd">
-                                        <div class="row">
+                                        <div class="row select-p">
                                             <select name="archivosDrop" id="archivosDrop" class="form-control archivo-select" required="required">
                                                 {% for obj in all_year reversed %}
                                                     <option value="/archivos/{{obj.0}}/">{{obj.1}}</option>
