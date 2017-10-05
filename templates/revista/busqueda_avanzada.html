@@ -245,7 +245,12 @@ if (activeTab) {
 
                                                 <ul class="lista-articulos">
                                                     {% for obj in valor.articulos_set.all %}
-                                                    <li><a href="{% url 'articulo-detalle' obj.id %}"><strong>{{obj.idzona}}:</strong> {{obj}}</a></li>
+                                                    <li><a href="{% url 'articulo-detalle' obj.id %}"><strong>{% if LANGUAGE_CODE == 'es' %}
+                                                        {{obj.idzona}}
+                                                    {% else %}
+                                                        {{obj.idzona.zona_en}}
+                                                    {% endif %}
+                                                    :</strong> {{obj}}</a></li>
                                                     {% endfor %}
                                                 </ul>
                                                 {% endfor %}

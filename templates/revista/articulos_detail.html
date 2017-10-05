@@ -131,7 +131,12 @@
 
 			<div class="articulo-detalle">
 				<h6 class="pais">
-					<span>	{{object.idzona}}
+					<span>	{% if LANGUAGE_CODE == 'es' %}
+                                {{object.idzona}}
+                            {% else %}
+                                {{object.idzona.zona_en}}
+                            {% endif %}
+
 						<span>
                              {% if object.opinion == True %}
                                    - OPINIÓN 
@@ -148,7 +153,12 @@
 					{{object.autornota|safe}}
 				</blockquote>
 				<div class="autor-articulo changeMe">
-					{{object.autor}}
+					
+					{% if LANGUAGE_CODE == 'es' %}
+                        {{object.autor}}
+                    {% else %}
+                        {{object.autor.nombre_en}}
+                    {% endif %}
 				</div>
 				{%endif%}
 				<div class="detalle changeMe">

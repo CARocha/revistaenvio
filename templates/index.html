@@ -60,7 +60,14 @@
                 {% for revista in object_list %}
                     {% for obj in revista.articulos_set.all %}
                     <div class="item">
-                        <h6 class="pais">{{obj.idzona}}
+                        <h6 class="pais">
+                            {% if LANGUAGE_CODE == 'es' %}
+                                {{obj.idzona}}
+                            {% else %}
+                                {{obj.idzona.zona_en}}
+                            {% endif %}
+
+                            
                             <span>
                                 {% if obj.opinion == True %}
                                    - Opinión

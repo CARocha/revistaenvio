@@ -116,7 +116,7 @@ msgstr "Home"
 
 #: templates/base.html:102
 msgid "¿Quiénes somos?"
-msgstr "About us?"
+msgstr "About us"
 
 #: templates/base.html:103 templates/base.html:111
 #: templates/revista/busqueda_avanzada.html:264
@@ -135,7 +135,7 @@ msgstr "Team"
 
 #: templates/base.html:110
 msgid "¿Quiénes Somos?"
-msgstr "About us?"
+msgstr "About us"
 
 #: templates/base.html:169 templates/revista/articulos_detail.html:242
 #: templates/revista/suscribete.html:136 templates/sidebar.html:23
@@ -272,10 +272,8 @@ msgid "Búsqueda por tema:"
 msgstr "Search by topic:"
 
 #: templates/revista/por_zona.html:51
-#, fuzzy
-#| msgid "Búsqueda Avanzada"
 msgid "Búsqueda por zona:"
-msgstr "Search by country"
+msgstr "Search by country:"
 
 #: templates/revista/suscribete.html:53
 msgid "Suscribete"
