@@ -63,7 +63,13 @@
                 {% for obj in zonas_articulos %}
                     <div class="item">
                         <h5 class="articulo-titulo"><a href="{% url 'articulo-detalle' obj.id %}">{{obj}}</a></h5>
-                        <h6 class="pais">{{obj.revista.ano}} {{obj.revista.get_mes_display}} {{obj.idzona}}
+                        <h6 class="pais">{{obj.revista.ano}} {{obj.revista.get_mes_display}} 
+                            {% if LANGUAGE_CODE == 'es' %}
+                                {{obj.idzona}}
+                            {% else %}
+                                {{obj.idzona.zona_en}}
+                            {% endif %}
+
                                 {% if obj.opinion == True %}
                                    <span> - OPINIÓN</span>
                                 {% endif %}
