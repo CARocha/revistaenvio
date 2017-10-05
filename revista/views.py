@@ -36,9 +36,9 @@ class IndexView(ListView):
     def get_queryset(self):
         cur_language = translation.get_language()
         if cur_language == 'en':
-            queryset = Revistas.objects.filter(ididioma='en').order_by('numero')
+            queryset = Revistas.objects.filter(ididioma='en').order_by('-numero')
         else:
-            queryset = Revistas.objects.filter(ididioma='es').order_by('numero')
+            queryset = Revistas.objects.filter(ididioma='es').order_by('-numero')
         return queryset
 
 def revista_detail(request, pk=None, template='index.html'):
