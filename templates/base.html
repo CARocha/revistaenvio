@@ -81,7 +81,7 @@
             <div class="main-manu">
                 <nav class="navbar navbar-envios">
                     <div class="container">
-                        
+
                         <div class="navbar-header">
                             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                                 <span class="sr-only">Toggle navigation</span>
@@ -92,7 +92,7 @@
                             <a class="navbar-brand" href="/"><img src="/static/img/logoblanco.png" alt=""></a>
                         </div>
 
-                        
+
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         {% if LANGUAGE_CODE == 'es' %}
                             <ul class="nav navbar-nav navbar-right">
@@ -129,7 +129,7 @@
                     {% thumbnail x.imagen "x400" crop="center" as im %}
                     <a href="#"><img src="{{ im.url }}" height="{{ im.height }}"/></a>
                     {% endthumbnail %}
-                  
+
                   <div class="carousel-caption">
                   {% if LANGUAGE_CODE == 'es' %}
                     <p>{{x.frase|safe}}</p>
@@ -138,7 +138,7 @@
                     <p>{{x.frase_en|safe}}</p>
                     <p class="autor-slide">- {{x.autor_en}}</p>
                   {% endif %}
-                    
+
                   </div>
                 </div>
                 {% endfor %}
@@ -153,15 +153,12 @@
               </a>
             </div>
              {% endfor %}
-            
+
         </header>
 
         <div class="contenido">
             <div class="sm-menu visible-xs">
                 <div class="row">
-                    <div class="col-xs-12 ">
-                        {% include "busqueda_go.html" %}
-                    </div>
                     <div class="col-xs-12">
                         <div class="idioma-container">
                             <h6>{% trans "Idioma" %}</h6>
@@ -178,7 +175,7 @@
                                     </a>
                                 </div>
                             </div>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -204,7 +201,7 @@
                                     Apartado A-194
                                     <br>Managua, Nicaragua
                                 </p>
-                                
+
                             </div>
 
                         </div>
@@ -260,7 +257,7 @@
                 }
             });
 
-            
+
             $('a.back-to-top').click(function() {
                 $('html, body').animate({
                     scrollTop: 0
