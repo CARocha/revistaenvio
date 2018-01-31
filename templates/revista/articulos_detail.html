@@ -139,7 +139,7 @@
 
 						<span>
                              {% if object.opinion == True %}
-                                   - OPINIÓN 
+                                   - OPINIÓN
                             {% endif %}
                         </span>
                     </span>
@@ -153,7 +153,7 @@
 					{{object.autornota|safe}}
 				</blockquote>
 				<div class="autor-articulo changeMe">
-					
+
 					{% if LANGUAGE_CODE == 'es' %}
                         {{object.autor}}
                     {% else %}
@@ -231,20 +231,20 @@
             <div class="sidebar">
                 <div class="lema">
                     <p>
-                       
-                        
+
+
                             {% trans "Envío es información y análisis" %}<br>
                             {% trans "de Nicaragua desde Nicaragua," %}<br>
                             {% trans "de Centroamérica desde Centroamérica" %} <br>
                             {% trans "y de ese otro mundo posible" %}<br>
                             {% trans "por el que trabajamos." %}
-                        
-                       
+
+
 
                     </p>
                     <div class="borde"></div>
                 </div>
-                {% include "busqueda_go.html" %}
+
                 <div class="idioma-container">
                     <h6>{% trans "Idioma" %}</h6>
                     <div class="idiomas container-fluid">
@@ -272,7 +272,7 @@
 									{{obj.idzona}}
 									<span>
 										{% if obj.opinion == True %}
-		                                   - OPINIÓN 
+		                                   - OPINIÓN
 		                                {% endif %}
 									</span>
 								</div>

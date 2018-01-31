@@ -3,9 +3,9 @@
 {% load i18n %}
 
 {% block extra_js %}
-<link rel="stylesheet" href="http://www.google.com/cse/style/look/default.css" type="text/css" /> 
+<link rel="stylesheet" href="http://www.google.com/cse/style/look/default.css" type="text/css" />
 <script src="http://www.google.com/jsapi" type="text/javascript"></script>
-<script type="text/javascript"> 
+<script type="text/javascript">
     function parseQueryFromUrl () {
         var queryParamName = "q";
         var search = window.location.search.substr(1);
@@ -18,18 +18,15 @@
         }
         return '';
     }
-    google.load('search', '1', {language : 'es'});
-    google.setOnLoadCallback(function() {
-        var customSearchControl = new google.search.CustomSearchControl('{{CX_CODE}}');
-        customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
-        var options = new google.search.DrawOptions();
-        options.enableSearchResultsOnly();     
-        customSearchControl.draw('cse', options);
-        var queryFromUrl = parseQueryFromUrl();
-        if (queryFromUrl) {
-          customSearchControl.execute(queryFromUrl);
-      }
-    }, true);
+    (function() {
+    var cx = '{{CX_CODE}}';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
 </script>
 <script type="text/javascript">
  var urlmenu = document.getElementById( 'archivosDrop' );
@@ -47,9 +44,10 @@
         <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
             <div class="revista-actual">
                 <div class="sub-titulo">Resultados de búsqueda para: <b>{{q}}</b></div><br>
-            </div>        
-            
-            <div id="cse">Loading</div>
+            </div>
+                <div id="cse">
+                    <gcse:searchresults-only>
+                </div>
         </div>
         {% include "sidebar.html" %}
     </div>
