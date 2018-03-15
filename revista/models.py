@@ -110,7 +110,7 @@ class Revistas(models.Model):
         db_table = 'revistas'
         verbose_name='Revista'
         verbose_name_plural='Revistas'
-        ordering = ('-numero',)
+        ordering = ('-numero','-mes')
 
 class Articulos(models.Model):
     revista = models.ForeignKey(Revistas)

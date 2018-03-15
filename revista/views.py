@@ -75,7 +75,7 @@ def busqueda(request, template='revista/busqueda_avanzada.html'):
         all_zonas = Zonas.objects.all().order_by('zona_es')
         all_autores = Autores.objects.all().order_by('nombre_es')
         query = Revistas.objects.filter(ididioma='es',ano=unicode(fecha)).order_by('-mes')
-    
+
 
     return render(request, template, locals())
 
@@ -113,9 +113,9 @@ def articulo_busqueda_tema(request, pk=None, template='revista/por_tema.html'):
     cur_language = translation.get_language()
     tema_buscado = Temas.objects.get(id=pk)
     if cur_language == 'en':
-        temas_articulos = Articulos.objects.filter(idioma='en', temas=pk).order_by('-revista__ano','revista__mes');
+        temas_articulos = Articulos.objects.filter(idioma='en', temas=pk).order_by('-revista__ano','-revista__mes');
     else:
-         temas_articulos = Articulos.objects.filter(idioma='es', temas=pk).order_by('-revista__ano','revista__mes');
+         temas_articulos = Articulos.objects.filter(idioma='es', temas=pk).order_by('-revista__ano','-revista__mes');
 
     # paginator = Paginator(temas_articulos, 10)
 
@@ -133,9 +133,9 @@ def articulo_busqueda_zona(request, pk=None, template='revista/por_zona.html'):
     cur_language = translation.get_language()
     zona_buscado = Zonas.objects.get(id=pk)
     if cur_language == 'en':
-        zonas_articulos = Articulos.objects.filter(idioma='en', idzona=pk).order_by('-revista__ano','revista__mes');
+        zonas_articulos = Articulos.objects.filter(idioma='en', idzona=pk).order_by('-revista__ano','-revista__mes');
     else:
-         zonas_articulos = Articulos.objects.filter(idioma='es', idzona=pk).order_by('-revista__ano','revista__mes');
+         zonas_articulos = Articulos.objects.filter(idioma='es', idzona=pk).order_by('-revista__ano','-revista__mes');
 
     # paginator = Paginator(zonas_articulos, 10)
 
@@ -153,9 +153,9 @@ def articulo_busqueda_autor(request, pk=None, template='revista/por_autor.html')
     cur_language = translation.get_language()
     autor_buscado = Autores.objects.get(id=pk)
     if cur_language == 'en':
-        autor_articulos = Articulos.objects.filter(idioma='en', autor=pk).order_by('-revista__ano','revista__mes');
+        autor_articulos = Articulos.objects.filter(idioma='en', autor=pk).order_by('-revista__ano','-revista__mes');
     else:
-         autor_articulos = Articulos.objects.filter(idioma='es', autor=pk).order_by('-revista__ano','revista__mes');
+         autor_articulos = Articulos.objects.filter(idioma='es', autor=pk).order_by('-revista__ano','-revista__mes');
 
     # paginator = Paginator(autor_articulos, 10)
 
@@ -190,7 +190,7 @@ def busqueda_avanzada(request, template='revista/busqueda_mega_avanzada.html'):
         del params[key]
 
     articulos_list = Articulos.objects.filter(**params)
-    
+
     #Articulos.objects.filter(revista__ano__gte=2015,revista__ano__lte=2016, revista__mes__gte=1, revista__mes__lte=2)
     paginator = Paginator(articulos_list, 10)
     page = request.GET.get('page')
