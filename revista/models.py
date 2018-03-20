@@ -112,13 +112,21 @@ class Revistas(models.Model):
         verbose_name_plural='Revistas'
         ordering = ('-numero','-mes')
 
+CHOICE_OPINION = ( (1, 'Opinion'),
+                   (2, 'Speaking-Out'),
+                   (3, 'Analisis'),
+                   (4, 'The Month'),
+                   (5, 'Close-Up')
+                  )
+
 class Articulos(models.Model):
     revista = models.ForeignKey(Revistas)
     titulo = models.CharField(max_length=255, blank=True, null=True)
-    opinion = models.NullBooleanField()
+    opinion = models.IntegerField(choices=CHOICE_OPINION, null=True, blank=True,
+                                  verbose_name='Categorías en inglés')
     idioma = models.ForeignKey(Idiomas, null=True, blank=True)
-    idzona = models.ForeignKey('Zonas', blank=True, null=True)
-    autor = models.ForeignKey('Autores', blank=True, null=True)
+    idzona = models.ForeignKey('Zonas', blank=True, null=True, verbose_name='Zona')
+    autor = models.ForeignKey('Autores', blank=True, null=True, verbose_name='Autor')
     autornota = RichTextField('Introducción', blank=True, null=True)
     cambio = RichTextField(blank=True, null=True)
     texto = RichTextUploadingField(blank=True, null=True)
