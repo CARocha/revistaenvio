@@ -138,8 +138,14 @@
                             {% endif %}
 
 						<span>
-                             {% if object.opinion == True %}
-                                   - OPINIÓN
+
+                            {% if LANGUAGE_CODE == 'es' %}
+                                
+                            {% else %}
+                                {% if obj.opinion %}
+                                    - {{obj.get_opinion_display}}
+                                {% endif %}
+                               
                             {% endif %}
                         </span>
                     </span>
@@ -271,10 +277,16 @@
 								<div class="pais">
 									{{obj.idzona}}
 									<span>
-										{% if obj.opinion == True %}
-		                                   - OPINIÓN
-		                                {% endif %}
-									</span>
+
+	                                    {% if LANGUAGE_CODE == 'es' %}
+	                                        
+	                                    {% else %}
+	                                        {% if obj.opinion %}
+	                                            - {{obj.get_opinion_display}}
+	                                        {% endif %}
+	                                       
+	                                    {% endif %}
+	                                </span>
 								</div>
 							</div>
 							<a class="link-titulo" href="{% url 'articulo-detalle' obj.id %}">

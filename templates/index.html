@@ -69,8 +69,14 @@
 
                             
                             <span>
-                                {% if obj.opinion == True %}
-                                   - Opinión
+
+                                {% if LANGUAGE_CODE == 'es' %}
+                                    
+                                {% else %}
+                                    {% if obj.opinion %}
+                                        - {{obj.get_opinion_display}}
+                                    {% endif %}
+                                   
                                 {% endif %}
                             </span>
                         </h6>

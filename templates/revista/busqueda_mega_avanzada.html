@@ -56,9 +56,17 @@
                 {% for obj in object_list %}
                     <div class="item">
                         <h6 class="pais">{{obj.idzona}}
-                                {% if obj.opinion == True %}
-                                   <span> - OPINIÓN</span>
-                                {% endif %}
+                                <span>
+
+                                    {% if LANGUAGE_CODE == 'es' %}
+                                        
+                                    {% else %}
+                                        {% if obj.opinion %}
+                                            - {{obj.get_opinion_display}}
+                                        {% endif %}
+                                       
+                                    {% endif %}
+                                </span>
                         </h6>
                         <h5 class="articulo-titulo"><a href="{% url 'articulo-detalle' obj.id %}">{{obj}}</a></h5>
                         <p>

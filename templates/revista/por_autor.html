@@ -70,9 +70,17 @@
                             {% else %}
                                 {{obj.idzona.zona_en}}
                             {% endif %}
-                                {% if obj.opinion == True %}
-                                   <span> - OPINIÓN</span>
-                                {% endif %}
+                                <span>
+
+                                    {% if LANGUAGE_CODE == 'es' %}
+                                        
+                                    {% else %}
+                                        {% if obj.opinion %}
+                                            - {{obj.get_opinion_display}}
+                                        {% endif %}
+                                       
+                                    {% endif %}
+                                </span>                        
                         </h6>
                         <p>
                             {{obj.texto|truncatewords:22|striptags|safe }}
