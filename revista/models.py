@@ -114,7 +114,7 @@ class Revistas(models.Model):
 
 CHOICE_OPINION = ( (1, 'Opinion'),
                    (2, 'Speaking-Out'),
-                   (3, 'Analisis'),
+                   (3, 'Analysis'),
                    (4, 'The Month'),
                    (5, 'Close-Up')
                   )
