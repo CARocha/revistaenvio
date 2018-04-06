@@ -117,11 +117,11 @@
             </div>
             {% for obj in portada %}
             <div id="carousel-example" class="carousel slide" data-ride="carousel">
-              <ol class="carousel-indicators">
-                {% for x in obj.fotos_set.all %}
-                    <li data-target="#carousel-example" data-slide-to="{{forloop.revcounter0}}" {% if forloop.counter == 1 %}class="active"{% endif %}></li>
-                {% endfor %}
-              </ol>
+                <!-- <ol class="carousel-indicators">
+                    {% for x in obj.fotos_set.all %}
+                        <li data-target="#carousel-example" data-slide-to="{{forloop.revcounter0}}" {% if forloop.counter == 1 %}class="active"{% endif %}></li>
+                    {% endfor %}
+                </ol>-->
 
               <div class="carousel-inner">
                 {% for x in obj.fotos_set.all %}
@@ -215,7 +215,7 @@
                                     <li><a class="fa fa-google-plus" href="https://plus.google.com/u/1/+RevistaEnv%C3%ADoUCA" target="_blank"></a></li>
                                 </ul>
                                 <p>
-                                   Revista Envío
+                                   Revista envío digital
                                 <br>
                                     {% trans "Desarrollado por " %}<a href="http://simas.org.ni">SIMAS</a>
                                 </p>
