@@ -10,7 +10,7 @@ from revista.utils import get_file_path
 class FotosPortada(models.Model):
 	titulo = models.CharField(max_length=250)
 
-	def __unicode__(self):
+	def __str__(self):
 		return self.titulo
 
 	class Meta:
@@ -27,7 +27,7 @@ class Fotos(models.Model):
 
 	fileDir = 'slider/'
 
-	def __unicode__(self):
+	def __str__(self):
 		return self.portada.titulo
 
 	class Meta:

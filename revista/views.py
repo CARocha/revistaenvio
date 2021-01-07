@@ -69,12 +69,12 @@ def busqueda(request, template='revista/busqueda_avanzada.html'):
         all_temas = Temas.objects.all().order_by('tema_en')
         all_zonas = Zonas.objects.all().order_by('zona_en')
         all_autores = Autores.objects.all().order_by('nombre_en')
-        query = Revistas.objects.filter(ididioma='en',ano=unicode(fecha)).order_by('-mes')
+        query = Revistas.objects.filter(ididioma='en',ano=str(fecha)).order_by('-mes')
     else:
         all_temas = Temas.objects.all().order_by('tema_es')
         all_zonas = Zonas.objects.all().order_by('zona_es')
         all_autores = Autores.objects.all().order_by('nombre_es')
-        query = Revistas.objects.filter(ididioma='es',ano=unicode(fecha)).order_by('-mes')
+        query = Revistas.objects.filter(ididioma='es',ano=str(fecha)).order_by('-mes')
 
 
     return render(request, template, locals())
@@ -97,7 +97,7 @@ def archivos_revista(request, template='revista/archivos.html', yearr=None):
 
     if yearr is None:
         fecha = all_year1[-1][0]
-        query = Revistas.objects.filter(ididioma=idioma,ano=unicode(fecha)).order_by('-mes')
+        query = Revistas.objects.filter(ididioma=idioma,ano=str(fecha)).order_by('-mes')
     else:
         query = Revistas.objects.filter(ano=yearr,ididioma=idioma).order_by('-numero')
 

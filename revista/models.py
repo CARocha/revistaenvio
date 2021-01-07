@@ -12,7 +12,7 @@ class Idiomas(models.Model):
     id = models.CharField(primary_key=True, max_length=2)
     idioma = models.CharField(max_length=50, blank=True, null=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.idioma
 
     class Meta:
@@ -27,7 +27,7 @@ class Zonas(models.Model):
     zona_en = models.CharField(max_length=50, blank=True, null=True)
     zona_es = models.CharField(max_length=50, blank=True, null=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return u'%s' % self.zona
 
     class Meta:
@@ -41,7 +41,7 @@ class Temas(models.Model):
     tema_en = models.CharField(max_length=150, blank=True, null=True)
     tema_es = models.CharField(max_length=150, blank=True, null=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return u'%s' % self.tema
 
     class Meta:
@@ -59,7 +59,7 @@ class Autores(models.Model):
     nombre_en = models.CharField(_('Nombre ingles'), max_length=150, blank=True, null=True)
     nombre_es = models.CharField(_('Nombre en español'), max_length=150, blank=True, null=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return u'%s' % self.nombre
 
     class Meta:
@@ -88,7 +88,7 @@ class ColoresRevista(models.Model):
     color2 = models.CharField(max_length=50, null=True, blank=True)
     color = models.CharField(max_length=50, null=True, blank=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.color1
 
 class Revistas(models.Model):
@@ -103,7 +103,7 @@ class Revistas(models.Model):
 
     fileDir = 'portadas/'
 
-    def __unicode__(self):
+    def __str__(self):
         return u'%s %s: Número: %s - Idioma: %s' % (str(self.get_mes_display()),str(self.ano),str(self.numero),self.ididioma)
 
     class Meta:
@@ -135,7 +135,7 @@ class Articulos(models.Model):
     nota = RichTextField(blank=True, null=True)
     temas = models.ManyToManyField(Temas, blank=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.titulo
 
     class Meta:
@@ -161,7 +161,7 @@ class Enlaces(models.Model):
     texto = models.TextField(blank=True, null=True)
     idarticulo = models.ForeignKey(Articulos, blank=True, null=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return u'%s' % self.titulo
 
     class Meta:
@@ -176,7 +176,7 @@ class Tipo(models.Model):
     tipo_es = models.CharField(max_length=500, blank=True, null=True)
     tipo_en = models.CharField(max_length=500, blank=True, null=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return u'%s - %s' % (self.tipo, self.precio)
 
     class Meta:
@@ -208,7 +208,7 @@ class Envio(models.Model):
     idtipo = models.ForeignKey('Tipo', models.DO_NOTHING, db_column='idtipo', blank=True, null=True)
     suscripcion = models.CharField(max_length=25, blank=True, null=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return u'%s' % self.institucion
 
     class Meta:
@@ -221,7 +221,7 @@ class Pais(models.Model):
     id = models.CharField(primary_key=True, max_length=2)
     pais = models.CharField(max_length=500, blank=True, null=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return u'%s' % self.pais
 
     class Meta:

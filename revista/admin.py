@@ -80,7 +80,7 @@ class PaisAdmin(ImportExportModelAdmin):
     list_display = ['id', 'pais']
 
 class colorAdmin(ImportExportModelAdmin):
-    list_display = ['id','color1', 'color2', 'color', 'colored_name']
+    list_display = ['id','color1', 'color2', 'colored_name']
 
     def colored_name(self, obj):
         return format_html('<span style="background-color:{};width:40px; heigth:20px; color:{};">COLOR</span>',obj.color1,obj.color1)

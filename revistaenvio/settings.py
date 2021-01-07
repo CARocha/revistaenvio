@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.utils.translation import ugettext_lazy as _
-from local_settings import *
+from .local_settings import *
 
 
 # Application definition
